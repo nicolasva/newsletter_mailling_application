@@ -1,0 +1,13 @@
+       <h2> Liste des sous-contacts</h2>
+        <ul>
+		<% @categoryall.subcontacts.each{ |subcontact| %>
+                    <%= content_tag_for :li, subcontact do %>
+			    <%= subcontact_field.submit(subcontact.name, :name=>"#{@categoryall.id}_subcontact_#{subcontact.id}") %><%= subcontact_field.submit("x", :name=>"button_supsubcontact_#{subcontact.id}") %>
+		    <% end %>
+	        <% } %>
+	</ul>
+
+        <p>
+ 		<%= subcontact_field.label(:name) %><br>
+		<%= subcontact_field.text_field(:name) %>
+	</p>

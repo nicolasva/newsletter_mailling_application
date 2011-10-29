@@ -1,0 +1,10 @@
+<h1>Editing categoryall</h1>
+
+<%= form_for(@categoryall) do |f| %>
+
+  <%= render(:partial=>"form", :locals => {:f => f }) %>
+
+  <div class="class_submit">
+	  <%= f.submit "Enregistrer", :name=>"button_register_general" %>
+  </div>
+<% end %>

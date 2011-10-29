@@ -1,0 +1,39 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+
+div.class_language {
+height: 100px;
+padding-top: 0px;
+background-color: transparent;
+    div.div_class_language {
+	padding-top: 11px;
+	background-color: transparent;
+	height: 50px;
+	width: 83px;
+	float: right;
+	ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+		li {
+			float: right;
+			margin-right: 10px;
+		}
+	}
+     }
+
+     div.div_class_title_newsletter {	
+	padding-top: 14px;
+	float: left;
+	padding-left: 45%;
+	height: 32px;
+	width: 140px;
+		ul {
+			margin: 0px;
+			padding: 0px;
+			list-style-type: none;
+		}
+     }
+}

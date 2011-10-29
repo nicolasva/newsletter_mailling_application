@@ -1,0 +1,19 @@
+// Place all the styles related to the newsletters controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+div.div_class_submit {
+    margin-top: 40px;
+    height: 70px;
+    ul {
+	    margin: 0px;
+	    padding: 0px;
+	    padding-left: 155px;
+	    li {
+		margin: 0px;
+		padding: 0px;
+		margin-right: 40px;
+	        float: left;
+		list-style-type: none;
+	    }
+       }
+}

@@ -1,0 +1,27 @@
+<table>
+  <tr>
+    <td><%= t "activerecord.attributes.mailstart.name" %></td>
+    <td><%= t "activerecord.attributes.mailstart.mail" %></td>
+    <td><%= t "common_link.editing" %></td>
+    <td><%= t "common_link.removal" %></td>
+  </tr>
+</table>
+
+<ul id='mailstarts'>
+<% @mailstarts.each do |mailstart| %>
+	<%= content_tag_for :li, mailstart do %>	
+  <table>
+    <tr>
+      <td><%= mailstart.name %></td>
+      <td><%= mailstart.mail %></td>
+      <td><%= link_to t("common_link.edit"), edit_mailstart_path(mailstart) %></td>
+      <td><%= link_to t("common_link.delete"), mailstart, :confirm => t('.confirm_destroy') , :method => :delete %></td>
+    </tr>
+  </table>
+ <% end %>
+<% end %>
+</ul>
+
+<br />
+
+<%= link_to t(".new_mailstart"), new_mailstart_path %>

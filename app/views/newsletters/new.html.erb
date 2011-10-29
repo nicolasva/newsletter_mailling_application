@@ -1,0 +1,14 @@
+<%= form_for(@newsletter) do |f| %>
+	<%= render(:partial=>"form", :locals => {:f => f}) %>
+	<div class='div_class_submit'>
+	     <ul>
+		<li>
+		        <%= f.submit "Enregistrer cette newsletter", :name => "register_newsletter_not_send" %>
+		</li>
+
+		<li>
+			<%= f.submit "Enregistrer et envoyer cette newsletter", :name => "registersend_and_send_newsletter" %>
+		</li>
+	     </ul>
+	</div>
+<% end %>

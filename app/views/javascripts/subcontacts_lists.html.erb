@@ -1,0 +1,5 @@
+<% @categoryall.subcontacts.each{ |subcontact| %>	
+	<%= content_tag_for :li, subcontact do %>
+		<%= check_box_tag("newsletter[subcontact_ids][]", subcontact.id, (params[:newsletter_id] != "newsletter" ? subcontact.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);") %> <%= subcontact.name %>
+	<% end %>
+<% } %>

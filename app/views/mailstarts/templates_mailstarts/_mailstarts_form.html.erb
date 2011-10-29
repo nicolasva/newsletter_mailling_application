@@ -1,0 +1,14 @@
+          <p>
+	  	<%= mailstart_field.label(:name) %><br>
+		<%= mailstart_field.text_field(:name) %>
+	  </p>
+	  <p>
+	  	<%= mailstart_field.label(:mail) %><br>
+		<%= mailstart_field.text_field(:mail) %>
+ 	  </p>
+
+
+<p>
+<%= mailstart_field.submit("Ajouter une nouvelle categorie", :name=>"button_addcategoryall_#{@mailstart.id}") %>
+</p>
+

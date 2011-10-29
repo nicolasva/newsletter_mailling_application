@@ -1,0 +1,9 @@
+<h1>Editing subcontact</h1>
+
+<%= form_for(@subcontact) do |f| %>
+	<%= render(:partial=>"form", :locals => { :f => f }) %>
+
+  	<div class="class_submit">
+	 	 <%= f.submit "Enregistrer", :name=>"button_register_general" %>
+  	</div>
+<% end %>

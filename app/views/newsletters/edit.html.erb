@@ -1,0 +1,24 @@
+<h1>Editing newsletter</h1>
+
+<% 
+	#render 'form' 
+%>
+
+<%= form_for(@newsletter) do |f| %>
+	<%= render(:partial=>"form", :locals => {:f => f}) %>
+
+	<div class='div_class_submit'>
+		<ul>
+			<li>
+				<%= f.submit "Modifier cette newsletter", :name => "modif_newsletter_not_send" %>
+			</li>
+
+			<li>
+				<%= f.submit "Modifier et envoyer cette newsletter", :name => "modifsend_and_send_newsletter" %>
+			</li>
+		</ul>
+	</div>	
+<% end %>
+
+<%= link_to 'Show', @newsletter %> |
+<%= link_to 'Back', newsletters_path %>

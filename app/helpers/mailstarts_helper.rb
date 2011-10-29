@@ -1,0 +1,2 @@
+module MailstartsHelper
+end

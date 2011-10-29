@@ -1,0 +1,30 @@
+  <% if @subcontact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@subcontact.errors.count, "error") %> prohibited this subcontact from being saved:</h2>
+
+      <ul>
+      <% @subcontact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+	  <%= f.fields_for(:categoryalls, @categoryall) do |categoryall_field| %>
+		  <%= 
+			  categoryall_field.fields_for(:mailstart, @mailstart) do |mailstart_field| 
+		  %>
+		  <%= 
+			  render(:partial=>"/mailstarts/templates_mailstarts/mailstarts_form", :locals => {:mailstart_field => mailstart_field}) 
+		  %>
+	  	  <% 
+	  	   end 
+		  %>
+	  	<%= render(:partial=>"/categoryalls/templates_categoryalls/categoryalls_form", :locals => {:categoryall_field => categoryall_field}) %>
+	  <% end %>
+	  	<%= render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => f}) %>
+	  <%= f.fields_for(:mails, @mail) do |mail_field| %>
+		  <%= render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field}) %>
+	  <% end %>
+  </div>

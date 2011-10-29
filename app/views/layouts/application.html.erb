@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Prgmnewsletter</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <%= javascript_include_tag "/javascripts/ckeditor/ckeditor" %>
+  <%= javascript_include_tag "application" %>
+  <% csrf_meta_tags %>
+</head>
+<body>
+<div class='class_language'>
+			<div id='flash'>
+				<% flash.each do |type, message| %>
+					<% unless message.blank? || type.to_s == "newsletter" %>
+						<div id="flash_#{type}" class="message #{type}" style="background-color:#ccffcc;opacity:.6;border:1px solid red;position:fixed;">
+							<p style='color:red;'>
+								<%= message %>
+							</p>
+						</div>
+					<% end %>
+				<% end %>
+			</div>
+     <div class='div_class_title_newsletter'>
+	<ul>
+		<li><%= get_title_newsletter(controller_name,controller.action_name) %></li>
+	</ul>
+     </div>
+     <div class='div_class_language'>
+	<ul>
+		<li><%= get_flag_french_or_english(I18n.locale) %></li>
+        </ul>
+     </div>
+</div>
+
+<div id='menu'>
+	<ul>
+	       <li>
+	       	     <%
+			     #controller_name == "newsletters" && controller.action_name == "index" ? image_tag("newsletter_icones/icon_calendar.png", :size=>"60x60") : link_to(image_tag("newsletter_icones/icon_calendar.png", :size=>"60x60"), newsletters_path, :title => get_title_newsletter("newsletters","index")) 
+		     %> 
+		     <%= get_menu_link("newsletters","index",controller_name,controller.action_name) %>
+	       </li>
+		
+	       <li>
+	       	  	<% 
+		       #controller_name == "newsletters" && controller.action_name == "new" ? image_tag("newsletter_icones/send_mail.png", :size=>"60x60") : link_to(image_tag("newsletter_icones/send_mail.png", :size=>"60x60"), new_newsletter_path, :title=> get_title_newsletter("newsletters","new")) 
+	       		%>
+			<%= get_menu_link("newsletters","new",controller_name,controller.action_name) %>
+
+	       </li>  
+
+	       <li>
+	       		<% 
+				#controller_name == "mailstarts" && controller.action_name == "index" ? image_tag("newsletter_icones/Address_Book.png", :size=>"60x60") : link_to(image_tag("newsletter_icones/Address_Book.png", :size=>"60x60"), mailstarts_path, :title=> get_title_newsletter("mailstarts","index")) 			
+			%>
+			<%= get_menu_link("mailstarts","index",controller_name,controller.action_name) %>
+
+	       </li>
+
+
+	</ul>
+</div>
+<div id='id_content'>
+<%= yield %>
+</div>
+
+</body>
+</html>

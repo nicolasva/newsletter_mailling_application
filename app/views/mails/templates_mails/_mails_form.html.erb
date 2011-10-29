@@ -1,0 +1,32 @@
+<h2>Liste des emails</h2>
+      <ul>
+            <% @subcontact.mails.each{ |mail| %>
+	    	<%= content_tag_for :li, mail do %>
+			<%= mail_field.submit(mail.name, :name=>"#{@subcontact.id}-#{@categoryall.id}_mail_#{mail.id}") %><%= mail_field.submit("x", :name=>"button_supmail_#{mail.id}") %>
+		<% end %>
+	    <% } %>
+      </ul>
+<p>
+<%= mail_field.label(:name) %><br>
+<%= mail_field.text_field(:name) %>
+</p>
+
+<p>
+<%= mail_field.label(:adress) %><br>
+<%= mail_field.text_field(:adress) %>
+</p>
+
+<p>
+<%= mail_field.label(:cppostal) %><br>
+<%= mail_field.text_field(:cppostal) %>
+</p>
+
+<p>
+<%= mail_field.label(:tel) %><br>
+<%= mail_field.text_field(:tel) %>
+</p>
+
+<p>
+<%= mail_field.label(:email) %><br>
+<%= mail_field.text_field(:email) %>
+</p>

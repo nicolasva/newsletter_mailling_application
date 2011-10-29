@@ -1,0 +1,62 @@
+  <% if @newsletter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@newsletter.errors.count, "error") %> prohibited this newsletter from being saved:</h2>
+
+      <ul>
+      <% @newsletter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+	<%= f.label(:mailstart_id) %><br>
+	<%= f.select(:mailstart_id, Mailstart.all.collect{ |p| [p.name, p.id] }) %>
+  </p>
+
+  <p>
+	<%= f.label(:categoryall_id) %><br>
+	<%= f.select(:categoryall_id, @newsletter.nil? ? [] : Categoryall.where(:mailstart_id=>@newsletter.mailstart_id).collect{ |p| [p.name, p.id] }) %>
+  </p>
+
+
+  <p>
+  	<%= label_tag("Liste des sous-contacts") %><br>
+	<ul id='newsletter_subcontact_id'>
+	    <% unless @newsletter.categoryall.nil? %>
+		<% @newsletter.categoryall.subcontacts.each{ |subcontact| %>
+		     <%= content_tag_for :li, subcontact do %>
+			     <%= check_box_tag("newsletter[subcontact_ids][]", subcontact.id, @newsletter.subcontacts.include?(subcontact), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);") %> <%= subcontact.name %>	
+		     <% end %>
+	     <% } %>	
+           <% end %>
+	</ul>
+  </p>
+
+  <p>
+  <%= 
+	  label_tag("Liste des e-mails de ce sous-contact")
+		#f.label(:mail_id) 
+	%><br>
+	<ul id='newsletter_mail_id'>
+		<% unless @newsletter.mails.empty? %>
+			<% @newsletter.mails.each{ |mail| %>
+				<%= content_tag_for :li, mail do %>
+					<%= check_box_tag("newsletter[mail_ids][]", mail.id, @newsletter.mails.include?(mail), :id => "id_newsletter_mail_ids_#{mail.id}") %> <%= mail.name %>
+				<% end %>
+			<% } %>	
+		<% end %>	
+	</ul>
+
+  </p>
+
+  <p>
+	<%= f.label(:name) %><br>
+	<%= f.text_field(:name) %>
+  </p>
+
+  <p>
+  	<%= f.label(:content) %><br>
+	<%= f.cktext_area(:content, :width => 800, :height => 800) %>
+  </p>

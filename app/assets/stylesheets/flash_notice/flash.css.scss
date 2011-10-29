@@ -1,0 +1,26 @@
+#flash {
+	margin: 0px;
+	padding: 0px;
+	width: 600px;
+		.message {
+			font-size: 12pt;
+			left: 0;
+			width: 100%;
+			text-align: center;
+			color: red;
+		}
+
+		.error {
+			border: 1px solid #fbb;
+			background-color: #fdd;
+		}
+
+		.warning {
+			border: 1px solid #fffaaa;
+			background-color: #ffffcc;
+		}
+
+		.notice {
+			background-color: green;
+		}
+}

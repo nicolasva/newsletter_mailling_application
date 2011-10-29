@@ -1,0 +1,359 @@
+# French translations for Ruby on Rails
+# by Christian Lescuyer (christian@flyingcoders.com)
+# contributors:
+#  - Sebastien Grosjean - ZenCocoon.com
+#  - Bruno Michel - http://github.com/nono
+#  - Tsutomu Kuroda - http://github.com/kuroda (t-kuroda@oiax.jp)
+
+fr:
+  ckeditor:
+    page_title: "Explorateur de fichiers pour CKEditor"
+    confirm_delete: "Supprimer ce fichier?"
+    buttons:
+      cancel: "Annuler"
+      upload: "Envoyer un fichier"
+      delete: "Supprimer"
+  common_link:
+      edit: "Editer"
+      delete: "Supprimer"
+      editing: "Edition"
+      removal: "Supression"
+  common_button:
+      search: "Rechercher"
+  newsletters:
+     new:
+        title: "Nouvelle newsletter"
+     index:
+        title: "Liste des newsletters"
+     show:
+        title: "Apperçu de la newsletter"
+     edit:
+        title: "Edition de la newsletter"
+     create:
+        notice_success_sending: "L'enregistrement de cette newsletter, ainsi que son envoie s'est bien déroulé"
+        notice_success: "L'enregistrement de cette newsletter s'est bien déroulé, elle est désormais disponible"
+        notice_failure: "L'enregistrement de cette newsletter s'est bien déroulé, elle est désormais disponible"
+     update:
+        notice_success_sending: "L'enregistrement des modifications de cette newsletter, ainsi que son envoie s'est bien déroulé"
+        notice_success: "L'enregistrement des modifications de cette newsletter s'est bien déroulée, elle est désormais disponible"
+        notice_failure: "L'enregistrement des modifications de cette newsletter ne s'est pas déroulé correctement et n'est donc pas disponible"
+     destroy:
+        notice_success: "La newsletter a bien été supprimé elle n'est plus disponible"
+        notice_failure: "La newsletter n'a pas été correctement supprimé elle est encore disponible"
+  mailstarts:
+     new:
+        title: "Nouveau mail de départ"
+        new_mailstart: "Creer un nouveau carnet d'adresse"
+     index:
+        title: "Gestion du carnet d'adresse"
+        confirm_destroy: "Désirez-vous réellement supprimer ce mail de départ ?" 
+        new_mailstart: "Creer un nouveau carnet d'adresse"
+     edit:
+        title: "Edition du carnet d'adresses"
+     show:
+        title: "Apperçu du mail de départ"
+     update:
+        notice_success: "L'enregistrement concernant les information de ce carnet d'adresse s'est bien déroulé, elles sont désormais disponible"
+        notice_failure: "L'enregistrement concernant les informations de ce carnet d'adresse ne s'est pas déroulé correctement, elles ne sont pas disponible"
+  date:
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+    day_names:
+      - dimanche
+      - lundi
+      - mardi
+      - mercredi
+      - jeudi
+      - vendredi
+      - samedi
+    abbr_day_names:
+      - dim
+      - lun
+      - mar
+      - mer
+      - jeu
+      - ven
+      - sam
+    month_names:
+      - ~
+      - janvier
+      - février
+      - mars
+      - avril
+      - mai
+      - juin
+      - juillet
+      - août
+      - septembre
+      - octobre
+      - novembre
+      - décembre
+    abbr_month_names:
+      - ~
+      - jan.
+      - fév.
+      - mar.
+      - avr.
+      - mai
+      - juin
+      - juil.
+      - août
+      - sept.
+      - oct.
+      - nov.
+      - déc.
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%d %B %Y %H:%M:%S"
+      short: "%d %b %H:%M"
+      long: "%A %d %B %Y %H:%M"
+    am: 'am'
+    pm: 'pm'
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "une demi-minute"
+      less_than_x_seconds:
+        zero:  "moins d'une seconde"
+        one:   "moins d'une seconde"
+        other: "moins de %{count} secondes"
+      x_seconds:
+        one:   "1 seconde"
+        other: "%{count} secondes"
+      less_than_x_minutes:
+        zero:  "moins d'une minute"
+        one:   "moins d'une minute"
+        other: "moins de %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "environ une heure"
+        other: "environ %{count} heures"
+      x_days:
+        one:   "1 jour"
+        other: "%{count} jours"
+      about_x_months:
+        one:   "environ un mois"
+        other: "environ %{count} mois"
+      x_months:
+        one:   "1 mois"
+        other: "%{count} mois"
+      about_x_years:
+        one:   "environ un an"
+        other: "environ %{count} ans"
+      over_x_years:
+        one:   "plus d'un an"
+        other: "plus de %{count} ans"
+      almost_x_years:
+        one:   "presqu'un an"
+        other: "presque %{count} ans"
+    prompts:
+      year:   "Année"
+      month:  "Mois"
+      day:    "Jour"
+      hour:   "Heure"
+      minute: "Minute"
+      second: "Seconde"
+
+  number:
+    format:
+      separator: ","
+      delimiter: " "
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%n %u"
+        unit: "€"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "octet"
+            other: "octets"
+          kb: "ko"
+          mb: "Mo"
+          gb: "Go"
+          tb: "To"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "millier"
+          million: "million"
+          billion: "milliard"
+          trillion: "billion"
+          quadrillion: "million de milliards"
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+    select:
+      prompt: "Veuillez sélectionner"
+
+  helpers:
+    select:
+      prompt: "Veuillez sélectionner"
+    submit:
+      create: "Créer un(e) %{model}"
+      update: "Modifier ce(tte) %{model}"
+      submit: "Enregistrer ce(tte) %{model}"
+
+  attributes:
+    created_at: "Créé le"
+    updated_at: "Modifié le"
+
+  errors:
+    format: "Le %{attribute} %{message}"
+    messages: &errors_messages
+      expired: "a expiré, merci de vous identifiez à nouveau"
+      not_found: "pas trouvé"
+      already_confirmed: "a été réellement confirmé, merci de vous enregistrez"
+      not_locked: "n'est pas vérouillé"
+      not_saved:
+        one: "1 erreur this %{resource} a été sauvegardé : "
+        other: "%{count} erreurs dans %{resource} a été sauvegardé : "
+      inclusion: "n'est pas inclus(e) dans la liste"
+      exclusion: "n'est pas disponible"
+      invalid: "n'est pas valide"
+      confirmation: "ne concorde pas avec la confirmation"
+      accepted: "doit être accepté(e)"
+      empty: "doit être rempli(e)"
+      blank: "doit être rempli(e)"
+      too_long:
+        one: "est trop long (pas plus d'un caractère)"
+        other: "est trop long (pas plus de %{count} caractères)"
+      too_short:
+        one: "est trop court (au moins un caractère)"
+        other: "est trop court (au moins %{count} caractères)"
+      wrong_length:
+        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
+        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
+      not_a_number: "n'est pas un nombre"
+      not_an_integer: "doit être un nombre entier"
+      greater_than: "doit être supérieur à %{count}"
+      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+      equal_to: "doit être égal à %{count}"
+      less_than: "doit être inférieur à %{count}"
+      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+      odd: "doit être impair"
+      even: "doit être pair"
+    template: &errors_template
+      header:
+        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
+        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+      body: "Veuillez vérifier les champs suivants : "
+  devise:
+    failure:
+      already_authenticated: 'Vous êtes désormais connecté.'
+      unauthenticated: 'Veuillez vous connectez ou vous enregistrez avant de continuer.'
+      unconfirmed: "Votre compte n'a pas été confirmé afin de pouvoir continuer"
+      locked: 'Votre compte est bloqué.'
+      invalid: 'Mauvais e-mail ou mauvais mot de passe.'
+      invalid_token: "Clef d'authentification invalide."
+      timeout: 'Votre session a expiré, veuillez vous reconnecter afin de pouvoir continuer.'
+      inactive: "Votre compte n'est pas activé."
+    sessions:
+      signed_in: 'Vous êtes connecté.'
+      signed_out: 'Vous êtes désormais déconnecté.'
+    passwords:
+      send_instructions: 'Vous allez recevoir un e-mail avec les instructions pour la réactualisation de votre mot de passe dans quelques minutes.'
+      updated: 'Votre mot de passe a été réactualisé avec succès. Vous êtes désormais connecté.'
+      send_paranoid_instructions: "Si votre e-mail existe dans notre base de donnée, vous recevrez le liens pour les informations dans votre e-mail"
+    confirmations:
+      send_instructions: 'Vous recevrez un e-mail avec les instructions, vous pourrez confirmer cotre compte dans quelques minutes'
+      send_paranoid_instructions: 'si votre e-mail existe dans notre base de donnée, vous recevrez un e-mail avec les instructions afin de confirmer les informations de votre compte dans quelques minutes.'
+      confirmed: 'Votre compte a été confirmé avec succès. Vous êtes désormais connecté.'
+    registrations:
+      signed_up: 'Bienvenue! vous êtes désormais enregistré.'
+      inactive_signed_up: 'Vous êtes cenregistré. Mais, nous pouvons pas vous connecté à cause %{reason}.'
+      updated: "La mise à jour de votre compte s'est bien déroulé."
+      destroyed: 'Bye! Your account was successfully cancelled. We hope to see you again soon.'
+      destroyed: 'Bye! Vous vous êtes bien désinscrit. Nous expérons vous revoir bientôt'
+    unlocks:
+      send_instructions: 'You will receive an email with instructions about how to unlock your account in a few minutes.'
+      send_instructions: 'Vous allez recevoir un e-mail avec les instructions afin de pouvoir déverouiller votre compte dans quelques minutes'
+      unlocked: 'Votre compte a été déverouillé. Vous êtes maintenant connecté.'
+      send_paranoid_instructions: 'Si votre compte existes, vous alez recevoir un e-mail avec les informations afin de pouvoir dévérouillé votre compte.'
+    omniauth_callbacks:
+      success: 'Vous êtes autorisé %{kind} compte.'
+      failure: 'Pouvait pas autorisé %{kind} à cause "%{reason}".'
+    mailer:
+      confirmation_instructions:
+        subject: 'Confirmation des instructions'
+      reset_password_instructions:
+        subject: 'Réactualisé votre mot de passe'
+      unlock_instructions:
+        subject: 'Dévérouillage des instructions'
+  activerecord:
+    models:
+        user: "Utilisateur"
+        mailstart: "Mail de départ"
+        categoryall: "Catégorie"
+        mail: "E-mail"
+        newsletter: "Newsletter"
+        subcontact: "Sous-Contact"
+    attributes:
+        user:
+          email: "E-mail adress"
+          username: "Identifiant"
+          password: "Mot de passe"
+          language: "Langue"
+        subcontact:
+          name: "Nom du sous-contact"
+        newsletter:
+          name: "Titre de la newsletter"
+          mailadd: "Adresses des e-mails manuel"
+          content: "Contenu"
+          created_at: "Crée le"
+          created_on: "Au"
+          date_specification: "Spécifier un échelon pour la date"
+          updated_at: "Mis à jour le"
+        mailstart:
+          name: "Nom du mail de départ"
+          mail: "Adresse E-mail de départ"
+        mail:
+          name: "Nom de la personne"
+          adress: "Adresse de la personne"
+          cppostal: "Code postal"
+          tel: "Numéro de téléphone"
+          email: "Adresse E-mail"
+        categoryall:
+          name: "Nom de la catégorie"
+    errors:
+      messages:
+        taken: "n'est pas disponible"
+        record_invalid: "La validation a échoué : %{errors}"
+        <<: *errors_messages
+      template:
+        <<: *errors_template
+      full_messages:
+        format: "%{attribute} %{message}"

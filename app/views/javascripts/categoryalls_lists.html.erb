@@ -1,0 +1,3 @@
+<% @categoryalls.each{ |categoryall| %>
+	<%= content_tag('option', categoryall.name, :value => categoryall.id, :select => (params[:newsletter_id] != "newsletter" ? categoryall.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :onclick => "subcontacts_lists(this.value);") %>
+<% } %>

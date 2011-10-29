@@ -1,0 +1,21 @@
+<h1>Listing categoryalls</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @categoryalls.each do |categoryall| %>
+  <tr>
+    <td><%= link_to 'Show', categoryall %></td>
+    <td><%= link_to 'Edit', edit_categoryall_path(categoryall) %></td>
+    <td><%= link_to 'Destroy', categoryall, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Categoryall', new_categoryall_path %>

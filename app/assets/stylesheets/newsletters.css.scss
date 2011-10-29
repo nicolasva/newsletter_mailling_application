@@ -17,3 +17,21 @@ div.div_class_submit {
 	    }
        }
 }
+
+ul.ul_class_form_search {
+	list-style-type: none;
+	margin-left: 0px;
+	padding: 0px;
+	li {
+		margin-right: 20px;
+		float: left;
+	}
+
+	li.li_class_check_button_search {
+		padding-top: 19px;
+	}
+
+	li.date_select_create_on {
+		display: none;
+	}
+}

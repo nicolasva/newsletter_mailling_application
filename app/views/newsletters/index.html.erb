@@ -1,23 +1,26 @@
 <%= form_for @newsletter, :url=>"/historylistnewsletter" do |f| %>
-    <ul> 
+    <ul class='ul_class_form_search'> 
 	<li>
-		<%= f.label(:created_at) %><br>
-		<%= form_date_select?(f,flash[:newsletter]) %>
+				<%= f.label(:created_at) %>
+				<br>	
+				<%= form_date_select?(f,flash[:newsletter]) %>
 	</li>
-	<li>
+	<li class='li_class_check_button_search'>
 		<%= f.label(:date_specification) %><%= f.check_box(:date_specification) %>
 	</li>
 
 	<li class='date_select_create_on'>
-		<%= f.label(:created_on) %><br>
-		<%= f.date_select(:created_on, :limit=>[:day, :month, :year], :default => { :day =>(flash[:newsletter].nil? ? Time.new.day.to_i : flash[:newsletter]["created_on(3i)"].to_i), :month =>(flash[:newsletter].nil? ? Time.new.month.to_i : flash[:newsletter]["created_on(2i)"].to_i), :year =>(flash[:newsletter].nil? ? Time.new.year.to_i : flash[:newsletter]["created_on(1i)"].to_i) }) %>
+				<%= f.label(:created_on) %>
+				<br>
+				<%= f.date_select(:created_on, :limit=>[:day, :month, :year], :default => { :day =>(flash[:newsletter].nil? ? Time.new.day.to_i : flash[:newsletter]["created_on(3i)"].to_i), :month =>(flash[:newsletter].nil? ? Time.new.month.to_i : flash[:newsletter]["created_on(2i)"].to_i), :year =>(flash[:newsletter].nil? ? Time.new.year.to_i : flash[:newsletter]["created_on(1i)"].to_i) }) %>
 	</li>
 	<li>
-		<%= f.label(Newsletter.human_attribute_name("name")) %><br>
-		<%= f.text_field(:name) %>	
+				<%= f.label(Newsletter.human_attribute_name("name")) %>
+				<br>
+				<%= f.text_field(:name) %>	
 	</li>
 
-	<li>
+	<li class='li_class_check_button_search'>
 		<%= f.submit(t("common_button.search")) %>
 	</li>
     </ul>

@@ -40,5 +40,19 @@ jQuery ->
  $('#newsletter_categoryall_id').children().click ->
        subcontacts_lists(this.value, $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1])
 
+jQuery ->
+  $(document).ready ->
+      if $('#newsletter_date_specification')[0].checked 
+          $(".date_select_create_on").show()
+      else
+          $(".date_select_create_on").hide()
+  
+jQuery ->
+ $('#newsletter_date_specification').click ->
+      if this.checked
+          $(".date_select_create_on").show()
+      else
+          $(".date_select_create_on").hide()
+ 
 #fin jquery
 

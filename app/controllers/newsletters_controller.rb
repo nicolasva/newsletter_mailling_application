@@ -47,7 +47,7 @@ class NewslettersController < ApplicationController
 
 	 end
       end 
-      @newsletter = flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter][:date_specification], :name=>flash[:newsletter]["name"])
+      @newsletter = flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter]["date_specification"], :name=>flash[:newsletter]["name"])
    	 flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
   end
 

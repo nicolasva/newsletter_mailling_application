@@ -42,9 +42,10 @@ jQuery ->
 
 jQuery ->
   $(document).ready ->
-      if $('#newsletter_date_specification')[0].checked 
-          $(".date_select_create_on").show()
-      else
+    if $('#newsletter_date_specification').length > 0
+        if $('#newsletter_date_specification')[0].checked 
+           $(".date_select_create_on").show()
+        else
           $(".date_select_create_on").hide()
   
 jQuery ->

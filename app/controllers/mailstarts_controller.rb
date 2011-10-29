@@ -14,14 +14,13 @@ class MailstartsController < ApplicationController
 
   # GET /mailstarts/1
   # GET /mailstarts/1.json
-  #def show
-  #  @mailstart = Mailstart.find(params[:id])
+  def show
+	  params[:mailstart].each_with_index do |id, index|
+	  	Mailstart.position(index+1,id)
+	  end
 
-  #  respond_to do |format|
-  #    format.html # show.html.erb
-  #    format.json { render :json => @mailstart }
-  #  end
-  #end
+	  render :nothing => true
+  end
 
   # GET /mailstarts/new
   # GET /mailstarts/new.json
@@ -104,14 +103,14 @@ class MailstartsController < ApplicationController
     respond_with(@mailstart)
   end
 
-  def sort
+ # def sort
 	  #position = params[:mailstart]
 	  #Mailstart.position(position)
 	  #render :text => position.inspect
-	  params[:mailstart].each_with_index do |id, index|
-	  	Mailstart.position(index+1,id)
-	  end
+#	  params[:mailstart].each_with_index do |id, index|
+#	  	Mailstart.position(index+1,id)
+#	  end
 
-	  render :nothing => true
-  end
+#	  render :nothing => true
+  #end
 end

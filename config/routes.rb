@@ -12,6 +12,11 @@ Prgmnewsletter::Application.routes.draw do
   scope :module => :newsletter do 
   	match "historylistnewsletter" => "newsletters#index"
   end
+
+  scope :module => :mailstart do
+  	match "sort" => "mailstart#show"
+  end
+
   root :to => "newsletters#index"
 
   resources :javascripts do 
@@ -24,7 +29,6 @@ Prgmnewsletter::Application.routes.draw do
   
   resources :mailstarts do
 	  collection do 
-		put :sort
 	  	resources :categoryalls do
 			collection do 
 				resources :subcontacts do

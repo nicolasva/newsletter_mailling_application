@@ -11,7 +11,7 @@
                #alert("nicolas")
               $.ajax({
                   url: "/mailstarts/sort",
-                  type: "PUT",
+                  type: "GET",
                   data: 'authenticity_token='+AUTH_TOKEN+'&'+$(this).sortable('serialize'),
                   failure: ->
                         alert("Problem sortable list")

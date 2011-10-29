@@ -102,15 +102,4 @@ class MailstartsController < ApplicationController
     #end
     respond_with(@mailstart)
   end
-
- # def sort
-	  #position = params[:mailstart]
-	  #Mailstart.position(position)
-	  #render :text => position.inspect
-#	  params[:mailstart].each_with_index do |id, index|
-#	  	Mailstart.position(index+1,id)
-#	  end
-
-#	  render :nothing => true
-  #end
 end

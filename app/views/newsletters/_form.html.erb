@@ -22,7 +22,7 @@
 
 
   <p>
-  	<%= label_tag("Liste des sous-contacts") %><br>
+  	<%= label_tag(t(".subcontactslist")) %><br>
 	<ul id='newsletter_subcontact_id'>
 	    <% unless @newsletter.categoryall.nil? %>
 		<% @newsletter.categoryall.subcontacts.each{ |subcontact| %>
@@ -35,10 +35,7 @@
   </p>
 
   <p>
-  <%= 
-	  label_tag("Liste des e-mails de ce sous-contact")
-		#f.label(:mail_id) 
-	%><br>
+  	<%= label_tag(t(".subcontactemailslist")) %><br>
 	<ul id='newsletter_mail_id'>
 		<% unless @newsletter.mails.empty? %>
 			<% @newsletter.mails.each{ |mail| %>

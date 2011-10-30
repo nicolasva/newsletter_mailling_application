@@ -14,8 +14,8 @@ fr:
       upload: "Envoyer un fichier"
       delete: "Supprimer"
   common_link:
-      edit: "Editer"
-      delete: "Supprimer"
+      edit: "newsletter_icones/icone_edition.png"
+      delete: "newsletter_icones/close.gif"
       editing: "Edition"
       removal: "Supression"
       show: "Apperçu"
@@ -24,6 +24,11 @@ fr:
   newsletters:
      new:
         title: "Nouvelle newsletter"
+        register_newsletter: "Enregistrer cette newsletter"
+        register_newsletter_send: "Enregistrer et envoyer cette newsletter"
+     form:
+        subcontactslist: "Liste des sous-contacts"
+        subcontactemailslist: "Liste des e-mails de ce sous-contact"
      index:
         title: "Liste des newsletters"
         show_newsletter: "Apperçu de la newsletter"
@@ -31,6 +36,8 @@ fr:
         title: "Apperçu de la newsletter"
      edit:
         title: "Edition de la newsletter"
+        modify_this_newsletter: "Modifier cette newsletter"
+        modify_newsletter_send: "Modifier et envoyer cette newsletter"
      create:
         notice_success_sending: "L'enregistrement de cette newsletter, ainsi que son envoie s'est bien déroulé"
         notice_success: "L'enregistrement de cette newsletter s'est bien déroulé, elle est désormais disponible"

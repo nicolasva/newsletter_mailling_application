@@ -10,8 +10,8 @@ en:
       delete: "Delete"
       search: "Search"
   common_link: 
-     edit: "Edit"
-     delete: "Delete"
+     edit: "newsletter_icones/icone_edition.png"
+     delete: "newsletter_icones/close.gif"
      editing: "Editing"
      removal: "Removal"
      show: "Show"
@@ -20,6 +20,11 @@ en:
   newsletters:
      new:
         title: "New newsletter"
+        register_newsletter: "Register this newsletter"
+        register_newsletter_send: "Register and send this newsletter"
+     form:
+        subcontactslist: "Subcontacts list"
+        subcontactemailslist: "E-mail list subcontact's"
      index:
         title: "Newsletters lists"
         show_newsletter: "Show the newsletter"
@@ -27,6 +32,8 @@ en:
         title: "Show the newsletter"
      edit:
         title: "Edit the newsletter"
+        modify_this_newsletter: "Modify this newsletter"
+        modify_newsletter_send: "Modify and send this newsletter"
      create:
         notice_success_sendind: "The registration of this newsletter, and this sendind has been with successfull"
         notice_success: "The registration of this newsletter has been success, it is available"

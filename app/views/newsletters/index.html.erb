@@ -1,4 +1,5 @@
-<%= form_for @newsletter, :url=>"/historylistnewsletter" do |f| %>
+<div class='div_class_search_newsletter'>
+   <%= form_for @newsletter, :url=>"/historylistnewsletter" do |f| %>
     <ul class='ul_class_form_search'> 
 	<li>
 				<%= f.label(:created_at) %>
@@ -24,20 +25,6 @@
 		<%= f.submit(t("common_button.search")) %>
 	</li>
     </ul>
-<% end %>	
-<table>
-  <tr>
-    <td></td>
-    <td></td>
-    <td></td>
-  </tr>
-
-<% @newsletters.each do |newsletter| %>
-  <tr>
-    <td><%= newsletter.name %></td>
-    <td><%= link_to 'aperçu de la newsletter', newsletter %></td>
-    <td><%= link_to 'Editer', edit_newsletter_path(newsletter) %></td>
-    <td><%= link_to 'Supprimer', newsletter, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+  <% end %>	
+</div>
+<%= newsletters_lists(@newsletters) %>

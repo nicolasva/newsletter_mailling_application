@@ -18,6 +18,7 @@ fr:
       delete: "Supprimer"
       editing: "Edition"
       removal: "Supression"
+      show: "Apperçu"
   common_button:
       search: "Rechercher"
   newsletters:
@@ -25,6 +26,7 @@ fr:
         title: "Nouvelle newsletter"
      index:
         title: "Liste des newsletters"
+        show_newsletter: "Apperçu de la newsletter"
      show:
         title: "Apperçu de la newsletter"
      edit:

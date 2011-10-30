@@ -37,3 +37,18 @@ background-color: transparent;
 		}
      }
 }
+
+div#menu {
+	padding-top: 1px;
+	padding-bottom: 1px;
+	height: 80px;
+	background-color: transparent;
+	ul {
+		padding: 0px;
+		list-style-type: none;
+		li {
+			margin-right: 25px;
+			float: left;
+		}
+	}
+}

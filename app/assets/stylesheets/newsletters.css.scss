@@ -18,7 +18,11 @@ div.div_class_submit {
        }
 }
 
-ul.ul_class_form_search {
+div.div_class_search_newsletter {
+     height: 70px;
+     padding-top: 5px;
+     padding-bottom: 5px;
+     ul.ul_class_form_search {
 	list-style-type: none;
 	margin-left: 0px;
 	padding: 0px;
@@ -34,4 +38,5 @@ ul.ul_class_form_search {
 	li.date_select_create_on {
 		display: none;
 	}
+      }
 }

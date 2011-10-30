@@ -9,20 +9,20 @@ module NewslettersHelper
 
 	def newsletters_lists(newsletters)
 		unless newsletters.empty?	
-			newsletters_lists = "<table>
-  				<tr>
-   					<td>#{label_tag(Newsletter.human_attribute_name("name"))}</td>
-    					<td>#{label_tag(t("common_link.show"))}</td>
-    					<td>#{label_tag(t("common_link.editing"))}</td>
-    					<td>#{label_tag(t("common_link.delete"))}</td>
+			newsletters_lists = "<table cellpadding='0' border='0' cellspacing='0'>
+  				<tr class='tr_class_title'>
+   					<td class='td_class_title' width='450'>#{label_tag(Newsletter.human_attribute_name("name"))}</td>
+    					<td class='td_class_title_edition'>#{label_tag(t("common_link.show"))}</td>
+    					<td class='td_class_title_edition'>#{label_tag(t("common_link.editing"))}</td>
+    					<td class='td_class_title_edition_last'>#{label_tag(t("common_link.delete"))}</td>
   				</tr>"
 
 				newsletters.each do |newsletter|
   				newsletters_lists += "<tr>
-    					<td>#{newsletter.name}</td>
+    					<td class='td_class_newsletter_name'>#{newsletter.name}</td>
     					<td>#{link_to t(".show_newsletter"), newsletter}</td>
     					<td>#{link_to 'Editer', edit_newsletter_path(newsletter)}</td>
-    					<td>#{link_to 'Supprimer', newsletter, :confirm => 'Are you sure?', :method => :delete }</td>
+    					<td class='td_class_last_column'>#{link_to 'Supprimer', newsletter, :confirm => 'Are you sure?', :method => :delete }</td>
   				</tr>"
 				end
 			newsletters_lists += "</table>"

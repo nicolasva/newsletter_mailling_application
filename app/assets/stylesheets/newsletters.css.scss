@@ -40,3 +40,19 @@ div.div_class_search_newsletter {
 	}
       }
 }
+
+div.class_list_newsletter_historic { 
+     padding-top: 40px;
+     ul {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+     }
+     table {
+	width: 800px;
+	td.td_class_newsletter_name {
+		text-align: left;	
+	}
+     }
+}
+

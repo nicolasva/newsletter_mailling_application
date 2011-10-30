@@ -34,7 +34,11 @@ fr:
         show_newsletter: "Apperçu de la newsletter"
         historylistnewsletter:
              notice_start_date_less_end_date: "La date de début doit être infèrieur à la date de fin"
-             notice_search_select_date_name: "Pour votre recherche vous devez séléctionner une date ou le nom d'une newsletter" 
+             notice_search_select_date_name: "Pour votre recherche vous devez séléctionner une date ou le nom d'une newsletter"
+        select_day: "Séléctionner un jour"
+        select_month: "Séléctionner un mois"
+        select_year: "Séléctionner une année"
+        any_newsletters: "Il n'y a pas de newsletters à cette date"
      show:
         title: "Apperçu de la newsletter"
      edit:

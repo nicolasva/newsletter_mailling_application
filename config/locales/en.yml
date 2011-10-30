@@ -28,6 +28,9 @@ en:
      index:
         title: "Newsletters lists"
         show_newsletter: "Show the newsletter"
+        historylistnewsletter:
+             notice_start_date_less_end_date: "The start date must be less than the end date"
+             notice_search_select_date_name: "For your search you must select a date or the name of a newsletter" 
      show:
         title: "Show the newsletter"
      edit:

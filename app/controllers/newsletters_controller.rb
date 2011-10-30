@@ -18,7 +18,7 @@ class NewslettersController < ApplicationController
 				if time_params_form_at < time_params_form_on
 					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on, :name=>params[:newsletter][:name])	
 				else
-					flash[:notice] = "La date du début doit être infèrieur à la date de fin"
+					flash[:notice] =  t(".historylistnewsletter.notice_start_date_less_end_date") 
 				end
 			else
 				@newsletters = Newsletter.where(:created_at=>time_params_form_at, :name=>params[:newsletter][:name])
@@ -35,14 +35,14 @@ class NewslettersController < ApplicationController
 				if time_params_form_at < time_params_form_on
 					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)	
 				else
-					flash[:notice] = "La date du début doit être infèrieur à la date de fin"
+					flash[:notice] = t(".historylistnewsletter.notice_start_date_less_end_date")
 				end
 			else
 				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
 			end
 
 	       else
-		       flash[:notice] = "Pour votre recherche vous devez séléctionner une date ou le nom d'une newsletter"
+		       flash[:notice] = t(".historylistnewsletter.notice_search_select_date_name") 
 	       end	
 
 	 end

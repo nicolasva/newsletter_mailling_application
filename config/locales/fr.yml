@@ -32,6 +32,9 @@ fr:
      index:
         title: "Liste des newsletters"
         show_newsletter: "Apperçu de la newsletter"
+        historylistnewsletter:
+             notice_start_date_less_end_date: "La date de début doit être infèrieur à la date de fin"
+             notice_search_select_date_name: "Pour votre recherche vous devez séléctionner une date ou le nom d'une newsletter" 
      show:
         title: "Apperçu de la newsletter"
      edit:

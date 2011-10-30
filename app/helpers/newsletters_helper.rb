@@ -11,7 +11,7 @@ module NewslettersHelper
 		unless newsletters.empty?	
 			newsletters_lists = "<table cellpadding='0' border='0' cellspacing='0'>
   				<tr class='tr_class_title'>
-   					<td class='td_class_title' width='450'>#{label_tag(Newsletter.human_attribute_name("name"))}</td>
+   					<td class='td_class_title' id='id_td_title_newsletter' width='450'>#{label_tag(Newsletter.human_attribute_name("name"))}</td>
     					<td class='td_class_title_edition'>#{label_tag(t("common_link.show"))}</td>
     					<td class='td_class_title_edition'>#{label_tag(t("common_link.editing"))}</td>
     					<td class='td_class_title_edition_last'>#{label_tag(t("common_link.delete"))}</td>

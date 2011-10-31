@@ -18,40 +18,6 @@ class NewslettersController < ApplicationController
    	 flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
   end
 
-  def newsletter_with_name_created_at(newsletter_hash)
-	  unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?
-		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i,0,0,0)
-	  	if newsletter_hash["date_specification"]
-			time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i,0,0,0)
-			if time_params_form_at < time_params_form_on
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
-			end
-		else
-			@newsletters = Newsletter.where(:created_at=>time_params_form_at)
-		end
-	  else
-	 		@newsletters = Newsletter.where(:name => newsletter_hash[:name])
-	  end
-
-	  return @newsletters
-  end
-
-  def newsletter_with_name_empty(newsletter_hash)
-	       unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?  
-	       		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i)
-			if newsletter_hash[:date_specification]
-				time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i)
-				if time_params_form_at < time_params_form_on
-					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)	
-				end
-			else
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
-			end
-	       end
-
-	       return @newsletters
-  end
-
   # GET /newsletters/1
   # GET /newsletters/1.json
   def show

@@ -7,48 +7,49 @@ class NewslettersController < ApplicationController
     	 time_now = Time.now
     	 @newsletters = Newsletter.where("created_at >= :date or updated_at >= :date", {:date =>Time.local(time_now.year,time_now.month,time_now.day,0,0,0)})
       else
-	 #@newsletter = Newsletter.new(:created_at=>params[:newsletter]["created_at(1i)"].empty? ? Time.new : Time.local(params[:newsletter]["created_at(1i)"].to_i,params[:newsletter]["created_at(2i)"].to_i,params[:newsletter]["created_at(3i)"].to_i).strftime("%Y-%m-%d %H:%M:%S"), :date_specification=>params[:newsletter][:date_specification])
 	 flash[:newsletter] = params[:newsletter]
-	 #@newsletters = Newsletter.find(params[:newsletter])
 	 unless params[:newsletter][:name].empty?
-	       unless params[:newsletter]["created_at(1i)"].empty? || params[:newsletter]["created_at(2i)"].empty? || params[:newsletter]["created_at(3i)"].empty?  
-	       		time_params_form_at = Time.local(params[:newsletter]["created_at(1i)"].to_i,params[:newsletter]["created_at(2i)"].to_i,params[:newsletter]["created_at(3i)"].to_i)
-			if params[:newsletter][:date_specification]
-				time_params_form_on = Time.local(params[:newsletter]["created_on(1i)"],params[:newsletter]["created_on(2i)"],params[:newsletter]["created_on(3i)"])
-				if time_params_form_at < time_params_form_on
-					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on, :name=>params[:newsletter][:name])	
-				else
-					flash[:notice] =  t(".historylistnewsletter.notice_start_date_less_end_date") 
-				end
-			else
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at, :name=>params[:newsletter][:name])
-			end
-
-	       else
-	 		@newsletters = Newsletter.where(:name => params[:newsletter][:name])
-	       end	
+		@newsletters = newsletter_with_name_created_at(params[:newsletter])
 	 else
-	       unless params[:newsletter]["created_at(1i)"].empty? || params[:newsletter]["created_at(2i)"].empty? || params[:newsletter]["created_at(3i)"].empty?  
-	       		time_params_form_at = Time.local(params[:newsletter]["created_at(1i)"].to_i,params[:newsletter]["created_at(2i)"].to_i,params[:newsletter]["created_at(3i)"].to_i)
-			if params[:newsletter][:date_specification]
-				time_params_form_on = Time.local(params[:newsletter]["created_on(1i)"],params[:newsletter]["created_on(2i)"],params[:newsletter]["created_on(3i)"])
-				if time_params_form_at < time_params_form_on
-					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)	
-				else
-					flash[:notice] = t(".historylistnewsletter.notice_start_date_less_end_date")
-				end
-			else
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
-			end
-
-	       else
-		       flash[:notice] = t(".historylistnewsletter.notice_search_select_date_name") 
-	       end	
-
+		@newsletters = newsletter_with_name_empty(params[:newsletter])
 	 end
       end 
       @newsletter = flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter]["date_specification"], :name=>flash[:newsletter]["name"])
    	 flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
+  end
+
+  def newsletter_with_name_created_at(newsletter_hash)
+	  unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?
+		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i,0,0,0)
+	  	if newsletter_hash["date_specification"]
+			time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i,0,0,0)
+			if time_params_form_at < time_params_form_on
+				@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
+			end
+		else
+			@newsletters = Newsletter.where(:created_at=>time_params_form_at)
+		end
+	  else
+	 		@newsletters = Newsletter.where(:name => newsletter_hash[:name])
+	  end
+
+	  return @newsletters
+  end
+
+  def newsletter_with_name_empty(newsletter_hash)
+	       unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?  
+	       		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i)
+			if newsletter_hash[:date_specification]
+				time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i)
+				if time_params_form_at < time_params_form_on
+					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)	
+				end
+			else
+				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
+			end
+	       end
+
+	       return @newsletters
   end
 
   # GET /newsletters/1
@@ -164,4 +165,40 @@ class NewslettersController < ApplicationController
 
     respond_with(@newsletter)
   end
+
+  private
+  def newsletter_with_name_created_at(newsletter_hash)
+	  unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?
+		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i,0,0,0)
+	  	if newsletter_hash["date_specification"]
+			time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i,0,0,0)
+			if time_params_form_at < time_params_form_on
+				@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
+			end
+		else
+			@newsletters = Newsletter.where(:created_at=>time_params_form_at)
+		end
+	  else
+	 		@newsletters = Newsletter.where(:name => newsletter_hash[:name])
+	  end
+
+	  return @newsletters
+  end
+
+  def newsletter_with_name_empty(newsletter_hash)
+	       unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?  
+	       		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i)
+			if newsletter_hash[:date_specification]
+				time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i)
+				if time_params_form_at < time_params_form_on
+					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)	
+				end
+			else
+				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
+			end
+	       end
+
+	       return @newsletters
+  end
+
 end

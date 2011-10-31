@@ -7,12 +7,14 @@ module ApplicationHelper
 	end
 
 	def get_flag_french_or_english(language)
-		case language
-			when :en
-				return link_to(image_tag("languages/francais.png", :size=>"60x40", :title=>"Français"), {:controller=>"/newsletters", :action=>"language", :id=>"fr"})
-			when :fr
-				return link_to(image_tag("languages/anglais.png", :size=>"60x40", :title=>"Anglais"), {:controller=>"/newsletters", :action=>"language", :id=>"en"})	
-		end
+		#case language
+			#when :en
+			#	return link_to(image_tag("languages/francais.png", :size=>"60x40"), {:controller=>"/newsletters", :action=>"language", :id=>"fr"}, :title=>t("languages.french"))
+			#when :fr
+				#return link_to(image_tag("languages/anglais.png", :size=>"60x40"), {:controller=>"/newsletters", :action=>"language", :id=>"en"}, :title=>t("languages.english"))	
+		#end
+
+		return link_to(image_tag(t("languages.image.#{language.to_s}"), :size=>"60x60"), {:controller=>"/newsletters", :action=>"language", :id=>t("languages.id.#{language.to_s}")}, :title=>t("languages.title.#{language.to_s}"))
 	end
 
 	def get_menu_link(controller_name_desired,action_name_desired,controller_name,action_name)

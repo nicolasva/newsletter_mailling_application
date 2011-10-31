@@ -21,6 +21,16 @@ fr:
       show: "Apperçu"
   common_button:
       search: "Rechercher"
+  languages:
+      title:
+          en: "Français"
+          fr: "Anglais"
+      id:
+          fr: "en"
+          en: "fr"
+      image:
+          fr: "languages/anglais.png"
+          en: "languages/francais.png"
   newsletters:
      new:
         title: "Nouvelle newsletter"

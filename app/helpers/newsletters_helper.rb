@@ -33,7 +33,8 @@ module NewslettersHelper
 		return newsletters_lists.html_safe	
 	end
 
-	def get_stat_pie(newsletters)
+	def get_stat_pie(newsletters,newsletters_sum)
+		#newsletters_sum == 100%
 		g = Gruff::Pie.new
 		g.theme = {
    			:colors => %w(#90CB4A #FFC863 #FF6B95 #A993FF),
@@ -42,7 +43,8 @@ module NewslettersHelper
 		}
 
 		newsletters.each{ |newsletter|
-			g.data(newsletter.name.empty? ? "No name" : newsletter.name, newsletter.cptstatistic)
+			value_pourcentage = (newsletter.cptstatistic.to_i * newsletters_sum.to_i) / (100/100)
+			g.data(newsletter.name.empty? ? "No name" : newsletter.name, newsletter.cptstatistic.to_i)
 
 		}
 		g.write("#{Rails.root}/app/assets/images/statistics/statisticnewsletter.png")

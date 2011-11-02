@@ -81,6 +81,9 @@ fr:
      update:
         notice_success: "L'enregistrement concernant les information de ce carnet d'adresse s'est bien déroulé, elles sont désormais disponible"
         notice_failure: "L'enregistrement concernant les informations de ce carnet d'adresse ne s'est pas déroulé correctement, elles ne sont pas disponible"
+     destroy:
+        notice_success: "La supression de ce mail de départ s'est bien déroulé il n'est plus disponible"
+        notice_failure: "La supression de ce mail de départ ne s'est pas déroulé correctement il est encore disponible"
   date:
     formats:
       default: "%d/%m/%Y"

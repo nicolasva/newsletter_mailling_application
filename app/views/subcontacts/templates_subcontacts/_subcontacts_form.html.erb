@@ -11,3 +11,8 @@
  		<%= subcontact_field.label(:name) %><br>
 		<%= subcontact_field.text_field(:name) %>
 	</p>
+
+	<p>
+	<%= subcontact_field.submit("Ajouter des nouvelles adresses e-mails", :name=>"#{@subcontact.id}-#{@categoryall.id}_addmail_button") %>
+	</p>
+

@@ -43,7 +43,7 @@ class MailstartsController < ApplicationController
     @mailstart = Mailstart.find(params[:id])
     @categoryall = @mailstart.categoryalls.nil? ? "" : @mailstart.categoryalls.first
     @subcontact = @categoryall.nil? || @categoryall.subcontacts.nil? ? "" : @categoryall.subcontacts.first
-    @mail = @subcontact.nil? || @subcontact.mails.nil? ? "" : @subcontact.mails.first
+    @mail = @subcontact.nil? || @subcontact.empty? || @subcontact.mails.nil? ? "" : @subcontact.mails.first
     respond_with @mailstart
   end
 
@@ -78,13 +78,13 @@ class MailstartsController < ApplicationController
     #  end
     #end
     if @mailstart.update_attributes(params[:mailstart]) 
-	    flash[:notice] = "L'enregistrement concernant les informations de ce carnet d'adresses s'est bien déroulé, elles sont désormais disponible"
+	    flash[:notice] = t("mailstarts.update.notice_success") 
     	    params.keys.each do |k|
 	    	set_params(k)
 	    end
 	    #redirect_to mailstarts_path
     else
-	    flash[:notice] = "L'enregistrement concernant les informations de ce carnet d'adresses ne s'est pas déroulé correctement, elles ne sont pas disponible"
+	    flash[:notice] = ("mailstarts.update.notice_failure") 
     	    respond_with(@mailstart)
     end
 
@@ -94,7 +94,7 @@ class MailstartsController < ApplicationController
   # DELETE /mailstarts/1.json
   def destroy
     @mailstart = Mailstart.find(params[:id])
-    @mailstart.destroy ? "La supression de ce mail de départ s'est bien déroulé il n'est plus disponible" : "La supression de ce mail de départ ne s'est pas déroulé correctement il est encore disponible"
+    @mailstart.destroy ? t("mailstarts.destroy.notice_success") : t("mailstarts.destroy.notice_failure") 
 
     #respond_to do |format|
     #  format.html { redirect_to mailstarts_url }

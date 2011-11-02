@@ -76,6 +76,9 @@ en:
      update:
         notice_success: "The registration of informations of this adress book has been successful"
         notice_failure: "The registration of informations of this adress book has been failure"
+     destroy:
+        notice_success: "The removal of the mail starting went well there is no longer available"
+        notice_failure: "The removal of the initial mail did not go well it is still available"
   date:
     formats:
       default: "%d-%m-%Y"

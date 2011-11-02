@@ -21,8 +21,23 @@ class NewslettersController < ApplicationController
   # GET /newsletters/1
   # GET /newsletters/1.json
   def show
-    @newsletter = Newsletter.find(params[:id])
-    respond_with(@newsletter)
+    unless request.path.scan(/^\/(.{1,})\/.{1,}$/)[0][0] == "imgnewsletters"
+         @newsletter = Newsletter.find(params[:id])
+         respond_with(@newsletter)
+    else
+	 Newsletter.updatetat(params[:id])
+	 pixel = Magick::Image.new(1,1)
+	 Magick::Draw.new.fill('white').point(1,1).draw(pixel)
+	 pixel.write("#{Rails.root}/app/assets/images/statistic_pixel/pixel.png")
+	 
+	 pixel_read = Magick::Image.read("#{Rails.root}/app/assets/images/statistic_pixel/pixel.png").first
+	 
+	 send_data pixel_read.to_blob, :filename => "pixel.png",
+	 	 		       :dsposition => 'inline',
+	 			       :type => 'image/png'
+
+	 #render :text=>"user_id-=-=-=-=-=-#{params[:user_id]}-=-=-=-=-=-newsletter_id-=-=-=-=-=-#{params[:newsletter_id]}"
+    end
   end
 
   def language

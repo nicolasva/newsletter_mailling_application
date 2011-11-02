@@ -11,4 +11,10 @@ class Newsletter < ActiveRecord::Base
 	validates_presence_of :categoryall_id
 	#accepts_nested_attributes_for :mailstart
 	#accepts_nested_attributes_for :categoryall
+	
+	def self.updatetat(newsletter_id)
+		newsletter = Newsletter.find(newsletter_id)
+		cptstatistic = newsletter.cptstatistic.nil? ? 1 : newsletter.cptstatistic.to_i + 1
+		newsletter.update_attribute("cptstatistic", cptstatistic)
+	end
 end

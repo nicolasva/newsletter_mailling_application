@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111026095040) do
+ActiveRecord::Schema.define(:version => 20111101203037) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20111026095040) do
     t.datetime "updated_at"
     t.integer  "mailstart_id",                  :default => 1, :null => false
     t.integer  "categoryall_id",                :default => 1, :null => false
+    t.integer  "cptstatistic",                  :default => 0
   end
 
   add_index "newsletters", ["mailstart_id"], :name => "altered_newsletters_mailstart_id_to_mailstarts"

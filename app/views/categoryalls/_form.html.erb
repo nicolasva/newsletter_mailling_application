@@ -20,11 +20,12 @@
 
 	  <%= f.fields_for(:subcontacts, @subcontact) do |subcontact_field| %>
 		  <%= render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => subcontact_field}) %>
+		  
+	  	<% unless @mail.nil? %>
+		  <%= subcontact_field.fields_for(:mails, @mail) do |mail_field| %> 
+		  	<%= render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field}) %>
+		  <% end %>
+  		<% end %>
 	  <% end %>
 	
-	  <% unless @mail.nil? %>
-	  	<%= f.fields_for(:mails, @mail) do |mail_field| %>
-		  	<%= render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field}) %>
-	  	<% end %>
-          <% end %>
   </div>

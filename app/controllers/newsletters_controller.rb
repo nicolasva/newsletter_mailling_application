@@ -1,7 +1,7 @@
 class NewslettersController < ApplicationController
   # GET /newsletters
   # GET /newsletters.json
- respond_to :html, :json 
+ respond_to :html, :json, :png 
  def index
       unless params[:newsletter]
     	 time_now = Time.now

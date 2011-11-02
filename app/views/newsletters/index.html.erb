@@ -1,4 +1,4 @@
-<%= render(:partial=>"/newsletters/templates_newsletters/form_search_statistic_newsletter", :locals => {:newsletter => @newsletter}) %>
+<%= render(:partial=>"/newsletters/templates_newsletters/form_search_statistic_newsletter", :locals => {:newsletter => @newsletter, :url=> request.path == "/statistics" ? "/historystatistics" : "/historylistnewsletter"}) %>
 <% unless request.path == "/statistics"  %>
 	<%= render(:partial=>"/newsletters/templates_newsletters/index", :locals => {:newsletters => @newsletters, :newsletter => @newsletter}) %>
 <% else %>

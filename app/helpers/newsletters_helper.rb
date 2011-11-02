@@ -42,7 +42,7 @@ module NewslettersHelper
 		}
 
 		newsletters.each{ |newsletter|
-			g.data(newsletter.name, newsletter.cptstatistic)
+			g.data(newsletter.name.empty? ? "No name" : newsletter.name, newsletter.cptstatistic)
 
 		}
 		g.write("#{Rails.root}/app/assets/images/statistics/statisticnewsletter.png")

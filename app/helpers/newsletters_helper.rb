@@ -32,4 +32,21 @@ module NewslettersHelper
 
 		return newsletters_lists.html_safe	
 	end
+
+	def get_stat_pie(newsletters)
+		g = Gruff::Pie.new
+		g.theme = {
+   			:colors => %w(#90CB4A #FFC863 #FF6B95 #A993FF),
+   			:marker_color => '#898989',
+   			:background_colors => 'white'
+		}
+
+		newsletters.each{ |newsletter|
+			g.data(newsletter.name, newsletter.cptstatistic)
+
+		}
+		g.write("#{Rails.root}/app/assets/images/statistics/statisticnewsletter.png")
+
+		image_tag("statistics/statisticnewsletter.png")
+	end
 end

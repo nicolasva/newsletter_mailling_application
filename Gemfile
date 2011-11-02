@@ -17,6 +17,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "gruff"
 gem "rmagick", '2.13.1'
 gem "paperclip"
 gem "ckeditor"

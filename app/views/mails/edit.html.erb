@@ -1,6 +1,5 @@
 <%= form_for(@mail) do |f| %>
 	<%= render(:partial=>"form", :locals => { :f => f }) %>
-	<div class="class_submit">
-		<%= f.submit t("common_button.register_info_book_adress"), :name=>"button_register_general" %>
-	</div>
+  	
+	<%= render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f}) %>
 <% end %>

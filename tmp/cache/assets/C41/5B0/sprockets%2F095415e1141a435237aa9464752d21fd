@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%0991d8df128ca387d017a6d46384395f"digest"%6593c0c81a8f8bff922fb3b580dfe6fd"lengthiÆo"source"Æo/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%60105ffa94069db133bf78fa058e1814"digest"%137e75db8dc40b517b6ab90d9e12b4c7"lengthihr"source"hr/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -205,7 +205,7 @@ div.class_list_edit_button ul li input:hover {
   border: 1px solid black;
 }
 /* line 48, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
-div.class_list_edit_button ul li input.class_button_delete {
+div.class_list_edit_button ul li input.class_button_delete_left {
   float: right;
   margin-right: 300px;
   border: 0px;
@@ -214,14 +214,23 @@ div.class_list_edit_button ul li input.class_button_delete {
   font-weight: bold;
 }
 /* line 57, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
-div.class_list_edit_button ul li input:hover.class_button_delete {
+div.class_list_edit_button ul li input:hover.class_button_delete_left {
   border: 1px solid black;
   background-color: red;
   color: black;
   font-weight: bold;
 }
+/* line 64, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+div.class_list_edit_button ul li input.class_button_delete_right {
+  float: right;
+  margin-right: 180px;
+  border: 0px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
 
-/* line 67, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 76, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts {
   width: 798px;
   border: 1px solid black;
@@ -232,11 +241,11 @@ ul#mailstarts {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
 }
-/* line 68, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 77, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts li {
   cursor: move;
 }
-/* line 79, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 88, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts table.table_class_mailstarts {
   width: 800px;
   border: 0px;
@@ -244,33 +253,35 @@ ul#mailstarts table.table_class_mailstarts {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
-/* line 86, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 95, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts table.table_class_mailstarts tr td.class_link_delete_mailstarts {
   border-right: 0px;
 }
 
-/* line 94, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 103, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div#id_content ul {
   padding: 0px;
   margin: 0px;
   list-style-type: none;
 }
 
-/* line 101, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 110, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions {
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: silver;
 }
-/* line 103, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 114, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions div.div_class_mailstarts_categoryalls {
   float: left;
   width: 650px;
 }
-/* line 108, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 119, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions div.div_class_subcontacts_mails {
   margin-left: 650px;
 }
 
-/* line 113, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 124, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.class_submit {
   text-align: center;
 }
@@ -623,7 +634,7 @@ div.class_list_edit_button ul li input:hover {
   border: 1px solid black;
 }
 /* line 48, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
-div.class_list_edit_button ul li input.class_button_delete {
+div.class_list_edit_button ul li input.class_button_delete_left {
   float: right;
   margin-right: 300px;
   border: 0px;
@@ -632,14 +643,23 @@ div.class_list_edit_button ul li input.class_button_delete {
   font-weight: bold;
 }
 /* line 57, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
-div.class_list_edit_button ul li input:hover.class_button_delete {
+div.class_list_edit_button ul li input:hover.class_button_delete_left {
   border: 1px solid black;
   background-color: red;
   color: black;
   font-weight: bold;
 }
+/* line 64, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+div.class_list_edit_button ul li input.class_button_delete_right {
+  float: right;
+  margin-right: 180px;
+  border: 0px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+}
 
-/* line 67, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 76, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts {
   width: 798px;
   border: 1px solid black;
@@ -650,11 +670,11 @@ ul#mailstarts {
   -moz-border-radius-bottomleft: 8px;
   -webkit-border-bottom-left-radius: 8px;
 }
-/* line 68, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 77, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts li {
   cursor: move;
 }
-/* line 79, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 88, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts table.table_class_mailstarts {
   width: 800px;
   border: 0px;
@@ -662,33 +682,35 @@ ul#mailstarts table.table_class_mailstarts {
   -moz-border-radius: 0px;
   -webkit-border-radius: 0px;
 }
-/* line 86, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 95, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 ul#mailstarts table.table_class_mailstarts tr td.class_link_delete_mailstarts {
   border-right: 0px;
 }
 
-/* line 94, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 103, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div#id_content ul {
   padding: 0px;
   margin: 0px;
   list-style-type: none;
 }
 
-/* line 101, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 110, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions {
+  padding-top: 10px;
+  padding-bottom: 10px;
   background-color: silver;
 }
-/* line 103, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 114, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions div.div_class_mailstarts_categoryalls {
   float: left;
   width: 650px;
 }
-/* line 108, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 119, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.actions div.div_class_subcontacts_mails {
   margin-left: 650px;
 }
 
-/* line 113, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
+/* line 124, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/mailstarts.css.scss */
 div.class_submit {
   text-align: center;
 }
@@ -839,4 +861,4 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-:@created_atf1320343650.321327 êü
+:@created_atf1320349299.7619081 √

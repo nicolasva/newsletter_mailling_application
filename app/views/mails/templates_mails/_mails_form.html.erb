@@ -3,7 +3,7 @@
       <ul>
             <% @subcontact.mails.each{ |mail| %>
 	    	<%= content_tag_for :li, mail do %>
-			<%= mail_field.submit(mail.name, :name=>"#{@subcontact.id}-#{@categoryall.id}_mail_#{mail.id}") %><%= mail_field.submit("x", :name=>"button_supmail_#{mail.id}", :class=>"class_button_delete") %>
+			<%= mail_field.submit(mail.name, :name=>"#{@subcontact.id}-#{@categoryall.id}_mail_#{mail.id}") %><%= mail_field.submit("x", :name=>"button_supmail_#{mail.id}", :class=>"class_button_delete_right") %>
 		<% end %>
 	    <% } %>
       </ul>

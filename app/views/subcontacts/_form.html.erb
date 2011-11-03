@@ -28,6 +28,6 @@
 	  	<%= render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => f}) %>
 	  <%= f.fields_for(:mails, @mail) do |mail_field| %>
 		  <%= render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field}) %>
-	  <% end %>
       </div>
+	  <% end %>
   </div>

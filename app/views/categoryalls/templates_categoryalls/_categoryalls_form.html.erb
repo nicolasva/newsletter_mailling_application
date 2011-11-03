@@ -3,7 +3,7 @@
        	     <ul>       
 	        <% @mailstart.categoryalls.each{ |categoryall| %>
 		     <%= content_tag_for :li, categoryall do %>
-			     <%= categoryall_field.submit(categoryall.name, :name=>"button_categoryall_#{categoryall.id}") %><%= categoryall_field.submit("x", :name=>"button_supcategoryall_#{categoryall.id}", :class=>"class_button_delete") %>
+			     <%= categoryall_field.submit(categoryall.name, :name=>"button_categoryall_#{categoryall.id}") %><%= categoryall_field.submit("x", :name=>"button_supcategoryall_#{categoryall.id}", :class=>"class_button_delete_left") %>
 		     <% end %>
 	        <% } %>
 	    </ul>

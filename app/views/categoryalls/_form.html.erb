@@ -11,13 +11,16 @@
   <% end %>
 
   <div class="actions">
+       <div class='div_class_mailstarts_categoryalls'>
 	  <%= f.fields_for(:mailstart, @mailstart) do |mailstart_field| %>
 		<%= render(:partial=>"/mailstarts/templates_mailstarts/mailstarts_form", :locals => {:mailstart_field => mailstart_field}) %>
 	  <% end %>
 
 
 	  <%= render(:partial=>"/categoryalls/templates_categoryalls/categoryalls_form", :locals => {:categoryall_field => f}) %>
+      </div>
 
+      <div class='div_class_subcontacts_mails'>
 	  <%= f.fields_for(:subcontacts, @subcontact) do |subcontact_field| %>
 		  <%= render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => subcontact_field}) %>
 		  
@@ -27,5 +30,6 @@
 		  <% end %>
   		<% end %>
 	  <% end %>
+      </div>
 	
   </div>

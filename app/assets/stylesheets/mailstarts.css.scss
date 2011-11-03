@@ -26,6 +26,44 @@ table.table_class_mailstart {
 	}
 }
 
+div.class_list_edit_button {
+	padding-bottom: 10px;
+	padding-top: 20px;
+	padding-left: 40px;
+	ul {
+	      li {
+		      margin-bottom: 20px;
+		      input {
+			height: 25px;
+			background-color: #B3DEF3;
+			color: black;
+			font-weight: bold;
+			border: 0px;
+		      }
+
+		      input:hover {
+		      	border: 1px solid black;
+		      }
+
+		      input.class_button_delete {
+			float: right;
+			margin-right: 300px;
+			border: 0px;
+		      	background-color: red;
+			color: white;
+			font-weight: bold;
+		      }
+
+		      input:hover.class_button_delete {
+			border: 1px solid black;
+		      	background-color: red;
+			color: black;
+			font-weight: bold;
+		      }
+	      }
+	}
+}
+
 ul#mailstarts {
 	li {
 		cursor: move;
@@ -58,4 +96,20 @@ div#id_content {
 		margin: 0px;
 		list-style-type: none;
 	}
+}
+
+div.actions {
+	background-color: silver;
+	div.div_class_mailstarts_categoryalls {
+		float: left;
+		width: 650px;
+	}
+
+	div.div_class_subcontacts_mails {
+		margin-left: 650px;
+	}
+}
+
+div.class_submit {
+	text-align: center;
 }

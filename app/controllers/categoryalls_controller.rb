@@ -38,7 +38,7 @@ class CategoryallsController < ApplicationController
     @categoryall = Categoryall.find(params[:id]) 
     @mailstart = @categoryall.mailstart
     @subcontact = @categoryall.subcontacts.nil? || @categoryall.subcontacts.empty? ? "" : @categoryall.subcontacts.first 
-    @mail = @subcontact.nil? || @subcontact.mails.nil? ? "" : @subcontact.mails.first
+    @mail = @subcontact.nil? || @subcontact.empty? || @subcontact.mails.nil? ? "" : @subcontact.mails.first
     respond_with(@categoryall)
   end
 

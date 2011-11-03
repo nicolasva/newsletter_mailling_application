@@ -1,3 +1,39 @@
 // Place all the styles related to the categoryalls controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+div.class_list_categoryalls{
+	background-color: blue;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	ul {
+	      li {
+		      input {
+			height: 25px;
+			background-color: #B3DEF3;
+			color: black;
+			font-weight: bold;
+			border: 0px;
+		      }
+
+		      input:hover {
+		      	border: 1px solid black;
+		      }
+
+		      input.class_button_supcategoryall {
+			margin-left: 0px;
+			border: 0px;
+		      	background-color: red;
+			color: white;
+			font-weight: bold;
+		      }
+
+		      input:hover.class_button_supcategoryall {
+			border: 1px solid black;
+		      	background-color: red;
+			color: black;
+			font-weight: bold;
+		      }
+	      }
+	}
+}
+

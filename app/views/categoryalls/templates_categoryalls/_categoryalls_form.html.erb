@@ -1,9 +1,9 @@
        <h2><%= t("categoryalls.edit.categoryall_of_mail_start") %></h2>
-           <div class='class_list_categoryalls'>
+           <div class='class_list_edit_button'>
        	     <ul>       
 	        <% @mailstart.categoryalls.each{ |categoryall| %>
 		     <%= content_tag_for :li, categoryall do %>
-			     <%= categoryall_field.submit(categoryall.name, :name=>"button_categoryall_#{categoryall.id}") %><%= categoryall_field.submit("x", :name=>"button_supcategoryall_#{categoryall.id}", :class=>"class_button_supcategoryall") %>
+			     <%= categoryall_field.submit(categoryall.name, :name=>"button_categoryall_#{categoryall.id}") %><%= categoryall_field.submit("x", :name=>"button_supcategoryall_#{categoryall.id}", :class=>"class_button_delete") %>
 		     <% end %>
 	        <% } %>
 	    </ul>

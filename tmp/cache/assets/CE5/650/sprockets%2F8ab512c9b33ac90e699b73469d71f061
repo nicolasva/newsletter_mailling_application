@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"asset_paths["6$root/app/assets/stylesheets/application.css.scss"7$root/app/assets/stylesheets/categoryalls.css.scss"=$root/app/assets/stylesheets/flash_notice/flash.css.scss"1$root/app/assets/stylesheets/layout.css.scss"0$root/app/assets/stylesheets/mails.css.scss"5$root/app/assets/stylesheets/mailstarts.css.scss"6$root/app/assets/stylesheets/newsletters.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"6$root/app/assets/stylesheets/subcontacts.css.scss"	body"ˆ4/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"asset_paths["6$root/app/assets/stylesheets/application.css.scss"7$root/app/assets/stylesheets/categoryalls.css.scss"=$root/app/assets/stylesheets/flash_notice/flash.css.scss"1$root/app/assets/stylesheets/layout.css.scss"0$root/app/assets/stylesheets/mails.css.scss"5$root/app/assets/stylesheets/mailstarts.css.scss"6$root/app/assets/stylesheets/newsletters.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"6$root/app/assets/stylesheets/subcontacts.css.scss"	body"ö5/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -159,33 +159,38 @@ div#menu ul li {
 }
 
 /* line 4, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
-div.class_list_categoryalls {
-  background-color: blue;
-  padding-bottom: 20px;
+div.class_list_edit_button {
+  padding-bottom: 10px;
   padding-top: 20px;
+  padding-left: 40px;
 }
-/* line 10, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
-div.class_list_categoryalls ul li input {
+/* line 9, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
+div.class_list_edit_button ul li {
+  margin-bottom: 20px;
+}
+/* line 11, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
+div.class_list_edit_button ul li input {
   height: 25px;
   background-color: #B3DEF3;
   color: black;
   font-weight: bold;
   border: 0px;
 }
-/* line 18, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
-div.class_list_categoryalls ul li input:hover {
+/* line 19, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
+div.class_list_edit_button ul li input:hover {
   border: 1px solid black;
 }
-/* line 22, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
-div.class_list_categoryalls ul li input.class_button_supcategoryall {
-  margin-left: 0px;
+/* line 23, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
+div.class_list_edit_button ul li input.class_button_delete {
+  margin-right: 1200px;
+  float: right;
   border: 0px;
   background-color: red;
   color: white;
   font-weight: bold;
 }
-/* line 30, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
-div.class_list_categoryalls ul li input:hover.class_button_supcategoryall {
+/* line 32, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/categoryalls.css.scss */
+div.class_list_edit_button ul li input:hover.class_button_delete {
   border: 1px solid black;
   background-color: red;
   color: black;
@@ -398,5 +403,5 @@ div.field, div.actions {
 }
 "content_type"text/css"
 class"BundledAsset"
-mtime"2011-11-03T15:06:58+01:00"_version"%4cb2ee12166a4b69b8fba75205972b7a"id"%765e9715ec8f9aff7c6cfc46dffba78e"dependency_paths[{"hexdigest"%6698d09d5f44ece49536767b35c20dc9"
-mtimeu:	Time“ÁÄ  ∞"	path"1$root/app/assets/stylesheets/layout.css.scss{@!"%2df78bcaa61bbeca8764c5f26f519a9a@#u;	“ÁÄ  ê@%"5$root/app/assets/stylesheets/mailstarts.css.scss{@!"%1ed61117daf4e2230f8486e754fa2edf@#u;	'ÊÄ  P@%"6$root/app/assets/stylesheets/subcontacts.css.scss{@!"%acfa3300abc015fce2035336306f5b59@#u;	1ÊÄ  –‘@%"=$root/app/assets/stylesheets/flash_notice/flash.css.scss{@!"%27b15432aaa3b43038e6945c6f9337f6@#u;	nËÄ  †@%"7$root/app/assets/stylesheets/categoryalls.css.scss{@!"%0b532d188b90746a697208201db31878@#u;	'ÊÄ  ¿I@%"4$root/app/assets/stylesheets/scaffolds.css.scss{@!"%fcb45e9975ad88d321fafba280c26fb4@#u;	nËÄ  †@%"!$root/app/assets/stylesheets{@!"%9ac736d78cc38c7565b53fc080f8aefd@#u;	'ÊÄ  @U@%"0$root/app/assets/stylesheets/mails.css.scss{@!"%574906304a7e25c36ff290cf719c02f0@#u;	œÁÄ   ‘@%"6$root/app/assets/stylesheets/newsletters.css.scss{@!"%74cc34820b9cba5fc1a356c08d36e03f@#u;	1ÊÄ  08@%"6$root/app/assets/stylesheets/application.css.scss{@!"%5c61bd3b1ecf39caaf0bba98b6c71f6b@#u;	2ÊÄ   ∑@%".$root/app/assets/stylesheets/flash_notice"pathname"6$root/app/assets/stylesheets/application.css.scss"logical_path"application.css:@created_atf1320329222.044035 —x
+mtime"2011-11-03T15:30:49+01:00"_version"%4cb2ee12166a4b69b8fba75205972b7a"id"%3fd7575bfdae23e571d4a6054fb650d2"dependency_paths[{"hexdigest"%6698d09d5f44ece49536767b35c20dc9"
+mtimeu:	Time“ÁÄ  ∞"	path"1$root/app/assets/stylesheets/layout.css.scss{@!"%2df78bcaa61bbeca8764c5f26f519a9a@#u;	“ÁÄ  ê@%"5$root/app/assets/stylesheets/mailstarts.css.scss{@!"%1ed61117daf4e2230f8486e754fa2edf@#u;	'ÊÄ  P@%"6$root/app/assets/stylesheets/subcontacts.css.scss{@!"%acfa3300abc015fce2035336306f5b59@#u;	1ÊÄ  –‘@%"=$root/app/assets/stylesheets/flash_notice/flash.css.scss{@!"%89b53574f124220a8a5fe67b9ac0048a@#u;	nËÄ  {@%"7$root/app/assets/stylesheets/categoryalls.css.scss{@!"%0b532d188b90746a697208201db31878@#u;	'ÊÄ  ¿I@%"4$root/app/assets/stylesheets/scaffolds.css.scss{@!"%fcb45e9975ad88d321fafba280c26fb4@#u;	nËÄ  {@%"!$root/app/assets/stylesheets{@!"%9ac736d78cc38c7565b53fc080f8aefd@#u;	'ÊÄ  @U@%"0$root/app/assets/stylesheets/mails.css.scss{@!"%574906304a7e25c36ff290cf719c02f0@#u;	œÁÄ   ‘@%"6$root/app/assets/stylesheets/newsletters.css.scss{@!"%74cc34820b9cba5fc1a356c08d36e03f@#u;	1ÊÄ  08@%"6$root/app/assets/stylesheets/application.css.scss{@!"%5c61bd3b1ecf39caaf0bba98b6c71f6b@#u;	2ÊÄ   ∑@%".$root/app/assets/stylesheets/flash_notice"pathname"6$root/app/assets/stylesheets/application.css.scss"logical_path"application.css:@created_atf1320330670.4931009 é˜

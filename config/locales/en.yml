@@ -17,6 +17,7 @@ en:
      show: "Show"
   common_button:
      search: "Search"
+     register_info_book_adress: "Register the informations of this adress book"
   languages:
      title:
          en: "French"
@@ -71,6 +72,10 @@ en:
         new_mailstart: "Create a new adresse book"
      edit:
         title: "Adress book edit"
+        mails_list_start: "E-mail list start adress"
+     templates_mailstarts:
+             mailstarts_form:
+                   add_new_category: "Add new category"
      show:
         title: "Show starting mail"
      update:
@@ -79,6 +84,21 @@ en:
      destroy:
         notice_success: "The removal of the mail starting went well there is no longer available"
         notice_failure: "The removal of the initial mail did not go well it is still available"
+  categoryalls:
+     edit:
+        categoryall_of_mail_start: "Category list of this start e-mail"
+     templates_categoryalls:
+        categoryalls_form:
+             add_new_subcontact: "Add new subcontact"
+  subcontacts:
+     edit:
+        subcontact_lists : "Subcontacts list"
+     templates_subcontacts:
+        subcontacts_form:
+            add_new_mail_adress: "Add new mail adress"
+  mails:
+     edit:
+       mails_list: "E-mails list" 
   date:
     formats:
       default: "%d-%m-%Y"

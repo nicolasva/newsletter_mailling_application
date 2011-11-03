@@ -1,4 +1,4 @@
-<h2>Liste des emails</h2>
+<h2><%= t("mails.edit.mails_list") %></h2>
       <ul>
             <% @subcontact.mails.each{ |mail| %>
 	    	<%= content_tag_for :li, mail do %>

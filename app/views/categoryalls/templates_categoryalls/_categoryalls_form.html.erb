@@ -1,4 +1,4 @@
-          <h2>Liste des catégories appartenant a ce mail de départ</h2>
+       <h2><%= t("categoryalls.edit.categoryall_of_mail_start") %></h2>
             <ul>       
 	        <% @mailstart.categoryalls.each{ |categoryall| %>
 		     <%= content_tag_for :li, categoryall do %>
@@ -12,7 +12,7 @@
 	</p>
 
 	<p>
-		<%= categoryall_field.submit("Ajouter des nouveaux sous-contacts", :name=>"button_addsubcontact_#{@categoryall.id}") %>
+		<%= categoryall_field.submit(t(".add_new_subcontact"), :name=>"button_addsubcontact_#{@categoryall.id}") %>
 	</p>
 
 

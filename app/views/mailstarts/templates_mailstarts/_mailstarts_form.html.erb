@@ -1,4 +1,5 @@
-          <p>
+<h2><%= t("mailstarts.edit.mails_list_start") %></h2>
+<p>
 	  	<%= mailstart_field.label(:name) %><br>
 		<%= mailstart_field.text_field(:name) %>
 	  </p>
@@ -9,6 +10,6 @@
 
 
 <p>
-<%= mailstart_field.submit("Ajouter une nouvelle categorie", :name=>"button_addcategoryall_#{@mailstart.id}") %>
+<%= mailstart_field.submit(t(".add_new_category"), :name=>"button_addcategoryall_#{@mailstart.id}") %>
 </p>
 

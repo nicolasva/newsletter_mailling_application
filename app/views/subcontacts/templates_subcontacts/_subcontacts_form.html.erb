@@ -1,4 +1,4 @@
-       <h2> Liste des sous-contacts</h2>
+   <h2><%= t("subcontacts.edit.subcontacts_list") %></h2>
         <ul>
 		<% @categoryall.subcontacts.each{ |subcontact| %>
                     <%= content_tag_for :li, subcontact do %>
@@ -13,6 +13,6 @@
 	</p>
 
 	<p>
-	<%= subcontact_field.submit("Ajouter des nouvelles adresses e-mails", :name=>"#{@subcontact.id}-#{@categoryall.id}_addmail_button") %>
+	<%= subcontact_field.submit(t(".add_new_mail_adress"), :name=>"#{@subcontact.id}-#{@categoryall.id}_addmail_button") %>
 	</p>
 

@@ -21,6 +21,7 @@ fr:
       show: "Apperçu"
   common_button:
       search: "Rechercher"
+      register_info_book_adress: "Enregistrer les informations concernant ce carnet d'adresse"
   languages:
       title:
           en: "Français"
@@ -76,6 +77,10 @@ fr:
         new_mailstart: "Creer un nouveau carnet d'adresse"
      edit:
         title: "Edition du carnet d'adresses"
+        mails_list_start: "Adresse e-mail de départ"
+     templates_mailstarts:
+        mailstarts_form:
+               add_new_category: "Ajouter une nouvelle catégorie"
      show:
         title: "Apperçu du mail de départ"
      update:
@@ -84,6 +89,21 @@ fr:
      destroy:
         notice_success: "La supression de ce mail de départ s'est bien déroulé il n'est plus disponible"
         notice_failure: "La supression de ce mail de départ ne s'est pas déroulé correctement il est encore disponible"
+  categoryalls:
+    edit:
+      categoryall_of_mail_start: "Liste des catégories appartenant à ce mail de départ"
+    templates_categoryalls:
+        categoryalls_form:
+             add_new_subcontact: "Ajouter un nouveau sous-contact"      
+  subcontacts:
+    edit:
+      subcontacts_list: "Liste des sous-contacts"
+    templates_subcontacts:
+       subcontacts_form: 
+           add_new_mail_adress: "Ajouter une nouvelle adresse e-mail"
+  mails:
+     edit:
+       mails_list: "Liste des E-mails"
   date:
     formats:
       default: "%d/%m/%Y"

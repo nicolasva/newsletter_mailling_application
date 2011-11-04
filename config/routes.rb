@@ -22,26 +22,21 @@ Prgmnewsletter::Application.routes.draw do
   end
 
   scope :module => :categoryall do
+	match "categoryallslists" => "categoryalls#index"
   	match "sort" => "categoryalls#show"
   end
 
   scope :module => :subcontact do
+	match "subcontactslists" => "subcontacts#index"
         match "sort" => "subcontacts#show"
   end
 
-  scope :module => :mail do 
+  scope :module => :mail do
+	match "mailslists" => "mails#index" 
   	match "sort" => "mails#show"
   end
 
   root :to => "newsletters#index"
-
-  resources :javascripts do 
-  	collection do
-		post :categoryalls_lists
-		post :subcontacts_lists
-		post :mails_lists
-	end	
-  end
   
   resources :mailstarts do
 	  collection do 

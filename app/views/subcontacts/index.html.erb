@@ -1,21 +1,5 @@
-<h1>Listing subcontacts</h1>
-
-<table>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @subcontacts.each do |subcontact| %>
-  <tr>
-    <td><%= link_to 'Show', subcontact %></td>
-    <td><%= link_to 'Edit', edit_subcontact_path(subcontact) %></td>
-    <td><%= link_to 'Destroy', subcontact, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Subcontact', new_subcontact_path %>
+<% @subcontacts.each{ |subcontact| %>	
+	<%= content_tag_for :li, subcontact do %>
+		<%= check_box_tag("newsletter[subcontact_ids][]", subcontact.id, (params[:newsletter_id] != "newsletter" ? subcontact.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);") %> <%= subcontact.name %>
+	<% end %>
+<% } %>

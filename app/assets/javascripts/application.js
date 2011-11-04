@@ -28,7 +28,7 @@ function functionlistmail(this_value) {
      if ($(this).children()[0].checked)
      {
 	$.ajax({
-		url: "/javascripts/mails_lists",
+		url: "/mailslists",
 		type: "POST",
 	        data: {subcontact_id: $(this).children()[0].id.split("_")[$(this).children()[0].id.split("_").length-1], newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
 	        dataType: "html",
@@ -67,7 +67,7 @@ function subcontacts_lists(this_value) {
          $(this).remove();
        });
        $.ajax({
-              url: "/javascripts/subcontacts_lists",
+              url: "/subcontactslists",
               type: "POST",
               data: {categoryall_id: this_value, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
               dataType: "html",

@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%63a3b99b60a447d9bb55bf22985360f9"digest"%452ab3abdfe9ef21dbd406492378d47e"lengthi…"source"…/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%2920ba7f87756b8532d24fbd41c5f7e4"digest"%40aff4863ed78d0e62367e0550deada2"lengthiÙ„"source"Ù„/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -11039,7 +11039,7 @@ $.Autocompleter.Selection = function(field, start, end) {
   };
   subcontacts_lists = function(categoryall_id, newsletter_id) {
     return $.ajax({
-      url: "/javascripts/subcontacts_lists",
+      url: "/subcontactslists",
       type: "POST",
       data: {
         categoryall_id: categoryall_id,
@@ -11070,8 +11070,8 @@ $.Autocompleter.Selection = function(field, start, end) {
         return $(this).remove();
       });
       return $.ajax({
-        url: "/javascripts/categoryalls_lists",
-        type: "POST",
+        url: "/categoryallslists",
+        type: "GET",
         data: {
           mailstart_id: this.value,
           newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length - 1]
@@ -11183,7 +11183,7 @@ function functionlistmail(this_value) {
      if ($(this).children()[0].checked)
      {
 	$.ajax({
-		url: "/javascripts/mails_lists",
+		url: "/mailslists",
 		type: "POST",
 	        data: {subcontact_id: $(this).children()[0].id.split("_")[$(this).children()[0].id.split("_").length-1], newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
 	        dataType: "html",
@@ -11222,7 +11222,7 @@ function subcontacts_lists(this_value) {
          $(this).remove();
        });
        $.ajax({
-              url: "/javascripts/subcontacts_lists",
+              url: "/subcontactslists",
               type: "POST",
               data: {categoryall_id: this_value, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
               dataType: "html",
@@ -11259,4 +11259,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320414292.4432371 ]ÿ
+:@created_atf1320441184.5465901 ûU

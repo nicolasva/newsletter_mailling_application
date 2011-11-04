@@ -6,7 +6,8 @@ format = (newsletter) ->
 
 subcontacts_lists = (categoryall_id, newsletter_id) ->
         $.ajax({
-             url: "/javascripts/subcontacts_lists",
+             #url: "/javascripts/subcontacts_lists", 
+             url: "/subcontactslists",
              type: "POST",
              data: {categoryall_id: categoryall_id, newsletter_id: newsletter_id},
              dataType: "html",
@@ -26,8 +27,9 @@ jQuery ->
        $("#newsletter_mail_id").children().each (index) ->
          $(this).remove()
        $.ajax({
-              url: "/javascripts/categoryalls_lists",
-              type: "POST",
+              #url: "/javascripts/categoryalls_lists",
+              url: "/categoryallslists"
+              type: "GET",
               data: {mailstart_id: this.value, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
               dataType: "html",
               success: (data) ->

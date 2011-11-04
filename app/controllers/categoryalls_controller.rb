@@ -2,14 +2,15 @@ class CategoryallsController < ApplicationController
   # GET /categoryalls
   # GET /categoryalls.json
   respond_to :html, :json
-  #def index
+  def index
   #  @categoryalls = Categoryall.all
 
   #  respond_to do |format|
   #    format.html # index.html.erb
   #    format.json { render :json => @categoryalls }
   #  end
-  #end
+	@categoryalls = Categoryall.where(:mailstart_id => params[:mailstart_id].to_i)
+  end
 
   # GET /categoryalls/1
   # GET /categoryalls/1.json

@@ -3,13 +3,15 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts.json
   respond_to :html, :json
   def index
-    @subcontacts = Subcontact.all
+    categoryall = Categoryall.find(params[:categoryall_id].to_i)
+    @subcontacts = categoryall.subcontacts
+    #@subcontacts = Subcontact.all
 
     #respond_to do |format|
     #  format.html # index.html.erb
     #  format.json { render :json => @subcontacts }
     #end
-    respond_with(@subcontacts)
+    #respond_with(@subcontacts)
   end
 
   # GET /subcontacts/1

@@ -2,14 +2,16 @@ class MailsController < ApplicationController
   # GET /mails
   # GET /mails.json
   respond_to :html, :json
-  #def index
+  def index
   #  @mails = Mail.all
 
   #  respond_to do |format|
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
-  #end
+	subcontact = Subcontact.find(params[:subcontact_id].to_i)
+	@mails = subcontact.mails
+  end
 
   # GET /mails/1
   # GET /mails/1.json

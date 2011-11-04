@@ -1,7 +1,7 @@
 module NewslettersHelper
 	def form_date_select?(f,flash_newsletter)
 		if flash_newsletter.nil? || flash_newsletter["created_at(1i)"].empty? 
-			f.date_select(:created_at, :limit=>[:day, :month, :year], :prompt => { :day => t(".select_day"), :month => t(".select_month"), :year => t(".select_year") })
+			f.date_select(:created_at, :limit=>[:day, :month, :year], :prompt => { :day => t("newsletters.index.select_day"), :month => t("newsletters.index.select_month"), :year => t("newsletters.index.select_year") })
 		else
 			f.date_select(:created_at, :limit=>[:day, :month, :year], :default => { :day =>flash_newsletter["created_at(3i)"].to_i, :month =>flash_newsletter["created_at(2i)"].to_i, :year =>flash_newsletter["created_at(1i)"].to_i })
 		end

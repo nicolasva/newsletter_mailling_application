@@ -14,6 +14,7 @@ fr:
       upload: "Envoyer un fichier"
       delete: "Supprimer"
   common_link:
+      logout: "Deconnection"
       edit: "newsletter_icones/icone_edition.png"
       delete: "newsletter_icones/close.gif"
       editing: "Edition"
@@ -67,6 +68,8 @@ fr:
      destroy:
         notice_success: "La newsletter a bien été supprimé elle n'est plus disponible"
         notice_failure: "La newsletter n'a pas été correctement supprimé elle est encore disponible"
+     statistics:
+        title: "Statistiques sur les newsletters envoyés"
   mailstarts:
      new:
         title: "Nouveau mail de départ"

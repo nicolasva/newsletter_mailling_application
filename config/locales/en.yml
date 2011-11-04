@@ -9,7 +9,8 @@ en:
       upload: "Upload"
       delete: "Delete"
       search: "Search"
-  common_link: 
+  common_link:
+     logout: "Logout" 
      edit: "newsletter_icones/icone_edition.png"
      delete: "newsletter_icones/close.gif"
      editing: "Editing"
@@ -63,6 +64,8 @@ en:
      destroy:
         notice_success: "The newsletter is deleted, it isn't available"
         notice_failure: "The newsletter isn't deleted, it is again available"
+     statistics:
+        title: "Statistics on the sending newsletters"
   mailstarts:
      new:
         title: "Starting new mail"

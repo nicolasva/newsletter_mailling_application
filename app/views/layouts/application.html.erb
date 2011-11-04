@@ -22,11 +22,13 @@
 					<% end %>
 				<% end %>
 			</div>
+   <% unless current_user.nil? %>
      <div class='div_class_title_newsletter'>
 	<ul>
 		<li><%= get_title_newsletter(controller_name,controller.action_name) %></li>
 	</ul>
      </div>
+   <% end %>
      <div class='div_class_language'>
 	<ul>
 		<li><%= get_flag_french_or_english(I18n.locale) %></li>
@@ -34,7 +36,8 @@
      </div>
 </div>
 
-<div id='menu'>
+<% unless current_user.nil? %>
+     <div id='menu'>
 	<ul>
 	       <li>
 		     	<%= get_menu_link("newsletters","index",controller_name,controller.action_name,request.path) %>
@@ -54,8 +57,12 @@
 	       		<%= get_menu_link("newsletters","statistics",controller_name,controller.action_name,request.path) %>
 	       </li>
 
+	       <li>
+	       		<%= link_to(image_tag("newsletter_icones/deconnect_icon.png", :size=>"60x60"), destroy_user_session_path, :title=>t("common_link.logout")) %>
+	       </li>
 	</ul>
-</div>
+    </div>
+<% end %>
 <div id='id_content'>
 <% end %>
 <%= yield %>

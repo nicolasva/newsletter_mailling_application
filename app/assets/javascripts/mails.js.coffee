@@ -3,6 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #functionlistmail = -> 
 #   alert("nicolas")
+jQuery ->
   $(document).ready ->
         $("#mails").sortable({
           items: '.mail', 

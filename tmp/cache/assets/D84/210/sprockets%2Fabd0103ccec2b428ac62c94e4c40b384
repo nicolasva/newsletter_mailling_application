@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%34cf953d3c62fae0d8c5ee4527f16c63"digest"%2fa8547a5d3ce0641811f878d67769cf"lengthiK„"source"K„/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%63a3b99b60a447d9bb55bf22985360f9"digest"%452ab3abdfe9ef21dbd406492378d47e"lengthi…"source"…/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -9414,19 +9414,21 @@ window.jQuery = window.$ = jQuery;
 
 })( jQuery );
 (function() {
-  $(document).ready(function() {
-    return $("#categoryalls").sortable({
-      items: '.categoryall',
-      update: function() {
-        return $.ajax({
-          url: "/mailstarts/categoryalls/sort",
-          type: "GET",
-          data: $(this).sortable('serialize'),
-          failure: function() {
-            return alert("Problem sortable list");
-          }
-        });
-      }
+  jQuery(function() {
+    return $(document).ready(function() {
+      return $("#categoryalls").sortable({
+        items: '.categoryall',
+        update: function() {
+          return $.ajax({
+            url: "/mailstarts/categoryalls/sort",
+            type: "GET",
+            data: $(this).sortable('serialize'),
+            failure: function() {
+              return alert("Problem sortable list");
+            }
+          });
+        }
+      });
     });
   });
 }).call(this);
@@ -10995,19 +10997,21 @@ $.Autocompleter.Selection = function(field, start, end) {
 
 })(jQuery);
 (function() {
-  $(document).ready(function() {
-    return $("#mails").sortable({
-      items: '.mail',
-      update: function() {
-        return $.ajax({
-          url: "/mailstarts/categoryalls/subcontacts/mails/sort",
-          type: "GET",
-          data: $(this).sortable('serialize'),
-          failure: function() {
-            return alert("Problem sortable list");
-          }
-        });
-      }
+  jQuery(function() {
+    return $(document).ready(function() {
+      return $("#mails").sortable({
+        items: '.mail',
+        update: function() {
+          return $.ajax({
+            url: "/mailstarts/categoryalls/subcontacts/mails/sort",
+            type: "GET",
+            data: $(this).sortable('serialize'),
+            failure: function() {
+              return alert("Problem sortable list");
+            }
+          });
+        }
+      });
     });
   });
 }).call(this);
@@ -11134,19 +11138,21 @@ $.Autocompleter.Selection = function(field, start, end) {
   });
 }).call(this);
 (function() {
-  $(document).ready(function() {
-    return $("#subcontacts").sortable({
-      items: '.subcontact',
-      update: function() {
-        return $.ajax({
-          url: "/mailstarts/categoryalls/subcontacts/sort",
-          type: "GET",
-          data: $(this).sortable('serialize'),
-          failure: function() {
-            return alert("Problem sortable list");
-          }
-        });
-      }
+  jQuery(function() {
+    return $(document).ready(function() {
+      return $("#subcontacts").sortable({
+        items: '.subcontact',
+        update: function() {
+          return $.ajax({
+            url: "/mailstarts/categoryalls/subcontacts/sort",
+            type: "GET",
+            data: $(this).sortable('serialize'),
+            failure: function() {
+              return alert("Problem sortable list");
+            }
+          });
+        }
+      });
     });
   });
 }).call(this);
@@ -11253,4 +11259,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320411306.495558 ·9
+:@created_atf1320414292.4432371 ]ÿ

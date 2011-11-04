@@ -1,11 +1,4 @@
 module ApplicationHelper
-	def get_title_newsletter(controller_name,action_name)
-		hash_controller_name = Hash.new
-		hash_controller_name = {"categoryalls" => "mailsarts", "subcontacts" => "mailstarts", "mails" => "mailstarts"}
-		controller_name = hash_controller_name[controller_name] if hash_controller_name.include?(controller_name) 
-	  	return t("#{controller_name}.#{action_name}.title")	
-	end
-
 	def get_flag_french_or_english(language)
 		#case language
 			#when :en
@@ -31,6 +24,13 @@ module ApplicationHelper
 	end
 
 	private
+	def get_title_newsletter(controller_name,action_name)
+		hash_controller_name = Hash.new
+		hash_controller_name = {"categoryalls" => "mailsarts", "subcontacts" => "mailstarts", "mails" => "mailstarts"}
+		controller_name = hash_controller_name[controller_name] if hash_controller_name.include?(controller_name) 
+	  	return t("#{controller_name}.#{action_name}.title")	
+	end
+
 	def get_action_name_newsletters(controller_name,action_name,action_name_desired)
 		case action_name_desired
 			when "index"

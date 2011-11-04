@@ -27,7 +27,7 @@ module NewslettersHelper
 				end
 			newsletters_lists += "</table>"
 		else
-			newsletters_lists = "<ul><li>#{t(".any_newsletters")}</li></ul>"
+			newsletters_lists = "<ul><li>#{t("newsletters.index.any_newsletters")}</li></ul>"
 		end
 
 		return newsletters_lists.html_safe	

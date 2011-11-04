@@ -1,6 +1,9 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+format = (newsletter) ->
+              newsletter.name
+
 subcontacts_lists = (categoryall_id, newsletter_id) ->
         $.ajax({
              url: "/javascripts/subcontacts_lists",
@@ -54,6 +57,21 @@ jQuery ->
           $(".date_select_create_on").show()
       else
           $(".date_select_create_on").hide()
- 
+
+jQuery ->
+  $(document).ready ->
+     $("#newsletter_name").autocomplete("searchnewsletters", {
+          multiple: true,
+          dataType: "json",
+          parse: (data) ->
+              $.map(data, (row) ->
+                      data: row,
+                      value: row.name,
+                      result: row.name
+                      #alert(row.name)
+              )
+          formatItem: (item) ->
+                  format(item)
+     })
 #fin jquery
 

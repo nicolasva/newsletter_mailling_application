@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%60105ffa94069db133bf78fa058e1814"digest"%137e75db8dc40b517b6ab90d9e12b4c7"lengthihr"source"hr/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%e6e85ff0a9d8f50be50a1e7f2f14019e"digest"%1d81e97e936dce776faf399be8b45c96"lengthi±u"source"±u/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -123,10 +123,11 @@ div#menu {
 }
 /* line 130, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul {
+  margin-left: 435px;
   padding: 0px;
   list-style-type: none;
 }
-/* line 133, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
+/* line 134, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul li {
   margin-right: 25px;
   float: left;
@@ -461,6 +462,54 @@ div.field, div.actions {
 /* line 23, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/flash_notice/flash.css.scss */
 #flash .notice {
   background-color: green;
+}
+.ac_results {
+	padding: 0px;
+	border: 1px solid black;
+	background-color: white;
+	overflow: hidden;
+	z-index: 99999;
+}
+
+.ac_results ul {
+	width: 100%;
+	list-style-position: outside;
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.ac_results li {
+	margin: 0px;
+	padding: 2px 5px;
+	cursor: default;
+	display: block;
+	/* 
+	if width will be 100% horizontal scrollbar will apear 
+	when scroll mode will be used
+	*/
+	/*width: 100%;*/
+	font: menu;
+	font-size: 12px;
+	/* 
+	it is very important, if line-height not setted or setted 
+	in relative units scroll will be broken in firefox
+	*/
+	line-height: 16px;
+	overflow: hidden;
+}
+
+.ac_loading {
+	background: white url('indicator.gif') right center no-repeat;
+}
+
+.ac_odd {
+	background-color: #eee;
+}
+
+.ac_over {
+	background-color: #0A246A;
+	color: white;
 }
 /* line 35, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 body {
@@ -582,10 +631,11 @@ div#menu {
 }
 /* line 130, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul {
+  margin-left: 435px;
   padding: 0px;
   list-style-type: none;
 }
-/* line 133, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
+/* line 134, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul li {
   margin-right: 25px;
   float: left;
@@ -861,4 +911,4 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-:@created_atf1320349299.7619081 Ã
+:@created_atf1320355124.333323 U*

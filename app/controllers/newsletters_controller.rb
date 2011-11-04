@@ -3,25 +3,33 @@ class NewslettersController < ApplicationController
   # GET /newsletters.json
  respond_to :html, :json, :png 
  def index
-      unless params[:newsletter]
+      unless params[:newsletter] || request.path == "/searchnewsletters"
     	 time_now = Time.now
     	 @newsletters = Newsletter.where("created_at >= :date or updated_at >= :date", {:date =>Time.local(time_now.year,time_now.month,time_now.day,0,0,0)})
       else
+	unless request.path == "/searchnewsletters"
 	 flash[:newsletter] = params[:newsletter]
 	 tab_result = Array.new
 	 tab_result = params[:newsletter][:name].empty? ? newsletter_with_name_created_at(params[:newsletter],request.path) : newsletter_with_name_empty(params[:newsletter],request.path) 
 		@newsletters = tab_result[0]
 
 	 	@newsletters_sum = tab_result[1] if request.path == "/historystatistics" || request.path == "/statistics"
+	else
+		#@newsletters = Newsletter.where("name LIKE '%#{params[:q]}%'")
+		#render :text=>"nicolas".to_json
+		#render :json => Newsletter.autocomplete_newsletter_name(params[:q]).collect{ |newsletter| {:value => newsletter.id, :label => "#{newsletter.name}"}}
+		render :json => Newsletter.autocomplete_newsletter_name(params[:q])
+	end
       end 
-      @newsletter = flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter]["date_specification"], :name=>flash[:newsletter]["name"])
-   	 flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
+      @newsletter = (flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter]["date_specification"], :name=>flash[:newsletter]["name"])) unless request.path == "/searchnewsletters"
+   	 #flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
   end
 
   # GET /newsletters/1
   # GET /newsletters/1.json
   def show
-    unless request.path.scan(/^\/(.{1,})\/.{1,}$/)[0][0] == "imgnewsletters"
+    #unless request.path.scan(/^\/(.{1,})(\?|\/).{1,}$/)[0][0] == "imgnewsletters" || request.path.scan(/^\/(.{1,})(\?|\/).{1,}$/)[0][0] == "searchnewsletters"
+    unless (request.path.scan(/^\/(.{1,})\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}$/)[0][0] == "imgnewsletters")
          @newsletter = Newsletter.find(params[:id])
          respond_with(@newsletter)
     else
@@ -35,7 +43,6 @@ class NewslettersController < ApplicationController
 	 send_data pixel_read.to_blob, :filename => "pixel.png",
 	 	 		       :dsposition => 'inline',
 	 			       :type => 'image/png'
-
 	 #render :text=>"user_id-=-=-=-=-=-#{params[:user_id]}-=-=-=-=-=-newsletter_id-=-=-=-=-=-#{params[:newsletter_id]}"
     end
   end

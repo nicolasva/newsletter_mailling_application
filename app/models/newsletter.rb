@@ -12,6 +12,8 @@ class Newsletter < ActiveRecord::Base
 	#accepts_nested_attributes_for :mailstart
 	#accepts_nested_attributes_for :categoryall
 	
+	scope :autocomplete_newsletter_name, lambda{ |name| {:conditions => ["newsletters.name LIKE ?", "%#{name}%"]}}
+
 	def self.updatetat(newsletter_id)
 		newsletter = Newsletter.find(newsletter_id)
 		cptstatistic = newsletter.cptstatistic.nil? ? 1 : newsletter.cptstatistic.to_i + 1

@@ -18,11 +18,11 @@ class NewslettersController < ApplicationController
 		#@newsletters = Newsletter.where("name LIKE '%#{params[:q]}%'")
 		#render :text=>"nicolas".to_json
 		#render :json => Newsletter.autocomplete_newsletter_name(params[:q]).collect{ |newsletter| {:value => newsletter.id, :label => "#{newsletter.name}"}}
-		render :json => Newsletter.autocomplete_newsletter_name(params[:q])
+		@newsletters = Newsletter.autocomplete_newsletter_name(params[:q])
 	end
       end 
       @newsletter = (flash[:newsletter].nil? ? Newsletter.new : Newsletter.new(:date_specification=>flash[:newsletter]["date_specification"], :name=>flash[:newsletter]["name"])) unless request.path == "/searchnewsletters"
-   	 #flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
+      flash[:notice].nil? ? respond_with(@newsletters) : redirect_to(newsletters_path)
   end
 
   # GET /newsletters/1

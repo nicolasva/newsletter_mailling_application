@@ -13,14 +13,19 @@ class CategoryallsController < ApplicationController
 
   # GET /categoryalls/1
   # GET /categoryalls/1.json
-  #def show
+  def show
   #  @categoryall = Categoryall.find(params[:id])
 
   #  respond_to do |format|
   #    format.html # show.html.erb
   #    format.json { render :json => @categoryall }
   #  end
-  #end
+   	params[:categoryall].each_with_index do |id, index|
+		Categoryall.position(index+1,id)
+	end
+
+	render :nothing => true	
+  end
 
   # GET /categoryalls/new
   # GET /categoryalls/new.json

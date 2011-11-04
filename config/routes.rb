@@ -21,6 +21,18 @@ Prgmnewsletter::Application.routes.draw do
   	match "sort" => "mailstart#show"
   end
 
+  scope :module => :categoryall do
+  	match "sort" => "categoryalls#show"
+  end
+
+  scope :module => :subcontact do
+        match "sort" => "subcontacts#show"
+  end
+
+  scope :module => :mail do 
+  	match "sort" => "mails#show"
+  end
+
   root :to => "newsletters#index"
 
   resources :javascripts do 

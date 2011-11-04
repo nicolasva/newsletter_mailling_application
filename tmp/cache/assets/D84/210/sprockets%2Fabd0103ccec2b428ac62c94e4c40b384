@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%8477ce791761f935de81f865a3bc4af7"digest"%413c5947ead10aac318a93ab633b0b3f"lengthiç"source"ç/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%34cf953d3c62fae0d8c5ee4527f16c63"digest"%2fa8547a5d3ce0641811f878d67769cf"lengthiKÑ"source"KÑ/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -9414,7 +9414,21 @@ window.jQuery = window.$ = jQuery;
 
 })( jQuery );
 (function() {
-
+  $(document).ready(function() {
+    return $("#categoryalls").sortable({
+      items: '.categoryall',
+      update: function() {
+        return $.ajax({
+          url: "/mailstarts/categoryalls/sort",
+          type: "GET",
+          data: $(this).sortable('serialize'),
+          failure: function() {
+            return alert("Problem sortable list");
+          }
+        });
+      }
+    });
+  });
 }).call(this);
 (function() {
   jQuery(function() {
@@ -10981,7 +10995,21 @@ $.Autocompleter.Selection = function(field, start, end) {
 
 })(jQuery);
 (function() {
-
+  $(document).ready(function() {
+    return $("#mails").sortable({
+      items: '.mail',
+      update: function() {
+        return $.ajax({
+          url: "/mailstarts/categoryalls/subcontacts/mails/sort",
+          type: "GET",
+          data: $(this).sortable('serialize'),
+          failure: function() {
+            return alert("Problem sortable list");
+          }
+        });
+      }
+    });
+  });
 }).call(this);
 (function() {
   $(document).ready(function() {
@@ -11106,7 +11134,21 @@ $.Autocompleter.Selection = function(field, start, end) {
   });
 }).call(this);
 (function() {
-
+  $(document).ready(function() {
+    return $("#subcontacts").sortable({
+      items: '.subcontact',
+      update: function() {
+        return $.ajax({
+          url: "/mailstarts/categoryalls/subcontacts/sort",
+          type: "GET",
+          data: $(this).sortable('serialize'),
+          failure: function() {
+            return alert("Problem sortable list");
+          }
+        });
+      }
+    });
+  });
 }).call(this);
 // This is a manifest file that'll be compiled into including all the files listed below.
 // Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
@@ -11211,4 +11253,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320399164.359957 	â
+:@created_atf1320411306.495558 ∑9

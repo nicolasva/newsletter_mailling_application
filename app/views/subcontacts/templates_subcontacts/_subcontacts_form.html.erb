@@ -1,7 +1,7 @@
 <h2><%= t("subcontacts.edit.subcontacts_list") %></h2>
 	<div class='class_list_edit_button'>
-            <ul>
-		<% @categoryall.subcontacts.each{ |subcontact| %>
+            <ul id='subcontacts'>
+		<% @categoryall.subcontacts.order(:position).each{ |subcontact| %>
                     <%= content_tag_for :li, subcontact do %>
 			    <%= subcontact_field.submit(subcontact.name, :name=>"#{@categoryall.id}_subcontact_#{subcontact.id}") %><%= subcontact_field.submit("x", :name=>"button_supsubcontact_#{subcontact.id}", :class=>"class_button_delete_right") %>
 		    <% end %>

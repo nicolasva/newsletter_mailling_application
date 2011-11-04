@@ -5,4 +5,8 @@ class Categoryall < ActiveRecord::Base
 	accepts_nested_attributes_for :newsletters, :mailstart, :subcontacts
 	validates_presence_of :name
 	validates_presence_of :mailstart_id
+
+	def self.position(index,id)
+		update_all(['position=?', index], ['id=?', id])
+	end
 end

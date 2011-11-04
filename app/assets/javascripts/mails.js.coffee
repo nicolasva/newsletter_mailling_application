@@ -3,3 +3,18 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #functionlistmail = -> 
 #   alert("nicolas")
+  $(document).ready ->
+        $("#mails").sortable({
+          items: '.mail', 
+          #containment:'parent', 
+          #axis:'y',
+          update: ->
+               #alert("nicolas")
+              $.ajax({
+                  url: "/mailstarts/categoryalls/subcontacts/mails/sort",
+                  type: "GET",
+                  data: $(this).sortable('serialize'),
+                  failure: ->
+                        alert("Problem sortable list")
+              })
+        })

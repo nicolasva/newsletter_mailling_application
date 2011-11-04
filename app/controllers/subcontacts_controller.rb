@@ -15,13 +15,21 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts/1
   # GET /subcontacts/1.json
   def show
-    @subcontact = Subcontact.find(params[:id])
+    unless request.path == "/mailstarts/categoryalls/subcontacts/sort"
+    	@subcontact = Subcontact.find(params[:id])
 
     #respond_to do |format|
     #  format.html # show.html.erb
     #  format.json { render :json => @subcontact }
     #end
-    respond_with(@subcontact)
+    	respond_with(@subcontact)
+    else
+	    params[:subcontact].each_with_index do |id, index|
+	    	Subcontact.position(index+1,id)
+	    end
+
+	    render :nothing => true
+    end
   end
 
   # GET /subcontacts/new

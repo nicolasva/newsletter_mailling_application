@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111101203037) do
+ActiveRecord::Schema.define(:version => 20111104130306) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
     t.integer  "mailstart_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   add_index "categoryalls", ["mailstart_id"], :name => "categoryalls_mailstart_id_to_mailstarts"
@@ -51,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20111101203037) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "mails_newsletters", :id => false, :force => true do |t|
@@ -102,6 +104,7 @@ ActiveRecord::Schema.define(:version => 20111101203037) do
     t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position"
   end
 
   create_table "users", :force => true do |t|

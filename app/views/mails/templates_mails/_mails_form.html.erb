@@ -1,7 +1,7 @@
 <h2><%= t("mails.edit.mails_list") %></h2>
    <div class='class_list_edit_button'>
-      <ul>
-            <% @subcontact.mails.each{ |mail| %>
+      <ul id="mails">
+            <% @subcontact.mails.order(:position).each{ |mail| %>
 	    	<%= content_tag_for :li, mail do %>
 			<%= mail_field.submit(mail.name, :name=>"#{@subcontact.id}-#{@categoryall.id}_mail_#{mail.id}") %><%= mail_field.submit("x", :name=>"button_supmail_#{mail.id}", :class=>"class_button_delete_right") %>
 		<% end %>

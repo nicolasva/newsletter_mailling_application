@@ -13,14 +13,19 @@ class MailsController < ApplicationController
 
   # GET /mails/1
   # GET /mails/1.json
-  #def show
+  def show
   #  @mail = Mail.find(params[:id])
 
   #  respond_to do |format|
   #    format.html # show.html.erb
   #    format.json { render :json => @mail }
   #  end
-  #end
+     params[:mail].each_with_index do |id, index|
+     	Mail.position(index+1,id)
+     end
+
+     render :nothing => true
+  end
 
   # GET /mails/new
   # GET /mails/new.json

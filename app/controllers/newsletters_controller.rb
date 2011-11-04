@@ -15,9 +15,6 @@ class NewslettersController < ApplicationController
 
 	 	@newsletters_sum = tab_result[1] if request.path == "/historystatistics" || request.path == "/statistics"
 	else
-		#@newsletters = Newsletter.where("name LIKE '%#{params[:q]}%'")
-		#render :text=>"nicolas".to_json
-		#render :json => Newsletter.autocomplete_newsletter_name(params[:q]).collect{ |newsletter| {:value => newsletter.id, :label => "#{newsletter.name}"}}
 		@newsletters = Newsletter.autocomplete_newsletter_name(params[:q])
 	end
       end 
@@ -28,7 +25,6 @@ class NewslettersController < ApplicationController
   # GET /newsletters/1
   # GET /newsletters/1.json
   def show
-    #unless request.path.scan(/^\/(.{1,})(\?|\/).{1,}$/)[0][0] == "imgnewsletters" || request.path.scan(/^\/(.{1,})(\?|\/).{1,}$/)[0][0] == "searchnewsletters"
     unless (request.path.scan(/^\/(.{1,})\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}$/)[0][0] == "imgnewsletters")
          @newsletter = Newsletter.find(params[:id])
          respond_with(@newsletter)
@@ -43,7 +39,6 @@ class NewslettersController < ApplicationController
 	 send_data pixel_read.to_blob, :filename => "pixel.png",
 	 	 		       :dsposition => 'inline',
 	 			       :type => 'image/png'
-	 #render :text=>"user_id-=-=-=-=-=-#{params[:user_id]}-=-=-=-=-=-newsletter_id-=-=-=-=-=-#{params[:newsletter_id]}"
     end
   end
 
@@ -72,21 +67,8 @@ class NewslettersController < ApplicationController
   def create
     @newsletter = Newsletter.new(params[:newsletter])
 
-    #respond_to do |format|
-    #  if @newsletter.save
-    #    format.html { redirect_to @newsletter, :notice => 'Newsletter was successfully created.' }
-    #    format.json { render :json => @newsletter, :status => :created, :location => @newsletter }
-    #  else
-    #    format.html { render :action => "new" }
-    #    format.json { render :json => @newsletter.errors, :status => :unprocessable_entity }
-    #  end
-    #end 
-        #params.keys.each do |k|
-	#	set_params(k)
-	#end	
     if @newsletter.save
         params.keys.each do |k|
-		#set_params(k)
  		if k.split("_").length-1 == 3
 			case k.split("_")[0]
 				when "registersend" 

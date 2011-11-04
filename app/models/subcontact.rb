@@ -1,4 +1,5 @@
 class Subcontact < ActiveRecord::Base
+	attr_accessible :name
 	has_and_belongs_to_many :categoryalls
 	has_and_belongs_to_many :newsletters
 	has_and_belongs_to_many :mails

@@ -17,10 +17,14 @@ module ApplicationHelper
 		return link_to(image_tag(t("languages.image.#{language.to_s}"), :size=>"60x60"), {:controller=>"/newsletters", :action=>"language", :id=>t("languages.id.#{language.to_s}")}, :title=>t("languages.title.#{language.to_s}"))
 	end
 
-	def get_menu_link(controller_name_desired,action_name_desired,controller_name,action_name)
+	def get_menu_link(controller_name_desired,action_name_desired,controller_name,action_name,request_path)
 		case controller_name_desired
 			when "newsletters"
-				get_action_name_newsletters(controller_name,action_name,action_name_desired)
+				unless request_path == "/statistics"
+					get_action_name_newsletters(controller_name,action_name,action_name_desired)
+				else
+					get_action_name_newsletters(controller_name,"statistics",action_name_desired)	
+				end
 			when "mailstarts"
 				get_action_name_mailstarts(controller_name,action_name,action_name_desired)
 		end
@@ -32,7 +36,9 @@ module ApplicationHelper
 			when "index"
 			   get_link_url_newsletter_index(controller_name,action_name)
 			when "new"
-			   get_link_url_newsletter_new(controller_name,action_name)	
+			   get_link_url_newsletter_new(controller_name,action_name)
+		   	when "statistics"
+		           get_link_url_newsletter_statistic(controller_name,action_name)		
 		end
 	end
 
@@ -53,6 +59,10 @@ module ApplicationHelper
 
 	def get_link_url_mailstart_index(controller_name,action_name)
 			return controller_name == "mailstarts" && controller.action_name == "index" ? image_tag("newsletter_icones/Address_Book.png", :size=>"60x60") : link_to(image_tag("newsletter_icones/Address_Book.png", :size=>"60x60"), mailstarts_path, :title=>get_title_newsletter("mailstarts","index"))
+	end
+
+	def get_link_url_newsletter_statistic(controller_name,action_name)		
+		return controller_name == "newsletters" && action_name == "statistics" ? image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60") : link_to(image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60"), "/statistics")
 	end
 
 end

@@ -37,19 +37,22 @@
 <div id='menu'>
 	<ul>
 	       <li>
-		     	<%= get_menu_link("newsletters","index",controller_name,controller.action_name) %>
+		     	<%= get_menu_link("newsletters","index",controller_name,controller.action_name,request.path) %>
 	       </li>
 		
 	       <li>
-			<%= get_menu_link("newsletters","new",controller_name,controller.action_name) %>
+			<%= get_menu_link("newsletters","new",controller_name,controller.action_name,request.path) %>
 
 	       </li>  
 
 	       <li>
-			<%= get_menu_link("mailstarts","index",controller_name,controller.action_name) %>
+			<%= get_menu_link("mailstarts","index",controller_name,controller.action_name,request.path) %>
 
 	       </li>
-
+	
+	       <li>
+	       		<%= get_menu_link("newsletters","statistics",controller_name,controller.action_name,request.path) %>
+	       </li>
 
 	</ul>
 </div>

@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%c593aa04542405ee83d5c03f6d57e08c"digest"%d6f59337f622a6c555aab758b07cb1e2"lengthiÑu"source"Ñu/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%369917112ed510ec9b8cc595bc602239"digest"%40a632b66c821260068aeb4f8d46cbe8"lengthi•w"source"•w/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -123,7 +123,7 @@ div#menu {
 }
 /* line 130, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul {
-  margin-left: 435px;
+  margin-left: 360px;
   padding: 0px;
   list-style-type: none;
 }
@@ -355,6 +355,14 @@ div.class_list_newsletter_historic table td.td_class_newsletter_name {
 /* line 57, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/newsletters.css.scss */
 div.class_list_newsletter_historic table td#id_td_title_newsletter {
   text-align: left;
+}
+
+/* line 63, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/newsletters.css.scss */
+ol.class_ol_nostatistics {
+  list-style-type: none;
+  text-align: center;
+  font-size: 25pt;
+  font-weight: bold;
 }
 
 /* line 1, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/scaffolds.css.scss */
@@ -632,7 +640,7 @@ div#menu {
 }
 /* line 130, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul {
-  margin-left: 435px;
+  margin-left: 360px;
   padding: 0px;
   list-style-type: none;
 }
@@ -834,6 +842,14 @@ div.class_list_newsletter_historic table td.td_class_newsletter_name {
 div.class_list_newsletter_historic table td#id_td_title_newsletter {
   text-align: left;
 }
+
+/* line 63, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/newsletters.css.scss */
+ol.class_ol_nostatistics {
+  list-style-type: none;
+  text-align: center;
+  font-size: 25pt;
+  font-weight: bold;
+}
 /* line 1, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #fff;
@@ -913,4 +929,4 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-:@created_atf1320443045.415122 ‘\
+:@created_atf1320487090.6755669 <}

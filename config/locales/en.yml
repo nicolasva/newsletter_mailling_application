@@ -66,6 +66,7 @@ en:
         notice_failure: "The newsletter isn't deleted, it is again available"
      statistics:
         title: "Statistics on the sending newsletters"
+        no_statistics: "There are not statistics fot this date"
   mailstarts:
      new:
         title: "Starting new mail"

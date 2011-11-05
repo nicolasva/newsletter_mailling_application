@@ -70,6 +70,7 @@ fr:
         notice_failure: "La newsletter n'a pas été correctement supprimé elle est encore disponible"
      statistics:
         title: "Statistiques sur les newsletters envoyés"
+        no_statistics: "Il n'y a pas de statistiques à cette date"
   mailstarts:
      new:
         title: "Nouveau mail de départ"

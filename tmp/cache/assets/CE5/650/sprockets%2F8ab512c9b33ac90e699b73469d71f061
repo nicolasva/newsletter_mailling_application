@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"asset_paths["6$root/app/assets/stylesheets/application.css.scss"7$root/app/assets/stylesheets/categoryalls.css.scss"=$root/app/assets/stylesheets/flash_notice/flash.css.scss"9$root/app/assets/stylesheets/jquery.autocomplete.css"1$root/app/assets/stylesheets/layout.css.scss"0$root/app/assets/stylesheets/mails.css.scss"5$root/app/assets/stylesheets/mailstarts.css.scss"6$root/app/assets/stylesheets/newsletters.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"6$root/app/assets/stylesheets/subcontacts.css.scss"	body"ù9/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{"asset_paths["6$root/app/assets/stylesheets/application.css.scss"7$root/app/assets/stylesheets/categoryalls.css.scss"=$root/app/assets/stylesheets/flash_notice/flash.css.scss"9$root/app/assets/stylesheets/jquery.autocomplete.css"1$root/app/assets/stylesheets/layout.css.scss"0$root/app/assets/stylesheets/mails.css.scss"5$root/app/assets/stylesheets/mailstarts.css.scss"6$root/app/assets/stylesheets/newsletters.css.scss"4$root/app/assets/stylesheets/scaffolds.css.scss"6$root/app/assets/stylesheets/subcontacts.css.scss"	body"Û:/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -123,7 +123,7 @@ div#menu {
 }
 /* line 130, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/layout.css.scss */
 div#menu ul {
-  margin-left: 435px;
+  margin-left: 360px;
   padding: 0px;
   list-style-type: none;
 }
@@ -357,6 +357,14 @@ div.class_list_newsletter_historic table td#id_td_title_newsletter {
   text-align: left;
 }
 
+/* line 63, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/newsletters.css.scss */
+ol.class_ol_nostatistics {
+  list-style-type: none;
+  text-align: center;
+  font-size: 25pt;
+  font-weight: bold;
+}
+
 /* line 1, /Users/nicolas/ruby/prgmnewsletter/prgmnewsletter/app/assets/stylesheets/scaffolds.css.scss */
 body {
   background-color: #fff;
@@ -438,6 +446,6 @@ div.field, div.actions {
 }
 "content_type"text/css"
 class"BundledAsset"
-mtime"2011-11-04T22:44:00+01:00"_version"%4cb2ee12166a4b69b8fba75205972b7a"id"%c593aa04542405ee83d5c03f6d57e08c"dependency_paths[{"hexdigest"%16e169983a9a8d520892f40f749ee82d"
-mtimeu:	Timeuè€  `F"	path"9$root/app/assets/stylesheets/jquery.autocomplete.css{"hexdigest"%c418e52896527ce79ddb0ed8756788bf"
-mtimeu;	sè€   ë"	path"1$root/app/assets/stylesheets/layout.css.scss{@)"%6e85852d0c157394d38e44ecf89152a3@+u;	•è€   °@-"5$root/app/assets/stylesheets/mailstarts.css.scss{@)"%1ed61117daf4e2230f8486e754fa2edf@+u;	'æ€  P@-"6$root/app/assets/stylesheets/subcontacts.css.scss{@)"%acfa3300abc015fce2035336306f5b59@+u;	1æ€  ÐÔ@-"=$root/app/assets/stylesheets/flash_notice/flash.css.scss{@)"%2359d7d56162c99a4cf4543bb1580efa@+u;	qè€   0@-"7$root/app/assets/stylesheets/categoryalls.css.scss{@)"%0b532d188b90746a697208201db31878@+u;	'æ€  ÀI@-"4$root/app/assets/stylesheets/scaffolds.css.scss{@)"%ea08263c8a3ac2663e894b5c3da94fda@+u;	•è€   °@-"!$root/app/assets/stylesheets{@)"%9ac736d78cc38c7565b53fc080f8aefd@+u;	'æ€  @U@-"0$root/app/assets/stylesheets/mails.css.scss{@)"%574906304a7e25c36ff290cf719c02f0@+u;	Ïç€   Ô@-"6$root/app/assets/stylesheets/newsletters.css.scss{@)"%74cc34820b9cba5fc1a356c08d36e03f@+u;	1æ€  08@-"6$root/app/assets/stylesheets/application.css.scss{@)"%5c61bd3b1ecf39caaf0bba98b6c71f6b@+u;	2æ€   ·@-".$root/app/assets/stylesheets/flash_notice"pathname"6$root/app/assets/stylesheets/application.css.scss"logical_path"application.css:@created_atf1320443045.38129 g
+mtime"2011-11-05T10:58:08+01:00"_version"%4cb2ee12166a4b69b8fba75205972b7a"id"%369917112ed510ec9b8cc595bc602239"dependency_paths[{"hexdigest"%16e169983a9a8d520892f40f749ee82d"
+mtimeu:	Timeuè€  `F"	path"9$root/app/assets/stylesheets/jquery.autocomplete.css{"hexdigest"%001391a49e0cc6b4d52875149bfc846f"
+mtimeu;	©è€  €è"	path"1$root/app/assets/stylesheets/layout.css.scss{@)"%6e85852d0c157394d38e44ecf89152a3@+u;	•è€  0²@-"5$root/app/assets/stylesheets/mailstarts.css.scss{@)"%1ed61117daf4e2230f8486e754fa2edf@+u;	'æ€  P@-"6$root/app/assets/stylesheets/subcontacts.css.scss{@)"%acfa3300abc015fce2035336306f5b59@+u;	1æ€  ÐÔ@-"=$root/app/assets/stylesheets/flash_notice/flash.css.scss{@)"%2359d7d56162c99a4cf4543bb1580efa@+u;	qè€   0@-"7$root/app/assets/stylesheets/categoryalls.css.scss{@)"%0b532d188b90746a697208201db31878@+u;	'æ€  ÀI@-"4$root/app/assets/stylesheets/scaffolds.css.scss{@)"%ea08263c8a3ac2663e894b5c3da94fda@+u;	©è€  €è@-"!$root/app/assets/stylesheets{@)"%9ac736d78cc38c7565b53fc080f8aefd@+u;	'æ€  @U@-"0$root/app/assets/stylesheets/mails.css.scss{@)"%4f6f21a8e227579cb8c0bc549064eaeb@+u;	©è€  ÐÊ@-"6$root/app/assets/stylesheets/newsletters.css.scss{@)"%74cc34820b9cba5fc1a356c08d36e03f@+u;	1æ€  08@-"6$root/app/assets/stylesheets/application.css.scss{@)"%5c61bd3b1ecf39caaf0bba98b6c71f6b@+u;	2æ€   ·@-".$root/app/assets/stylesheets/flash_notice"pathname"6$root/app/assets/stylesheets/application.css.scss"logical_path"application.css:@created_atf1320487090.6738679  §

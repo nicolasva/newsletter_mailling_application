@@ -35,6 +35,7 @@ module NewslettersHelper
 
 	def get_stat_pie(newsletters,newsletters_sum)
 		#newsletters_sum == 100%
+	     unless newsletters.empty? 
 		g = Gruff::Pie.new
 		g.theme = {
    			:colors => %w(#90CB4A #FFC863 #FF6B95 #A993FF),
@@ -50,5 +51,12 @@ module NewslettersHelper
 		g.write("#{Rails.root}/app/assets/images/statistics/statisticnewsletter.png")
 
 		image_tag("statistics/statisticnewsletter.png")
+	     else
+		     result = "<ol class='class_ol_nostatistics'>"
+		     	result += "<li>#{t("newsletters.statistics.no_statistics")}</li>"
+		     result += "</ol>"
+
+		     result.html_safe
+	     end
 	end
 end

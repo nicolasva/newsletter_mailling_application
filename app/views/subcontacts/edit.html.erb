@@ -1,5 +1,9 @@
 <%= form_for(@subcontact) do |f| %>
+	<% unless request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls" %>
 	<%= render(:partial=>"form", :locals => { :f => f }) %>
 
-  	<%= render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f}) %>
+	<%= render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f}) %>
+    <% else %>
+	    <%= render(:partial=>"/subcontacts/templates_subcontacts/form_popup_dragdrop_subcontacts_to_categoryalls", :locals => {:f => f, :categoryall_id => params[:categoryall_id], :categoryall_id_source => params[:categoryall_id_source]}) %>
+    <% end %>
 <% end %>

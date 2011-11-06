@@ -28,6 +28,8 @@ Prgmnewsletter::Application.routes.draw do
 
   scope :module => :subcontact do
 	match "subcontactslists" => "subcontacts#index"
+	match "choosesubcontacts_to_categoryalls/:id/:categoryall_id/:categoryall_id_source" => "subcontacts#edit"
+	match "result_dragondropsubcontacts" => "subcontacts#index"
         match "sort" => "subcontacts#show"
   end
 

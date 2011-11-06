@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%2920ba7f87756b8532d24fbd41c5f7e4"digest"%40aff4863ed78d0e62367e0550deada2"lengthiÙ„"source"Ù„/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%2f1df7da1c8a53d852d6443095083d9f"digest"%58186d091d7a86168e8346abff37c16f"lengthi°¤"source"°¤/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -11016,19 +11016,21 @@ $.Autocompleter.Selection = function(field, start, end) {
   });
 }).call(this);
 (function() {
-  $(document).ready(function() {
-    return $("#mailstarts").sortable({
-      items: '.mailstart',
-      update: function() {
-        return $.ajax({
-          url: "/mailstarts/sort",
-          type: "GET",
-          data: 'authenticity_token=' + AUTH_TOKEN + '&' + $(this).sortable('serialize'),
-          failure: function() {
-            return alert("Problem sortable list");
-          }
-        });
-      }
+  jQuery(function() {
+    return $(document).ready(function() {
+      return $("#mailstarts").sortable({
+        items: '.mailstart',
+        update: function() {
+          return $.ajax({
+            url: "/mailstarts/sort",
+            type: "GET",
+            data: 'authenticity_token=' + AUTH_TOKEN + '&' + $(this).sortable('serialize'),
+            failure: function() {
+              return alert("Problem sortable list");
+            }
+          });
+        }
+      });
     });
   });
 }).call(this);
@@ -11155,7 +11157,291 @@ $.Autocompleter.Selection = function(field, start, end) {
       });
     });
   });
+  jQuery(function() {
+    $("#subcontacts").children().each(function(index) {
+      return $(this).draggable({
+        revert: true
+      });
+    });
+    return $("#categoryalls").children().each(function(index) {
+      return $(this).droppable({
+        drop: function(event, ui) {
+          var categoryall_id, categoryall_id_source, subcontact_id;
+          categoryall_id_source = $('#categoryall_id').attr("value");
+          subcontact_id = ui.draggable.attr('id').split("_")[1];
+          categoryall_id = $(event.target).attr("id").split("_")[1];
+          return ThinBox.open("/choosesubcontacts_to_categoryalls/" + subcontact_id + "/" + categoryall_id + "/" + categoryall_id_source);
+        }
+      });
+    });
+  });
 }).call(this);
+var ThinBox = {
+	modals: [],
+	remove: function() {
+		$(this.modals[0]).data('thinbox').remove();
+		return false;
+	},
+	resize: function(width,height) {
+		$(this.modals[0]).data('thinbox').resize(width,height);
+		return false;
+	},
+	onShow: function(self) {}
+};
+(function($){
+	var defaultSettings = {
+		width: '417px',
+		height: '250px',
+		margin: '0 auto',
+		top: '10%',
+		clickClose: true,
+		fullHeight: false,
+		animateResize: true,
+		showCloseButton: true,
+		fullHeightPadding: '30',
+		thinboxModalBG: 'thinboxModalBG',
+		thinboxModalContent: 'thinboxModalContent',
+		thinboxModalContentBG: 'thinboxModalContentBG',
+		thinboxModalCloseButton: 'thinboxModalCloseButton',
+		thinboxModalContentBGColor: '#000',
+		thinboxModalContentBGOpacity: '40',
+		closeButton: '/ui/images/icons/tb-close-button.gif',
+		onShow: function() { }
+	};
+	
+	var Thinbox = function(element,options) {
+		if(element==null) {
+			var singleMode = true;
+		} else {
+			var singleMode = false;
+			element = $(element);
+		}
+		var self = this;
+		this.settings = $.extend(defaultSettings,options||{});
+		
+		this.init = function() {
+			if(!singleMode) {
+				self.bindClick();
+			}
+		};
+		
+		this.bindClick = function() {
+			element.bind('click',function(){
+				self.showModal(element);
+				return false;
+			});
+		};
+		
+		this.getContentElement = function() {
+			return $("#"+self.settings.thinboxModalContent);
+		};
+		
+		this.setupModal = function(vars) {
+			var thinboxBG = $('<div/>').attr('id',self.settings.thinboxModalBG);
+			var thinboxModalContent = $('<div/>').attr('id',self.settings.thinboxModalContent).addClass(self.settings.thinboxModalContent);
+			var thinboxModalContentBG = $('<div/>').attr('id',self.settings.thinboxModalContentBG);
+			
+			$(thinboxBG).css({
+				'height': $(window).height(),
+				'width': $(window).width(),
+				'position': 'fixed',
+				'display': 'none',
+				'top': '0',
+				'left': '0'
+			}).appendTo('body');
+			
+			$(thinboxModalContentBG).css({
+				'height': $(window).height(),
+				'width': $(window).width(),
+				'position': 'absolute',
+				'top': '0',
+				'left': '0',
+				'background': self.settings.thinboxModalContentBGColor,
+				'opacity': '.'+self.settings.thinboxModalContentBGOpacity,
+				'filter': 'alpha(opacity='+self.settings.thinboxModalContentBGOpacity+')',
+				'zIndex': '999999'
+			}).appendTo(thinboxBG);
+			
+			var boxHeight = self.settings.height;
+			var boxWidth = self.settings.width;
+			if(vars.isImage) {
+				boxHeight = '';
+				boxWidth = vars.thinboxImage.width;
+				if(boxWidth>950) {
+					boxWidth = 950;
+					$(vars.thinboxContent).css({
+						'height': 'auto',
+						'width': 950
+					});
+				}
+				if(vars.thinboxImage.height>500) {
+					$(vars.thinboxContent).css({
+						'height': 500,
+						'width': 'auto'
+					});
+				}
+			}
+			
+			$(thinboxModalContent).css({
+				'height': boxHeight,
+				'width': boxWidth,
+				'margin': self.settings.margin,
+				'top': self.settings.top,
+				'position': 'relative',
+				'zIndex': '9999999'
+			}).html(vars.thinboxContent).appendTo(thinboxBG);
+			
+			if(vars.isImage && vars.imageDesc) $(vars.imageDesc).appendTo(thinboxModalContent);
+			
+			if(vars.isImage && self.settings.showCloseButton) {
+				var imageCloseButton = '<a class="jsThinboxClose '+self.settings.thinboxModalCloseButton+'"><img src="'+self.settings.closeButton+'" alt="Close" /></a>';
+				$(imageCloseButton).appendTo(thinboxModalContent);
+			}
+			
+			if(vars.inIframe) {
+				$(thinboxModalContent).css({
+					'overflow': 'hidden'
+				});
+			}
+			
+			if(self.settings.clickClose) {
+				$(thinboxBG).bind('click',function(){
+					self.remove(); 
+				 });
+			
+				$(thinboxModalContent).bind('click',function(event){  
+					if(event.stopPropagation) event.stopPropagation();
+					else event.cancelBubble = true;
+				});
+			}
+			
+			if(self.settings.fullHeight) {
+				self.resizeHeight();
+			}
+			
+			$('.jsThinboxClose',thinboxModalContent).bind('click',function() {
+				self.remove();
+				return false;
+			});
+			
+			$(window).bind('resize',function(){
+				self.resizeBG();
+				self.resizeBG(); /* Dirty hack for scrollbars */
+				if(self.settings.fullHeight) self.resizeHeight();
+			});
+			
+			$(thinboxBG).show();
+			self.settings.onShow(self);
+			
+			if($.browser.msie && $.browser.version<=6) window.location = "#";
+		};
+		
+		this.showModal = function(element,url) {
+			if(url!=null) {
+				var href = url;
+			} else {
+				var href = $(element).attr("href")||$(element).attr("alt")||'';
+			}
+			var imageUrl = /\.(jpe?g|png|gif|bmp)/gi;
+			var isImage = false;
+			if(href.substr(0,1)=="#") {
+				var thinboxContent = $(href).html();
+				var inIframe = false;
+			} else if(href.match(imageUrl)) {
+				var thinboxImage = new Image();
+				var thinboxContent = $("<img>").attr("src",href);
+				var imageDesc = $('<p/>').html($($('img',element).attr('title')).html()||"&nbsp;");
+				var inIframe = false;
+				var isImage = true;
+			} else if(href=='') {
+				 return false;
+			} else {
+				var thinboxContent = $("<iframe height='100%' width='100%' frameborder='0' style='border:0'></iframe>");
+				thinboxContent.attr("src",href);
+				var inIframe = true;
+			}
+			
+			var vars = {
+				'thinboxContent': thinboxContent,
+				'inIframe': inIframe,
+				'thinboxImage': thinboxImage,
+				'imageDesc': imageDesc,
+				'isImage': isImage
+			}
+			
+			if(isImage) {
+				thinboxImage.onload = function() {
+					self.setupModal(vars);
+				}
+				thinboxImage.src = href;
+			} else {
+				this.setupModal(vars);
+			}
+			
+			return false;
+		};
+		
+		this.resizeBG = function() {
+			$('#'+self.settings.thinboxModalBG).css({
+				'height':$(window).height(),
+				'width': $(window).width()
+			});
+			$('#'+self.settings.thinboxModalContentBG).css({
+				'height':$(window).height(),
+				'width': $(window).width()
+			});
+		};
+		
+		this.resizeHeight = function() {
+			var height = parseInt($(window).height())-(parseInt(self.settings.fullHeightPadding)*2);
+			$('#'+self.settings.thinboxModalContent).css({
+				'height': height,
+				'top': self.settings.fullHeightPadding+'px'
+			});
+		}
+		
+		this.remove = function() {
+			$('#'+self.settings.thinboxModalBG).remove();
+			return false;
+		};
+		
+		this.resize = function(width,height) {
+			var newSizes = {
+				'height': height+'px',
+				'width': width+'px'
+			};
+			if(self.settings.animateResize) {
+				$('#'+self.settings.thinboxModalContent).animate(newSizes);
+			} else {
+				$('#'+self.settings.thinboxModalContent).css(newSizes);
+			}
+		}
+		
+		this.init();
+	};
+	$.fn.thinbox = function(options) {
+		ThinBox.options = options;
+		return this.each(function(){
+			var element = $(this);
+			if(element.data('thinbox')) return;
+			var thinbox = new Thinbox(this,options);
+			element.data('thinbox',thinbox);
+		});
+	};
+	
+	$(document).ready(function(){
+		ThinBox.modals = $("a[rel*='thinbox'],a.thinbox,input.thinbox").thinbox({
+			onShow: function() { ThinBox.onShow(self); }
+		});
+	});
+	
+	ThinBox.open = function(url,options) {
+		settings = $.extend(defaultSettings,options||{});
+		thinbox = new Thinbox(null,settings);
+		ThinBox.modals.push($(document).data('thinbox',thinbox));
+		thinbox.showModal('',url);
+	}
+})(jQuery);
 // This is a manifest file that'll be compiled into including all the files listed below.
 // Add new JavaScript/Coffee code in separate files in this directory and they'll automatically
 // be included in the compiled file accessible from http://example.com/assets/application.js
@@ -11259,4 +11545,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320441184.5465901 ûU
+:@created_atf1320587313.0263801 °6

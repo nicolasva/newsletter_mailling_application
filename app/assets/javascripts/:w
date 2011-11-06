@@ -1,0 +1,28 @@
+# Place all the behaviors and hooks related to the matching controller here.
+# All this logic will automatically be available in application.js.
+# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+jQuery ->
+   $(document).ready ->
+       $("#subcontacts").sortable({
+           items: '.subcontact'
+           update: ->
+              $.ajax({
+                 url: "/mailstarts/categoryalls/subcontacts/sort",
+                 type: "GET",
+                 data: $(this).sortable('serialize')
+                 failure: ->
+                      alert("Problem sortable list")
+              })
+       })
+
+jQuery ->
+   $("#subcontacts").children().each (index) ->
+       $(this).draggable()
+   $("#categoryalls").droppable({
+        drop: (event, ui) ->
+            alert(ui.dropped)
+            #$.ajax({
+            #      url: "/dragdropsubcontacts_to_categoryalls"
+            #      type: "GET",
+            #      data: {}
+   })

@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%369917112ed510ec9b8cc595bc602239"digest"%40a632b66c821260068aeb4f8d46cbe8"lengthi•w"source"•w/*
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%0e7fbe3c50c3dff6edea16df0215f422"digest"%39b2af5574bb94a5b065ab26447b5c1e"lengthipy"source"py/*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
  * the top of the compiled file, but it's generally better to create a new file per style scope.
@@ -929,4 +929,9 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
-:@created_atf1320487090.6755669 <}
+.thinboxContent { display: none; }
+.thinboxModalContent { border: 6px solid #383838; -moz-border-radius: 10px; -webkit-border-radius: 10px; border-radius: 10px; background: #fff; overflow: auto; -moz-box-shadow: 0 0 65px rgba(0, 0, 0, 0.5); -webkit-box-shadow: 0 0 65px rgba(0, 0, 0, 0.5); }
+.thinboxModalContent .container { padding: 14px; }
+.thinboxModalCloseButton { position: absolute; bottom: 6px; right: 6px; }
+* html #thinboxModalBG { position: absolute !important; }
+:@created_atf1320573834.8273511 óR

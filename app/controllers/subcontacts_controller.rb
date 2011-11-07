@@ -7,7 +7,7 @@ class SubcontactsController < ApplicationController
     	categoryall = Categoryall.find(params[:categoryall_id].to_i)
     	@subcontacts = categoryall.subcontacts
    else
-	if request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactremove"
+	if !request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactremove"
 		#subcontact = Subcontact.find(params[:subcontact_id])
 	        #categoryall = Categoryall.find(params[:categoryall_id_source]) 
 	        #render :text => subcontact.categoryalls.include?(categoryall)
@@ -84,8 +84,8 @@ class SubcontactsController < ApplicationController
     @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
     @mailstart = @categoryall.mailstart
     @mail = @subcontact.mails.nil? ? "" : @subcontact.mails.first
-    respond_with(@subcontact)
    end
+    respond_with(@subcontact)
   end
 
   # POST /subcontacts
@@ -108,7 +108,7 @@ class SubcontactsController < ApplicationController
   # PUT /subcontacts/1.json
   def update
 	@subcontact = Subcontact.find(params[:id])
-	unless request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}$/)[0].nil? || request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls"
+	unless request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls"
     		if @subcontact.update_attributes(params[:subcontact])  
     			flash[:notice] = t("mailstarts.update.notice_success")
 
@@ -124,7 +124,7 @@ class SubcontactsController < ApplicationController
 			categoryall_source.subcontacts.delete(@subcontact) if params[:subcontact][:copy_cut_subcontact] == "cut"
 
 		categoryall = Categoryall.find(params[:subcontact][:categoryall_ids].to_i)
-	   	     if categoryall.subcontacts.find(@subcontact).nil?
+	   	     unless categoryall.subcontacts.include?(@subcontact)
 			 flash[:notice] = categoryall.subcontacts.push(@subcontact) ? (params[:subcontact][:copy_cut_subcontact] == "cut" ? "Ce sous-contact a bien été déplacé dans cette catégorie" : "Ce sous-contact a bien été ajouté dans cette catégorie") : "Ce sous-contact n'a pas été ajouté dans cette catégorie"
 			
 		     else

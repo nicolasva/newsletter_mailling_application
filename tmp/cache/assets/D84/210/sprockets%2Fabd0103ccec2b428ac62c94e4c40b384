@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%e7c5fa3744ee5229ea6e9cc0c72e0281"digest"%8bf64b5bf287e84f0ae1f371392a9d51"lengthi'¹"source"'¹/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%474e586e957914780bc1e89215bcd3f2"digest"%76dbed1682db26bee4ac22e8c618f282"lengthi¼"source"¼/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -11085,6 +11085,26 @@ $.Autocompleter.Selection = function(field, start, end) {
       });
     });
   });
+  jQuery(function() {
+    return $("#mails").children().each(function(index) {
+      return $(this).draggable({
+        revert: true
+      });
+    });
+  });
+  jQuery(function() {
+    return $("#subcontacts").children().each(function(index) {
+      return $(this).droppable({
+        drop: function(event, ui) {
+          var mail_id, subcontact_id, subcontact_id_source;
+          subcontact_id_source = $('#subcontact_id').attr("value");
+          mail_id = ui.draggable.attr('id').split("_")[1];
+          subcontact_id = $(event.target).attr("id").split("_")[1];
+          return ThinBox.open("/choosemails_to_subcontacts/" + mail_id + "/" + subcontact_id + "/" + subcontact_id_source);
+        }
+      });
+    });
+  });
 }).call(this);
 (function() {
   jQuery(function() {
@@ -11230,11 +11250,13 @@ $.Autocompleter.Selection = function(field, start, end) {
     });
   });
   jQuery(function() {
-    $("#subcontacts").children().each(function(index) {
+    return $("#subcontacts").children().each(function(index) {
       return $(this).draggable({
         revert: true
       });
     });
+  });
+  jQuery(function() {
     return $("#categoryalls").children().each(function(index) {
       return $(this).droppable({
         drop: function(event, ui) {
@@ -11688,4 +11710,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320671180.7305901 Áý
+:@created_atf1320676980.1888559 7

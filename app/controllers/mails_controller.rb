@@ -66,9 +66,12 @@ class MailsController < ApplicationController
   # GET /mails/1/edit
   def edit
     @mail = Mail.find(params[:id])
+   unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
     @subcontact = @mail.subcontacts.find(cookies[:subcontact_id])
     @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
     @mailstart = @categoryall.mailstart
+   end
+    respond_with(@mail)
   end
 
   # POST /mails

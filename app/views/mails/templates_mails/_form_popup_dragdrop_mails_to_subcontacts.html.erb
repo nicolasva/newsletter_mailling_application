@@ -1,0 +1,25 @@
+  <% if @mail.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mail.errors.count, "error") %> prohibited this mail from being saved:</h2>
+
+      <ul>
+      <% @mail.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>Drag and drop du mail vers un sous-contact</h2>
+
+  <ul>
+	  <li>
+	  	Copié cette e-mail dans ce sous-contact : <%= f.radio_button :copy_cut_mail, "copy" %>
+	  </li>
+
+	  <li>
+		Déplacé cette e-mmail dans ce sous-contact : <%= f.radio_button :copy_cut_mail, "cut" %>m
+	  </li>
+  </ul>
+
+  <%= f.hidden_field(:subcontact_id_source, :value => subcontact_id_source) %>
+

@@ -20,42 +20,15 @@ jQuery ->
        $(this).draggable({
            revert: true,
        })
-   
+
+jQuery ->   
    $("#categoryalls").children().each (index) ->
      $(this).droppable({
         drop: (event, ui) ->
-        #$("#id_content").children().each(function(index) { $(this).children().each(function(index){ $(this).children().each(function(index) { $(this).children().each(function(index) { console.log($(this)[0].id)}) }) }) })
             categoryall_id_source = $('#categoryall_id').attr("value")
-            #cpt = 0
-            #$("#id_content").children().each (index) ->
-            #              $(this).children().each (index) ->
-            #                   $(this).children().each (index) ->
-            #                         $(this).children().each (index) ->
-                                           #alert(index)
-            #                               if $(this)[0].id.length > 0 && index == 4 && cpt == 0
-            #                                          categoryall_id_source = $(this)[0].id.split("_")[6]
-            #                                          cpt = index
-                  
-            #alert(categoryall_id_source) 
             subcontact_id = ui.draggable.attr('id').split("_")[1]
             categoryall_id = $(event.target).attr("id").split("_")[1]
-            #$.ajax({
-            #      url: "/dragdropsubcontacts_to_categoryalls",
-            #      type: "POST",
-            #      data: {subcontact_id: subcontact_id, categoryall_id: categoryall_id, categoryall_id_source: categoryall_id_source},
-            #      success: (data) ->
-            #             $(this).remove()
-            #})
             ThinBox.open("/choosesubcontacts_to_categoryalls/"+subcontact_id+"/"+categoryall_id+"/"+categoryall_id_source)
-            #$.ajax({
-            #       url: "/subcontactremove",
-            #       type: "GET",
-            #       data: {subcontact_id: subcontact_id, categoryall_id_source: categoryall_id_source},
-            #       success: (data) ->
-            #              ui.draggable.remove() if data == 'true'
-            #       failure:
-            #              alert("problem of verification to remove subcontact")
-            #})
      })
 
 list_menu = (choose_ul_id) ->

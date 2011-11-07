@@ -7,7 +7,8 @@
 		    <% end %>
 	        <% } %>
 	    </ul>
-	</div>
+        </div>
+	<%= subcontact_field.hidden_field(:id, :id=>'subcontact_id') %>
         <p>
  		<%= subcontact_field.label(:name) %><br>
 		<%= subcontact_field.text_field(:name) %>

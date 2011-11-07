@@ -19,3 +19,19 @@ jQuery ->
                         alert("Problem sortable list")
               })
         })
+
+jQuery ->
+   $("#mails").children().each (index) ->
+        $(this).draggable({
+            revert: true,
+        })
+
+jQuery ->
+   $("#subcontacts").children().each (index) ->
+       $(this).droppable({
+          drop: (event, ui) ->
+              subcontact_id_source = $('#subcontact_id').attr("value")
+              mail_id = ui.draggable.attr('id').split("_")[1]
+              subcontact_id = $(event.target).attr("id").split("_")[1]
+              ThinBox.open("/choosemails_to_subcontacts/"+mail_id+"/"+subcontact_id+"/"+subcontact_id_source)
+       })

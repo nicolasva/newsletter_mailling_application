@@ -36,7 +36,7 @@
      </div>
 </div>
 
-<% unless current_user.nil? || (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls") %>
+<% unless current_user.nil? || (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls" || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts") %>
      <div id='menu'>
 	<ul>
 	       <li>

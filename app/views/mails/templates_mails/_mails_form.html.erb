@@ -8,6 +8,7 @@
 	    <% } %>
       </ul>
    </div>
+   <%= mail_field.hidden_field(:id, :id=>"mail_id") %>
 <p>
 <%= mail_field.label(:name) %><br>
 <%= mail_field.text_field(:name) %>

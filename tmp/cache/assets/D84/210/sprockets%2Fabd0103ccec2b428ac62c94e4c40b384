@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%2f1df7da1c8a53d852d6443095083d9f"digest"%58186d091d7a86168e8346abff37c16f"lengthi°¤"source"°¤/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%758e4a114ef4a686938c5107052e56d5"digest"%8bf64b5bf287e84f0ae1f371392a9d51"lengthi'¹"source"'¹/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -10996,6 +10996,77 @@ $.Autocompleter.Selection = function(field, start, end) {
 };
 
 })(jQuery);
+/**
+ * PeriodicalUpdater - jQuery plugin for timed, decaying ajax calls
+ *
+ * http://www.360innovate.co.uk
+ *
+ * Copyright (c) 2009 360innovate (http://www.360innovate.co.uk)
+ * Dual licensed under the MIT and GPL licenses:
+ * http://www.opensource.org/licenses/mit-license.php
+ * http://www.gnu.org/licenses/gpl.html
+ *
+ * Version: 1.0
+ */
+
+
+(function($) {
+    $.PeriodicalUpdater = function(options, callback){
+
+        settings = jQuery.extend({
+            url: '',                // URL of ajax request
+            method: 'get',          // method; get or post
+            sendData: '',           // array of values to be passed to the page - e.g. {name: "John", greeting: "hello"}
+            minTimeout: 1000,       // starting value for the timeout in milliseconds
+            maxTimeout: 8000,       // maximum length of time between requests
+            multiplier: 2,          // if set to 2, timerInterval will double each time the response hasn't changed (up to maxTimeout)
+            type: 'text'            // response type - text, xml, json etc - as with $.get or $.post
+        }, options);
+        
+        // should we be GETting or POSTing the URL?
+        f = settings.method == 'post' || settings.method == 'POST' ? $.post : $.get;
+
+        // you really, really don't want multipliers of less than 1 - it will cause lots of strain on the server!
+        settings.multiplier = settings.multiplier < 1 ? 1:settings.multiplier;
+        
+        // set some initial values, then begin
+        var prevContent;
+        var timerInterval = settings.minTimeout;
+        getdata();
+        
+        function getdata()
+        {
+            f(settings.url, settings.sendData, function(d){
+                if(prevContent != d)
+                {
+                    // content has changed
+                    prevContent = d;
+                    if(callback)
+                    {
+                        callback(d);
+                    }
+                    
+                    // recursive call to getdata(). You can stop ajax requests from this plugin by calling clearTimeout(PeriodicalTimer);
+                    // (on a button click, for example)
+                    PeriodicalTimer = setTimeout(getdata, settings.minTimeout);
+                }else{
+                    // content hasn't changed - re-calculate timers and recursively call getdata() again
+                    if(timerInterval < settings.maxTimeout)
+                    {
+                        timerInterval = timerInterval * settings.multiplier;
+                    }
+                    
+                    if(timerInterval > settings.maxTimeout)
+                    {
+                        timerInterval = settings.maxTimeout;
+                    }
+                    
+                    PeriodicalTimer = setTimeout(getdata, timerInterval);
+                }
+            }, settings.type) 
+        }
+    };  
+})(jQuery);
 (function() {
   jQuery(function() {
     return $(document).ready(function() {
@@ -11140,6 +11211,7 @@ $.Autocompleter.Selection = function(field, start, end) {
   });
 }).call(this);
 (function() {
+  var list_menu, periodical_updater_ul, recup_id_source, remove_ul_subcontact;
   jQuery(function() {
     return $(document).ready(function() {
       return $("#subcontacts").sortable({
@@ -11173,6 +11245,77 @@ $.Autocompleter.Selection = function(field, start, end) {
           return ThinBox.open("/choosesubcontacts_to_categoryalls/" + subcontact_id + "/" + categoryall_id + "/" + categoryall_id_source);
         }
       });
+    });
+  });
+  list_menu = function(choose_ul_id) {
+    var compteur, longeur_ul_li, params_id_menu;
+    compteur = 0;
+    params_id_menu = "";
+    longeur_ul_li = $('#' + choose_ul_id).children().length;
+    $('#' + choose_ul_id).children().each(function(index) {
+      var id;
+      id = $(this).attr("id").split('_')[1];
+      params_id_menu += choose_ul_id + "[]=" + id;
+      compteur = compteur + 1;
+      if (compteur < longeur_ul_li) {
+        return params_id_menu += "&";
+      }
+    });
+    return params_id_menu;
+  };
+  recup_id_source = function(menu_ul) {
+    var hash_id_source;
+    hash_id_source = {
+      'subcontacts': 'categoryall_id',
+      'mails': 'mail_id'
+    };
+    return hash_id_source[menu_ul];
+  };
+  remove_ul_subcontact = function(menu_ul, menu_ul_li) {
+    var hash_li;
+    hash_li = {
+      'subcontacts': 'subcontact',
+      'mails': 'mail'
+    };
+    return $('#' + hash_li[menu_ul] + '_' + menu_ul_li).remove();
+  };
+  periodical_updater_ul = function(menu_ul) {
+    var source_value;
+    source_value = $('#' + recup_id_source(menu_ul)).attr("value");
+    if (!source_value) {
+      source_value = "no_id";
+    }
+    return $.PeriodicalUpdater({
+      url: "/" + menu_ul + "remove?" + list_menu(menu_ul) + "&" + recup_id_source(menu_ul) + "_source=" + source_value,
+      method: 'GET',
+      dataType: 'json',
+      maxTimeout: 6000
+    }, function(data) {
+      var menu_ul, menu_ul_li, _i, _j, _len, _len2, _ref, _ref2, _results;
+      _ref = data.split("-");
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        menu_ul_li = _ref[_i];
+        remove_ul_subcontact(menu_ul, menu_ul_li);
+      }
+      _ref2 = ["subcontacts", "mails"];
+      _results = [];
+      for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
+        menu_ul = _ref2[_j];
+        _results.push(periodical_updater_ul(menu_ul));
+      }
+      return _results;
+    });
+  };
+  jQuery(function() {
+    return $(document).ready(function() {
+      var menu_ul, _i, _len, _ref, _results;
+      _ref = ["subcontacts", "mails"];
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        menu_ul = _ref[_i];
+        _results.push(periodical_updater_ul(menu_ul));
+      }
+      return _results;
     });
   });
 }).call(this);
@@ -11545,4 +11688,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320587313.0263801 °6
+:@created_atf1320666708.2839961 ,þ

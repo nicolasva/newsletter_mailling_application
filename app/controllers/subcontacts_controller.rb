@@ -3,9 +3,38 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts.json
   respond_to :html, :json
   def index
-   unless request.path == "/result_dragondropsubcontacts"
+   unless request.path == "/result_dragondropsubcontacts" || (request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactsremove")
     	categoryall = Categoryall.find(params[:categoryall_id].to_i)
     	@subcontacts = categoryall.subcontacts
+   else
+	if request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactremove"
+		#subcontact = Subcontact.find(params[:subcontact_id])
+	        #categoryall = Categoryall.find(params[:categoryall_id_source]) 
+	        #render :text => subcontact.categoryalls.include?(categoryall)
+		#list_subcontacts = ""
+	      cpt = 0
+	      list_subcontacts = ""
+	    unless params[:categoryall_id_source] == "no_id"
+	      categoryall = Categoryall.find(params[:categoryall_id_source])
+	      unless params[:subcontacts].nil? || params[:subcontacts].empty? || params[:categoryall_id_source] == "no_id"
+		params[:subcontacts].each_with_index do |id, index|
+			#list_subcontacts += "#{id}-"
+			subcontact = Subcontact.find(id)
+				unless subcontact.categoryalls.include?(categoryall)
+					list_subcontacts += "#{id}"
+					cpt = cpt + 1
+					if cpt < params[:subcontacts].length
+						list_subcontacts += "-"
+					end
+				end
+		end
+	      end
+	    end
+
+		render :json => list_subcontacts
+
+		#render :text => list_subcontacts
+	end
    end
     #@subcontacts = Subcontact.all
 
@@ -50,7 +79,7 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts/1/edit
   def edit
     @subcontact = Subcontact.find(params[:id])
-   unless request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls"
+   unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls")
     @subcontact = Subcontact.find(params[:id])
     @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
     @mailstart = @categoryall.mailstart

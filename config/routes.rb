@@ -31,11 +31,13 @@ Prgmnewsletter::Application.routes.draw do
 	match "choosesubcontacts_to_categoryalls/:id/:categoryall_id/:categoryall_id_source" => "subcontacts#edit"
 	match "result_dragondropsubcontacts" => "subcontacts#index"
         match "sort" => "subcontacts#show"
+	match "subcontactsremove" => "subcontacts#index"
   end
 
   scope :module => :mail do
 	match "mailslists" => "mails#index" 
   	match "sort" => "mails#show"
+	match "mailsremove" => "mails#index"
   end
 
   root :to => "newsletters#index"

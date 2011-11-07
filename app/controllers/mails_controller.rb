@@ -9,8 +9,31 @@ class MailsController < ApplicationController
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
+      unless request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "mailsremove"
 	subcontact = Subcontact.find(params[:subcontact_id].to_i)
 	@mails = subcontact.mails
+      else
+	      cpt = 0
+	      list_mails = ""
+	    unless params[:mail_id_source] == "no_id"
+	      subcontact = Subcontact.find(params[:mail_id_source])
+	      unless params[:mails].nil? || params[:mails].empty? || params[:mail_id_source] = "no_id"
+		params[:mails].each_with_index do |id, index|
+			#list_subcontacts += "#{id}-"
+			mail = Mail.find(id)
+				unless mail.subcontacts.include?(subcontact)
+					list_mails += "#{id}"
+					cpt = cpt + 1
+					if cpt < params[:mails].length
+						list_mails += "-"
+					end
+				end
+		end
+	     end
+	   end
+
+		render :json => list_mails
+      end
   end
 
   # GET /mails/1

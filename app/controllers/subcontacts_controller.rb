@@ -108,7 +108,7 @@ class SubcontactsController < ApplicationController
   # PUT /subcontacts/1.json
   def update
 	@subcontact = Subcontact.find(params[:id])
-	unless request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}$/)[0][0]
+	unless request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}$/)[0].nil? || request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls"
     		if @subcontact.update_attributes(params[:subcontact])  
     			flash[:notice] = t("mailstarts.update.notice_success")
 

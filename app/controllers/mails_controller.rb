@@ -9,10 +9,11 @@ class MailsController < ApplicationController
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
-      unless request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "mailsremove"
+      unless (request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "mailsremove") || request.path == "/result_dragondropmails"
 	subcontact = Subcontact.find(params[:subcontact_id].to_i)
 	@mails = subcontact.mails
       else
+	  unless request.path == "/result_dragondropmails"
 	      cpt = 0
 	      list_mails = ""
 	    unless params[:mail_id_source] == "no_id"
@@ -33,6 +34,7 @@ class MailsController < ApplicationController
 	   end
 
 		render :json => list_mails
+	end
       end
   end
 
@@ -95,23 +97,28 @@ class MailsController < ApplicationController
   def update
     @mail = Mail.find(params[:id])
 
-    #respond_to do |format|
-    #  if @mail.update_attributes(params[:mail])
-    #    format.html { redirect_to @mail, :notice => 'Mail was successfully updated.' }
-    #    format.json { head :ok }
-    #  else
-    #    format.html { render :action => "edit" }
-    #    format.json { render :json => @mail.errors, :status => :unprocessable_entity }
-    #  end
-    #end
-    if @mail.update_attributes(params[:mail])
-    	flash[:notice] = t("mailstarts.update.notice_success") 
-    	params.keys.each do |k|
-		set_params(k)
-	end
-    else
+    unless request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.env["HTTP_REFERER"].scan(/^.{1,}\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts"
+       if @mail.update_attributes(params[:mail])
+    	   flash[:notice] = t("mailstarts.update.notice_success") 
+    	   params.keys.each do |k|
+		   set_params(k)
+	   end
+       else
 	flash[:notice] = t("mailstarts.update.notice_failure") 
     	respond_with(@mail)
+       end
+    else
+	     subcontact_source = @mail.subcontacts.find(params[:mail][:subcontact_id_source].to_i)
+                    subcontact_source.mails.delete(@mail) if params[:mail][:copy_cut_mail] == "cut"
+
+	     subcontact = Subcontact.find(params[:mail][:subcontact_ids].to_i)
+	           unless subcontact.mails.include?(@mail)
+		   	flash[:notice] = subcontact.mails.push(@mail) ? (params[:mail][:copy_cut_mail] == "cut" ? "Ce mail a bien été déplacé dans ce sous-contact" : "Ce mail a bien été ajouté dans ce sous-contact") : "Ce mail n'a pas été ajouté dans ce sous-contact"
+		   else
+			flash[:notice] = "Ce mail est déjà dans ce sous-contact"
+		   end
+
+		   redirect_to "/result_dragondropmails"
     end
   end
 

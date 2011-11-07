@@ -17,9 +17,10 @@
 	  </li>
 
 	  <li>
-		Déplacé cette e-mmail dans ce sous-contact : <%= f.radio_button :copy_cut_mail, "cut" %>m
+		Déplacé cette e-mmail dans ce sous-contact : <%= f.radio_button :copy_cut_mail, "cut" %>
 	  </li>
   </ul>
 
   <%= f.hidden_field(:subcontact_id_source, :value => subcontact_id_source) %>
-
+  <%= hidden_field_tag("mail[subcontact_ids]", subcontact_id) %>
+  <%= f.submit("valider", :name =>"value_mail_to_subcontact", :id=>"id_value_mail_to_subcontact") %>

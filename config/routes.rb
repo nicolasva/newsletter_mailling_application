@@ -39,6 +39,7 @@ Prgmnewsletter::Application.routes.draw do
   	match "sort" => "mails#show"
 	match "mailsremove" => "mails#index"
 	match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "mails#edit"
+	match "result_dragondropmails" => "mails#index"
   end
 
   root :to => "newsletters#index"

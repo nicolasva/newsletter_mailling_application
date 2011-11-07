@@ -131,7 +131,6 @@ class SubcontactsController < ApplicationController
 			flash[:notice] = "Ce sous-contact est déjà dans cette catégorie"
 		     end
 
-		flash[:notice] = "Ce sous-contact à bien été importé dans cette catégorie"
 		#redirect_to edit_mailstart_path(categoryall_source.mailstart)
 		redirect_to "/result_dragondropsubcontacts"
 	end

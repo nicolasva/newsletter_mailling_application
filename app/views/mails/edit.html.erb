@@ -4,6 +4,6 @@
   	
 	<%= render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f}) %>
      <% else %>
-	<%= render(:partial=>"/mails/templates_mails/form_popup_dragdrop_mails_to_subcontacts", :locals => {:f => f, :subcontact_id_source => params[:subcontact_id_source]}) %>
+	     <%= render(:partial=>"/mails/templates_mails/form_popup_dragdrop_mails_to_subcontacts", :locals => {:f => f, :subcontact_id => params[:subcontact_id], :subcontact_id_source => params[:subcontact_id_source]}) %>
      <% end %>
 <% end %>

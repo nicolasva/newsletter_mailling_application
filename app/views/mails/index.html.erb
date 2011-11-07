@@ -1,5 +1,8 @@
-<% @mails.each{ |mail| %>
+<% unless (request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "mailsremove") || request.path == "/result_dragondropmails" %>
+
+    <% @mails.each{ |mail| %>
 	<%= content_tag_for :li, mail do %>
 		<%= check_box_tag("newsletter[mail_ids][]", mail.id, (params[:newsletter_id] != "newsletter" ? mail.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "id_newsletter_mail_ids_#{mail.id}") %> <%= mail.name %> &#60;<%= mail.email %>&#62;
 	<% end %>
-<% } %>
+    <% } %>
+<% end %>

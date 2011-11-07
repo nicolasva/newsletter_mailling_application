@@ -69,7 +69,6 @@ list_menu = (choose_ul_id) ->
                                                    if compteur < longeur_ul_li
                                                           params_id_menu += "&"
             params_id_menu
-            #"subcontact[]=3"
 
 recup_id_source = (menu_ul) ->
             hash_id_source = {'subcontacts': 'categoryall_id', 'mails': 'mail_id'}
@@ -89,7 +88,6 @@ periodical_updater_ul = (menu_ul) ->
              maxTimeout: 6000,
         },
              (data) ->
-                  #alert(data.split("-"))
                   remove_ul_subcontact menu_ul,menu_ul_li for menu_ul_li in data.split("-")
                   periodical_updater_ul menu_ul for menu_ul in ["subcontacts", "mails"]
 

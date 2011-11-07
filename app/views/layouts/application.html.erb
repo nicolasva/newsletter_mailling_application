@@ -35,7 +35,7 @@
         </ul>
      </div>
 </div>
-<% unless current_user.nil? || request.path.scan(/^\/(.{1,})$/)[0][0].split("/")[0] == "choosesubcontacts_to_categoryalls" || request.path.scan(/^\/(.{1,})$/)[0][0].split("/")[0] == "choosemails_to_subcontacts" %>
+<% unless current_user.nil? || request.path.scan(/^(.{1,})$/)[0][0].split("/")[0] == "/choosesubcontacts_to_categoryalls" || request.path.scan(/^(.{1,})$/)[0][0].split("/")[0] == "choosemails_to_subcontacts" %>
      <div id='menu'>
 	<ul>
 	       <li>

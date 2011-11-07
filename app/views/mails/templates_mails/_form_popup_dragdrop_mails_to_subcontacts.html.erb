@@ -1,14 +1,3 @@
-  <% if @mail.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@mail.errors.count, "error") %> prohibited this mail from being saved:</h2>
-
-      <ul>
-      <% @mail.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <h2>Drag and drop du mail vers un sous-contact</h2>
 
   <ul>

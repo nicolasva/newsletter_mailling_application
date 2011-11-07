@@ -1,4 +1,5 @@
 <%= form_for(@subcontact) do |f| %>
+	<%= render(:partial => "/subcontacts/templates_subcontacts/notice_form_subcontacts", :locals => {:subcontact => @subcontact}) %>
 	<% unless request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosesubcontacts_to_categoryalls" %>
 	<%= render(:partial=>"form", :locals => { :f => f }) %>
 

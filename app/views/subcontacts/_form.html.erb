@@ -1,15 +1,3 @@
-  <% if @subcontact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@subcontact.errors.count, "error") %> prohibited this subcontact from being saved:</h2>
-
-      <ul>
-      <% @subcontact.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="actions">
       <div class='div_class_mailstarts_categoryalls'>
 	  <%= f.fields_for(:categoryalls, @categoryall) do |categoryall_field| %>

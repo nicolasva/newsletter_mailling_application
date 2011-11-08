@@ -52,6 +52,7 @@ remove_ul_subcontact = (menu_ul,menu_ul_li) ->
             $('#'+hash_li[menu_ul]+'_'+menu_ul_li).remove()
            
 periodical_updater_ul = (menu_ul) ->
+    if $('#'+menu_ul).length > 0
         source_value = $('#'+recup_id_source(menu_ul)).attr("value") 
         source_value = "no_id" if !source_value
         $.PeriodicalUpdater({

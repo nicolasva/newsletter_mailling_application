@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%474e586e957914780bc1e89215bcd3f2"digest"%76dbed1682db26bee4ac22e8c618f282"lengthi¼"source"¼/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%42e0302b3957f3f1e0a2b61069a45bf8"digest"%59bf17a9cc3b7e681e3318171b872d71"lengthi{¼"source"{¼/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -11303,30 +11303,32 @@ $.Autocompleter.Selection = function(field, start, end) {
   };
   periodical_updater_ul = function(menu_ul) {
     var source_value;
-    source_value = $('#' + recup_id_source(menu_ul)).attr("value");
-    if (!source_value) {
-      source_value = "no_id";
+    if ($('#' + menu_ul).length > 0) {
+      source_value = $('#' + recup_id_source(menu_ul)).attr("value");
+      if (!source_value) {
+        source_value = "no_id";
+      }
+      return $.PeriodicalUpdater({
+        url: "/" + menu_ul + "remove?" + list_menu(menu_ul) + "&" + recup_id_source(menu_ul) + "_source=" + source_value,
+        method: 'GET',
+        dataType: 'json',
+        maxTimeout: 6000
+      }, function(data) {
+        var menu_ul, menu_ul_li, _i, _j, _len, _len2, _ref, _ref2, _results;
+        _ref = data.split("-");
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          menu_ul_li = _ref[_i];
+          remove_ul_subcontact(menu_ul, menu_ul_li);
+        }
+        _ref2 = ["subcontacts", "mails"];
+        _results = [];
+        for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
+          menu_ul = _ref2[_j];
+          _results.push(periodical_updater_ul(menu_ul));
+        }
+        return _results;
+      });
     }
-    return $.PeriodicalUpdater({
-      url: "/" + menu_ul + "remove?" + list_menu(menu_ul) + "&" + recup_id_source(menu_ul) + "_source=" + source_value,
-      method: 'GET',
-      dataType: 'json',
-      maxTimeout: 6000
-    }, function(data) {
-      var menu_ul, menu_ul_li, _i, _j, _len, _len2, _ref, _ref2, _results;
-      _ref = data.split("-");
-      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-        menu_ul_li = _ref[_i];
-        remove_ul_subcontact(menu_ul, menu_ul_li);
-      }
-      _ref2 = ["subcontacts", "mails"];
-      _results = [];
-      for (_j = 0, _len2 = _ref2.length; _j < _len2; _j++) {
-        menu_ul = _ref2[_j];
-        _results.push(periodical_updater_ul(menu_ul));
-      }
-      return _results;
-    });
   };
   jQuery(function() {
     return $(document).ready(function() {
@@ -11710,4 +11712,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320676980.1888559 7
+:@created_atf1320741160.621973 Îh

@@ -1,0 +1,8 @@
+= form_for(@mail) do |f|
+ = render(:partial => "/mails/templates_mails/notice_form_mails", :locals => {:mail => @mail})
+ - unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
+  = render(:partial=>"form", :locals => { :f => f })
+  	
+  = render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f})
+ - else
+  = render(:partial=>"/mails/templates_mails/form_popup_dragdrop_mails_to_subcontacts", :locals => {:f => f, :subcontact_id => params[:subcontact_id], :subcontact_id_source => params[:subcontact_id_source]})

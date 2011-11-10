@@ -1,0 +1,27 @@
+%table{:border=>'0', :cellpadding=>'0', :cellspacing=>'0', :class=>'table_class_mailstart'}
+ %tr.tr_class_title
+  %td{:class=>'td_class_title', :id=>"id_td_class_title", :width=>'300'}
+   = Mailstart.human_attribute_name("name")    
+  %td{:class=>'title_addr_mailstarts', :width=>'300'}
+   = Mailstart.human_attribute_name("mail")
+  %td{:class=>'td_class_title_edition', :width=>'100'}
+   = t("common_link.editing")
+  %td{:class=>'td_class_title_edition_last', :width=>'100'}
+   = t("common_link.removal")
+
+%ul#mailstarts
+ - @mailstarts.each do |mailstart|
+  = content_tag_for :li, mailstart do
+   %table{:border=>'0', :cellpadding=>'0', :cellspacing=>'0', :class=>'table_class_mailstarts'}
+    %tr
+     %td{:width=>'300'}
+      = mailstart.name
+     %td{:width=>'300'}
+      = mailstart.mail
+     %td{:width=>'101'}
+      = link_to(image_tag(t("common_link.edit"), :size=>"18x18"), edit_mailstart_path(mailstart))
+     %td{:class=>'class_link_delete_mailstarts', :width=>'101'}
+      = link_to(image_tag(t("common_link.delete"), :size=>"18x18"), mailstart, :confirm => t('.confirm_destroy') , :method => :delete)
+
+%br
+= link_to(t(".new_mailstart"), new_mailstart_path)

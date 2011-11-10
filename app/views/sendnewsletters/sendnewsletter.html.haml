@@ -1,0 +1,7 @@
+%html
+ %head
+  %title
+   = @newsletter.name
+ %body
+  = @newsletter.content
+  = image_tag(formatted_cart_path("http://#{request.domain}/imgnewsletters/#{@newsletter.id}", :png)) 

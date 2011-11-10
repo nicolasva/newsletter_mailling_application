@@ -1,6 +1,0 @@
-<%= render(:partial=>"/newsletters/templates_newsletters/form_search_statistic_newsletter", :locals => {:newsletter => @newsletter, :url=> request.path == "/statistics" || request.path == "/historystatistics" ? "/historystatistics" : "/historylistnewsletter"}) %>
-<% unless request.path == "/statistics" || request.path == "/historystatistics"  %>
-	<%= render(:partial=>"/newsletters/templates_newsletters/index", :locals => {:newsletters => @newsletters}) %>
-<% else %>
-	<%= render(:partial=>"/newsletters/templates_newsletters/statistic", :locals => {:newsletters => @newsletters, :newsletters_sum => @newsletters_sum}) %>
-<% end %>

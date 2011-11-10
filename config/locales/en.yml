@@ -19,6 +19,7 @@ en:
   common_button:
      search: "Search"
      register_info_book_adress: "Register the informations of this adress book"
+     submit: "Submit"
   languages:
      title:
          en: "French"
@@ -100,9 +101,28 @@ en:
      templates_subcontacts:
         subcontacts_form:
             add_new_mail_adress: "Add new mail adress"
+     form_popup_dragdrop_subcontacts_to_categoryalls:
+            copy_subcontact_to_category: "Copy this subcontact to category"
+            cut_subcontact_to_category: "Cut this subcontact to category"
+            draganddrop_subcontact_to_categoryall: "Subcontact drag and drop to category"
+     update:
+        notice_success_subcontact_cut_category: "This subcontact was cut in this category with success"
+        notice_success_subcontact_copy_category: "This subcontact was adding in this category with success"
+        notice_failure_subcontact_not_add_category: "This subcontact was not adding in this category"
+        notice_failure_subcontact_exist_in_category: "This subcontact exist in this category"
   mails:
      edit:
        mails_list: "E-mails list" 
+     templates_mails:
+       form_popup_dragdrop_mails_to_subcontacts:
+            copy_mail_to_subcontact: "Copy this e-mail to subcontact"
+            cut_mail_to_subcontact: "Cut this e-mail to subcontact"
+            draganddrop_mail_to_subcontact: "Mail drag and drop to subcontact"
+     update:
+       notice_success_mail_cut_subcontact: "This e-mail was cut in this subcontact with success"
+       notice_success_mail_copy_subcontact: "This e-mail was adding in this subcontact with success"
+       notice_failure_mail_not_add_subcontact: "This e-mail was not add in this subcontact"
+       notice_failure_mail_exist_in_subcontact: "This e-mail exist in this subcontact"
   date:
     formats:
       default: "%d-%m-%Y"

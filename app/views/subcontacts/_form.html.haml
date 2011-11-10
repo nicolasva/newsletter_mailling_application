@@ -1,0 +1,10 @@
+.actions
+ .div_class_mailstarts_categoryalls
+  = f.fields_for(:categoryalls, @categoryall) do |categoryall_field|
+   = categoryall_field.fields_for(:mailstart, @mailstart) do |mailstart_field|
+    = render(:partial=>"/mailstarts/templates_mailstarts/mailstarts_form", :locals => {:mailstart_field => mailstart_field})
+   = render(:partial=>"/categoryalls/templates_categoryalls/categoryalls_form", :locals => {:categoryall_field => categoryall_field})
+ .div_class_subcontacts_mails
+  = render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => f})
+  = f.fields_for(:mails, @mail) do |mail_field|
+   = render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field})

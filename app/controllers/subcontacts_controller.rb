@@ -125,10 +125,10 @@ class SubcontactsController < ApplicationController
 
 		categoryall = Categoryall.find(params[:subcontact][:categoryall_ids].to_i)
 	   	     unless categoryall.subcontacts.include?(@subcontact)
-			 flash[:notice] = categoryall.subcontacts.push(@subcontact) ? (params[:subcontact][:copy_cut_subcontact] == "cut" ? "Ce sous-contact a bien été déplacé dans cette catégorie" : "Ce sous-contact a bien été ajouté dans cette catégorie") : "Ce sous-contact n'a pas été ajouté dans cette catégorie"
+			 flash[:notice] = categoryall.subcontacts.push(@subcontact) ? (params[:subcontact][:copy_cut_subcontact] == "cut" ? t("subcontacts.update.notice_success_subcontact_cut_category") : t("subcontacts.update.notice_success_subcontact_copy_category")) : t("subcontacts.update.notice_failure_subcontact_not_add_category")
 			
 		     else
-			flash[:notice] = "Ce sous-contact est déjà dans cette catégorie"
+			flash[:notice] = t("subcontacts.update.notice_failure_subcontact_exist_in_category")
 		     end
 
 		#redirect_to edit_mailstart_path(categoryall_source.mailstart)

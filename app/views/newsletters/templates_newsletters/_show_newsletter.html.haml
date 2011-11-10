@@ -1,0 +1,33 @@
+.class_all_content_newsletter
+ .class_info_contact
+  %ul
+   %li
+    = label_tag("Email de départ") 
+    %br
+    = "#{newsletter.mailstart.name}  &#60;#{newsletter.mailstart.mail}&#62;"
+
+   %li
+    = label_tag("Catégorie choisis") 
+    %br
+    = newsletter.categoryall.name
+
+   %li
+    = label_tag("Sous-contacts choisis") 
+    %ol
+     - newsletter.subcontacts.each do |subcontact|
+      = content_tag_for :li, subcontact do 
+       = subcontact.name
+
+   %li
+    = label_tag("Liste des e-mails")
+    %ol
+     - newsletter.mails.each do |mail|
+      = content_tag_for :li, mail do 
+       = "#{mail.name} &#60;#{mail.adress}&#62;"
+
+ .class_content_appercu_newsletter
+  %ul
+   %li
+    = label_tag("Apperçu du contenu de la newsletter")
+    %br
+    = newsletter.content.html_safe

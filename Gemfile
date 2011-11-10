@@ -18,6 +18,7 @@ group :assets do
 end
 
 gem "gruff"
+gem "haml-rails"
 gem "rmagick", '2.13.1'
 gem "paperclip"
 gem "ckeditor"

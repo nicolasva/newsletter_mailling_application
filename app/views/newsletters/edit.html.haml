@@ -1,0 +1,8 @@
+= form_for(@newsletter) do |f|
+ = render(:partial=>"form", :locals => {:f => f})
+ %div.div_class_submit
+  %ul
+   %li
+    = f.submit(t(".modify_this_newsletter"), :name => "modif_newsletter_not_send")
+   %li
+    = f.submit(t(".modify_newsletter_send"), :name => "modifsend_and_send_newsletter")

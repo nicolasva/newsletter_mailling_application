@@ -1,0 +1,47 @@
+- if @newsletter.errors.any?
+ #error_explanation
+  %h2
+   = "#{pluralize(@newsletter.errors.count, "error")} prohibited this newsletter from being saved:"
+
+  %ul
+   - @newsletter.errors.full_messages.each do |msg|
+    #li
+     = msg
+
+%p
+ = f.label(:mailstart_id) 
+ %br
+ = f.select(:mailstart_id, Mailstart.all.collect{ |p| [p.name, p.id] })
+
+%p
+ = f.label(:categoryall_id) 
+ %br
+ = f.select(:categoryall_id, @newsletter.nil? ? [] : Categoryall.where(:mailstart_id=>@newsletter.mailstart_id).collect{ |p| [p.name, p.id] })
+
+%p
+ = label_tag(t(".subcontactslist"))
+ %br
+ %ul#newsletter_subcontact_id
+  - unless @newsletter.categoryall.nil?
+   - @newsletter.categoryall.subcontacts.each do |subcontact|
+    - content_tag_for :li, subcontact do
+     - check_box_tag("newsletter[subcontact_ids][]", subcontact.id, @newsletter.subcontacts.include?(subcontact), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);")
+     - subcontact.name	
+%p
+ = label_tag(t(".subcontactemailslist")) 
+ %br
+ %ul.newsletter_mail_id
+  - unless @newsletter.mails.empty?
+   - @newsletter.mails.each do |mail|
+    - content_tag_for :li, mail do
+     = check_box_tag("newsletter[mail_ids][]", mail.id, @newsletter.mails.include?(mail), :id => "id_newsletter_mail_ids_#{mail.id}")
+     = mail.name
+%p
+ = f.label(:name)
+ %br
+ = f.text_field(:name)
+
+%p
+ = f.label(:content)
+ %br
+ = f.cktext_area(:content, :width => 800, :height => 800)

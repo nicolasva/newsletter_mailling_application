@@ -28,7 +28,7 @@ jQuery ->
             categoryall_id_source = $('#categoryall_id').attr("value")
             subcontact_id = ui.draggable.attr('id').split("_")[1]
             categoryall_id = $(event.target).attr("id").split("_")[1]
-            ThinBox.open("/choosesubcontacts_to_categoryalls/"+subcontact_id+"/"+categoryall_id+"/"+categoryall_id_source)
+            ThinBox.open("/choosesubcontacts_to_categoryalls/"+subcontact_id+"/"+categoryall_id+"/"+categoryall_id_source, {'width':'1270px','height':'230px'})
      })
 
 list_menu = (choose_ul_id) ->

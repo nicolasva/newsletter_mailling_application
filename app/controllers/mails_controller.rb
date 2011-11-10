@@ -113,9 +113,9 @@ class MailsController < ApplicationController
 
 	     subcontact = Subcontact.find(params[:mail][:subcontact_ids].to_i)
 	           unless subcontact.mails.include?(@mail)
-		   	flash[:notice] = subcontact.mails.push(@mail) ? (params[:mail][:copy_cut_mail] == "cut" ? "Ce mail a bien été déplacé dans ce sous-contact" : "Ce mail a bien été ajouté dans ce sous-contact") : "Ce mail n'a pas été ajouté dans ce sous-contact"
+		   	flash[:notice] = subcontact.mails.push(@mail) ? (params[:mail][:copy_cut_mail] == "cut" ? t("mails.update.notice_success_mail_cut_subcontact") : t("mails.update.notice_success_mail_copy_subcontact")) : t("mails.update.notice_failure_mail_not_add_subcontact")
 		   else
-			flash[:notice] = "Ce mail est déjà dans ce sous-contact"
+			flash[:notice] = t("mails.update.notice_failure_mail_exist_in_subcontact")
 		   end
 
 		   redirect_to "/result_dragondropmails"

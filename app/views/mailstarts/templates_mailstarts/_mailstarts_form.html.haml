@@ -1,0 +1,12 @@
+%h2
+ = t("mailstarts.edit.mails_list_start")
+%p
+ = mailstart_field.label(:name)
+ %br
+ = mailstart_field.text_field(:name)
+%p
+ = mailstart_field.label(:mail)
+ %br
+ = mailstart_field.text_field(:mail)
+%p
+ = mailstart_field.submit(t(".add_new_category"), :name=>"button_addcategoryall_#{@mailstart.id}")

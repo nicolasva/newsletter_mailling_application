@@ -1,0 +1,15 @@
+%h2
+ = t(".draganddrop_mail_to_subcontact")
+
+%ul
+ %li
+  = f.label(:copy_cut_mail, t(".copy_mail_to_subcontact"))
+  = ":"
+  = f.radio_button(:copy_cut_mail, "copy")
+ %li
+  = f.label(:copy_cut_mail, t(".cut_mail_to_subcontact"))
+  = ":"
+  = f.radio_button(:copy_cut_mail, "cut")
+= f.hidden_field(:subcontact_id_source, :value => subcontact_id_source)
+= hidden_field_tag("mail[subcontact_ids]", subcontact_id)
+= f.submit(t("common_button.submit"), :name=>"value_mail_to_subcontact", :id=>"id_value_mail_to_subcontact")

@@ -23,6 +23,7 @@ fr:
   common_button:
       search: "Rechercher"
       register_info_book_adress: "Enregistrer les informations concernant ce carnet d'adresse"
+      submit: "Valider"
   languages:
       title:
           en: "Français"
@@ -102,12 +103,33 @@ fr:
   subcontacts:
     edit:
       subcontacts_list: "Liste des sous-contacts"
+    form:
+      copy_subcontact_to_category: "Copié ce sous-contact dans cette catégorie"
     templates_subcontacts:
        subcontacts_form: 
            add_new_mail_adress: "Ajouter une nouvelle adresse e-mail"
+       form_popup_dragdrop_subcontacts_to_categoryalls:
+           copy_subcontact_to_category: "Copié ce sous-contact dans cette catégorie"
+           cut_subcontact_to_category: "Déplacé ce sous-contact dans cette catégorie"
+           draganddrop_subcontact_to_categoryall: "Drag and drop du sous-contact vers une catégorie"
+    update:
+       notice_success_subcontact_cut_category: "Ce sous-contact a bien été déplacé dans cette catégorie"
+       notice_success_subcontact_copy_category: "Ce sous-contact a bien été ajouté dans cette catégorie"
+       notice_failure_subcontact_not_add_category: "Ce sous-contact n'a pas été ajouté dans cette catégorie"
+       notice_failure_subcontact_exist_in_category: "Ce sous-contact est déjà dans cette catégorie"
   mails:
      edit:
        mails_list: "Liste des E-mails"
+     templates_mails:
+       form_popup_dragdrop_mails_to_subcontacts:
+           copy_mail_to_subcontact: "Copié cette e-mail dans ce sous-contact"
+           cut_mail_to_subcontact: "Déplacé cette e-mail dans ce sous-contact"
+           draganddrop_mail_to_subcontact: "Drag and drop du mail vers un sous-contact"
+     update:
+      notice_success_mail_cut_subcontact: "Ce mail a bien été déplacé dans ce sous-contact"
+      notice_success_mail_copy_subcontact: "Ce mail a bien été ajouté dans ce sous-contact"
+      notice_failure_mail_not_add_subcontact: "Ce mail n'a pas été ajouté dans ce sous-contact"
+      notice_failure_mail_exist_in_subcontact: "Ce mail est déjà dans ce sous-contact"
   date:
     formats:
       default: "%d/%m/%Y"

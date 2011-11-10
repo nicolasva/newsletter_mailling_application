@@ -1,4 +1,4 @@
-o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%42e0302b3957f3f1e0a2b61069a45bf8"digest"%59bf17a9cc3b7e681e3318171b872d71"lengthi{¼"source"{¼/*!
+o: ActiveSupport::Cache::Entry	:@expires_in0:@compressedF:@value{	"_version"%a94d60adae20248a1ea7b14cea7d1494"digest"%4437b43c9018f30309e494f437abf462"lengthiÇ¼"source"Ç¼/*!
  * jQuery JavaScript Library v1.6.4
  * http://jquery.com/
  *
@@ -11264,7 +11264,10 @@ $.Autocompleter.Selection = function(field, start, end) {
           categoryall_id_source = $('#categoryall_id').attr("value");
           subcontact_id = ui.draggable.attr('id').split("_")[1];
           categoryall_id = $(event.target).attr("id").split("_")[1];
-          return ThinBox.open("/choosesubcontacts_to_categoryalls/" + subcontact_id + "/" + categoryall_id + "/" + categoryall_id_source);
+          return ThinBox.open("/choosesubcontacts_to_categoryalls/" + subcontact_id + "/" + categoryall_id + "/" + categoryall_id_source, {
+            'width': '1270px',
+            'height': '230px'
+          });
         }
       });
     });
@@ -11712,4 +11715,4 @@ function subcontacts_lists(this_value) {
 	   },
         });*/
 ;
-:@created_atf1320741160.621973 Îh
+:@created_atf1320863459.060504 ßL

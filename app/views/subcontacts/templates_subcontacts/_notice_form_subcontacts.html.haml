@@ -1,0 +1,9 @@
+- if subcontact.errors.any?
+ #error_explanation
+  %h2
+   = "#{pluralize(subcontact.errors.count, "error")} prohibited this subcontact from being saved:"
+
+  %ul
+   - subcontact.errors.full_messages.each do |msg|
+    %li
+     = msg

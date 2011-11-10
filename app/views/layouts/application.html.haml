@@ -43,8 +43,8 @@
       %li
        = link_to(image_tag("newsletter_icones/deconnect_icon.png", :size=>"60x60"), destroy_user_session_path, :title=>t("common_link.logout"))
 
-    #id_content
-     = yield
+   #id_content
+    = yield
 - else
  - if request.path == "/categoryallslists" || request.path == "/subcontactslists" || request.path == "/mailslists"
   = yield

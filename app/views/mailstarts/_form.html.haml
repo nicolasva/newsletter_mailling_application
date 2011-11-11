@@ -17,5 +17,5 @@
    .div_class_subcontacts_mails
    - categoryall_field.fields_for(:subcontacts, @subcontact) do |subcontact_field|
     = render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => subcontact_field})
-    - subcontact_field.fields_for(:mails, @mail) do |mail_field|
-     = render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field=>mail_field})
+    - subcontact_field.fields_for(:emails, @email) do |email_field|
+     = render(:partial=>"/emails/templates_mails/emails_form", :locals => {:email_field=>email_field})

@@ -117,11 +117,11 @@ fr:
        notice_success_subcontact_copy_category: "Ce sous-contact a bien été ajouté dans cette catégorie"
        notice_failure_subcontact_not_add_category: "Ce sous-contact n'a pas été ajouté dans cette catégorie"
        notice_failure_subcontact_exist_in_category: "Ce sous-contact est déjà dans cette catégorie"
-  mails:
+  emails:
      edit:
        mails_list: "Liste des E-mails"
-     templates_mails:
-       form_popup_dragdrop_mails_to_subcontacts:
+     templates_emails:
+       form_popup_dragdrop_emails_to_subcontacts:
            copy_mail_to_subcontact: "Copié cette e-mail dans ce sous-contact"
            cut_mail_to_subcontact: "Déplacé cette e-mail dans ce sous-contact"
            draganddrop_mail_to_subcontact: "Drag and drop du mail vers un sous-contact"
@@ -393,7 +393,7 @@ fr:
         user: "Utilisateur"
         mailstart: "Mail de départ"
         categoryall: "Catégorie"
-        mail: "E-mail"
+        email: "E-mail"
         newsletter: "Newsletter"
         subcontact: "Sous-Contact"
     attributes:
@@ -415,12 +415,12 @@ fr:
         mailstart:
           name: "Nom du mail de départ"
           mail: "Adresse E-mail de départ"
-        mail:
+        email:
           name: "Nom de la personne"
           adress: "Adresse de la personne"
           cppostal: "Code postal"
           tel: "Numéro de téléphone"
-          email: "Adresse E-mail"
+          addr_email: "Adresse E-mail"
         categoryall:
           name: "Nom de la catégorie"
     errors:

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111104130306) do
+ActiveRecord::Schema.define(:version => 20111111214538) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
@@ -44,29 +44,32 @@ ActiveRecord::Schema.define(:version => 20111104130306) do
   add_index "ckeditor_assets", ["assetable_type", "assetable_id"], :name => "idx_ckeditor_assetable"
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
-  create_table "mails", :force => true do |t|
+  create_table "emails", :force => true do |t|
     t.string   "name"
     t.string   "adress"
     t.string   "cppostal"
     t.string   "tel"
-    t.string   "email"
+    t.string   "addr_email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "position"
   end
 
-  create_table "mails_newsletters", :id => false, :force => true do |t|
+  create_table "emails_newsletters", :id => false, :force => true do |t|
     t.integer "newsletter_id", :null => false
-    t.integer "mail_id",       :null => false
+    t.integer "email_id",      :null => false
   end
 
-  create_table "mails_subcontacts", :id => false, :force => true do |t|
+  add_index "emails_newsletters", ["email_id"], :name => "emails_newsletters_email_id"
+  add_index "emails_newsletters", ["newsletter_id"], :name => "emails_newsletters_newsletter_id"
+
+  create_table "emails_subcontacts", :id => false, :force => true do |t|
     t.integer "subcontact_id", :null => false
-    t.integer "mail_id",       :null => false
+    t.integer "email_id",      :null => false
   end
 
-  add_index "mails_subcontacts", ["mail_id"], :name => "mails_subcontacts_mail_id_to_mails"
-  add_index "mails_subcontacts", ["subcontact_id"], :name => "mails_subcontacts_subcontact_id_to_subcontacts"
+  add_index "emails_subcontacts", ["email_id"], :name => "emails_subcontacts_email_id_to_mails"
+  add_index "emails_subcontacts", ["subcontact_id"], :name => "emails_subcontacts_subcontact_id_to_subcontacts"
 
   create_table "mailstarts", :force => true do |t|
     t.string   "name",       :default => ""

@@ -34,12 +34,12 @@ Prgmnewsletter::Application.routes.draw do
 	match "subcontactsremove" => "subcontacts#index"
   end
 
-  scope :module => :mail do
-	match "mailslists" => "mails#index" 
-  	match "sort" => "mails#show"
-	match "mailsremove" => "mails#index"
-	match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "mails#edit"
-	match "result_dragondropmails" => "mails#index"
+  scope :module => :email do
+	match "mailslists" => "emails#index" 
+  	match "sort" => "emails#show"
+	match "mailsremove" => "emails#index"
+	match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "emails#edit"
+	match "result_dragondropmails" => "emails#index"
   end
 
   root :to => "newsletters#index"
@@ -50,7 +50,7 @@ Prgmnewsletter::Application.routes.draw do
 			collection do 
 				resources :subcontacts do
 					collection do
-						resources :mails do 
+						resources :emails do 
 						end
 					end
 				end

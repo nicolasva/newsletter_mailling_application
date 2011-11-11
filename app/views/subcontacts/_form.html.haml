@@ -6,5 +6,5 @@
    = render(:partial=>"/categoryalls/templates_categoryalls/categoryalls_form", :locals => {:categoryall_field => categoryall_field})
  .div_class_subcontacts_mails
   = render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => f})
-  = f.fields_for(:mails, @mail) do |mail_field|
-   = render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field})
+  = f.fields_for(:emails, @email) do |email_field|
+   = render(:partial=>"/emails/templates_mails/emails_form", :locals => {:email_field => email_field})

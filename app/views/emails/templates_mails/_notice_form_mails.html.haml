@@ -1,0 +1,9 @@
+- if email.errors.any?
+ #error_explanation
+  %h2
+   = "#{pluralize(email.errors.count, "error")} prohibited this mail from being saved:"
+  %ul
+   - email.errors.full.messages.each do |msg|
+    %li
+     = msg
+

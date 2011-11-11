@@ -30,6 +30,7 @@ group :test do
 	gem "capybara" 
 	gem "thor"
 	gem "guard-rspec"
+        gem "nokogiri"
 end
 
 gem 'jquery-rails'

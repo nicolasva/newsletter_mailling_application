@@ -17,6 +17,6 @@
  .div_class_subcontacts_mails
   = f.fields_for(:subcontacts, @subcontact) do |subcontact_field|
    = render(:partial=>"/subcontacts/templates_subcontacts/subcontacts_form", :locals => {:subcontact_field => subcontact_field})
-   - unless @mail.nil?
-    = subcontact_field.fields_for(:mail, @mail) do |mail_field|
-     = render(:partial=>"/mails/templates_mails/mails_form", :locals => {:mail_field => mail_field})
+   - unless @email.nil?
+    = subcontact_field.fields_for(:email, @email) do |email_field|
+     = render(:partial=>"/emails/templates_mails/emails_form", :locals => {:email_field => email_field})

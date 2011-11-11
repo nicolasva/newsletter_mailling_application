@@ -26,5 +26,6 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
-  config.infer_base_class_for_anonymous_controllers = false
+  
+  #config.infer_base_class_for_anonymous_controllers = false
 end

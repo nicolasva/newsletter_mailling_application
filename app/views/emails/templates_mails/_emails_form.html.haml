@@ -1,0 +1,33 @@
+%h2
+ = t("emails.edit.mails_list")
+.class_list_edit_button
+ %ul#mails
+  - @subcontact.emails.order(:position).each do |email|
+   = content_tag_for :li, email do
+    = email_field.submit(email.name, :name=>"#{@subcontact.id}-#{@categoryall.id}_mail_#{email.id}")
+    = email_field.submit("x", :name=>"button_supmail_#{email.id}", :class=>"class_button_delete_right")
+
+= email_field.hidden_field(:id, :id=>"email_id")
+%p
+ = email_field.label(:name)
+ %br
+ = email_field.text_field(:name)
+%p
+ = email_field.label(:adress)
+ %br
+ = email_field.text_field(:adress)
+
+%p
+ = email_field.label(:cppostal)
+ %br
+ = email_field.text_field(:cppostal)
+
+%p
+ = email_field.label(:tel)
+ %br
+ = email_field.text_field(:tel)
+%p
+ = email_field.label(:addr_email)
+ %br
+ = email_field.text_field(:addr_email)
+

@@ -2,7 +2,7 @@ class Newsletter < ActiveRecord::Base
 	attr_accessor :date_specification, :created_on
 	attr_accessible :name, :mailadd, :content
 	#attr_accessor :categoryall_id, :subcontact_id
-	has_and_belongs_to_many :mails
+	has_and_belongs_to_many :emails
 	has_and_belongs_to_many :subcontacts
 	belongs_to :mailstart
 	belongs_to :categoryall

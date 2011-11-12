@@ -9,9 +9,15 @@ describe "Newsletters" do
     #end
   #end
   it "list all newsletter" do 
-    user = Factory(:user)
-    newsletter = Factory(:newsletter)
-    visit newsletters_path
-    #select "03/10/2011", :from => "Crée le" 
+    	user = Factory(:user)
+    	newsletter = Factory(:newsletter)
+  	visit newsletters_path
+    	#select "03/10/2011", :from => "Crée le" 
   end
+
+  #it "show newsletter" do 
+  #	user = Factory(:user)
+  #	newsletter = Factory(:newsletter)
+  #	visit newsletter
+  #end
 end

@@ -21,9 +21,9 @@
    %li
     = label_tag("Liste des e-mails")
     %ol
-     - newsletter.mails.each do |mail|
-      = content_tag_for :li, mail do 
-       = "#{mail.name} &#60;#{mail.adress}&#62;"
+     - newsletter.emails.each do |email|
+      = content_tag_for :li, email do 
+       = "#{email.name} &#60;#{email.adress}&#62;"
 
  .class_content_appercu_newsletter
   %ul

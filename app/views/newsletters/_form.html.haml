@@ -31,11 +31,11 @@
  = label_tag(t(".subcontactemailslist")) 
  %br
  %ul.newsletter_mail_id
-  - unless @newsletter.mails.empty?
-   - @newsletter.mails.each do |mail|
-    - content_tag_for :li, mail do
-     = check_box_tag("newsletter[mail_ids][]", mail.id, @newsletter.mails.include?(mail), :id => "id_newsletter_mail_ids_#{mail.id}")
-     = mail.name
+  - unless @newsletter.emails.empty?
+   - @newsletter.emails.each do |email|
+    - content_tag_for :li, email do
+     = check_box_tag("newsletter[mail_ids][]", email.id, @newsletter.emails.include?(email), :id => "id_newsletter_mail_ids_#{email.id}")
+     = email.name
 %p
  = f.label(:name)
  %br

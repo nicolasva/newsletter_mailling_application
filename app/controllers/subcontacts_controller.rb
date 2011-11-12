@@ -3,7 +3,7 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts.json
   respond_to :html, :json
   def index
-   unless request.path == "/result_dragondropsubcontacts" || (request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactsremove")
+   unless request.path == "/result_dragondropsubcontacts" || request.path.split("/")[1] == "subcontactsremove"
     	categoryall = Categoryall.find(params[:categoryall_id].to_i)
     	@subcontacts = categoryall.subcontacts
    else

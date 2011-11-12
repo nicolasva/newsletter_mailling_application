@@ -9,9 +9,9 @@ class EmailsController < ApplicationController
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
-      unless (request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "mailsremove") || request.path == "/result_dragondropmails"
+      unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails"
 	subcontact = Subcontact.find(params[:subcontact_id].to_i)
-	@mails = subcontact.emails
+	@emails = subcontact.emails
       else
 	  unless request.path == "/result_dragondropmails"
 	      cpt = 0

@@ -30,7 +30,7 @@
 %p
  = label_tag(t(".subcontactemailslist")) 
  %br
- %ul.newsletter_mail_id
+ %ul#newsletter_mail_id
   - unless @newsletter.emails.empty?
    - @newsletter.emails.each do |email|
     - content_tag_for :li, email do

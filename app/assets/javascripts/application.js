@@ -46,7 +46,7 @@ function functionlistmail(this_value) {
 function emails_lists(subcontact_id) {
 	//alert("nicolas test");
 	$.ajax({
-		url: "/javascripts/mails_lists",
+		url: "/mailslists",
 		type: "POST",
 		data: {subcontact_id: subcontact_id, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
 		dataType: "html",

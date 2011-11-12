@@ -7,7 +7,6 @@ FactoryGirl.define do
 		#	email.subcontact.save
 		#	email.newsletter.save
 		#end
-		association :newsletter
 		name "VANDENBOGAERDE Nicolas"
 		adress "30 Rue François Arago"
 		cppostal "93500"

@@ -1,11 +1,18 @@
 require 'spec_helper'
 
 describe "Mailstarts" do
-  describe "GET /mailstarts" do
-    it "works! (now write some real specs)" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
-      get mailstarts_path
-      response.status.should be(200)
-    end
-  end
+	before(:each) do
+		login_user
+		@mailstart = Factory(:mailstart)
+	end
+
+	it "list all mailstarts" do
+	      visit mailstarts_path
+	      page.should have_content("Nom du mail de départ")
+	      page.should have_link("Creer un nouveau carnet d'adresse", :href => new_mailstart_path)
+	end
+
+	it "edit mailstart" do
+	      visit edit_mailstart_path(@mailstart)
+	end
 end

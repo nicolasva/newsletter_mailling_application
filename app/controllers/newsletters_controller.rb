@@ -72,7 +72,7 @@ class NewslettersController < ApplicationController
  		if k.split("_").length-1 == 3
 			case k.split("_")[0]
 				when "registersend" 
-					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter).deliver
+					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
 					flash[:notice] = t "newsletters.create.notice_success_sendind" 
 				when "register"
 					flash[:notice] = t "newsletters.create.notice_success" 
@@ -110,7 +110,7 @@ class NewslettersController < ApplicationController
  		if k.split("_").length-1 == 3
 			case k.split("_")[0]
 				when "modifsend"	
-					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter).deliver
+					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
 					flash[:notice] = t("newsletters.update.notice_success_sendind") 
 				when "modif"
 					flash[:notice] = t("newsletters.update.notice_success") 

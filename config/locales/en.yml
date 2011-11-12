@@ -31,6 +31,9 @@ en:
          fr: "languages/anglais.png"
          en: "languages/francais.png"
   newsletters:
+     templates_newsletters:
+        index:
+         show_newsletter: "Show the newsletter"
      new:
         title: "New newsletter"
         register_newsletter: "Register this newsletter"
@@ -40,7 +43,6 @@ en:
         subcontactemailslist: "E-mail list subcontact's"
      index:
         title: "Newsletters lists"
-        show_newsletter: "Show the newsletter"
         historylistnewsletter:
              notice_start_date_less_end_date: "The start date must be less than the end date"
              notice_search_select_date_name: "For your search you must select a date or the name of a newsletter"

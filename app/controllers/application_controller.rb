@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 		      email = subcontact.emails.new(:name=>"mail_#{maximum_mail}", :addr_email=>"adress_#{maximum_mail}@domain.com", :adress=>"adress_#{maximum_mail}", :cppostal=>maximum_mail, :tel=>"tel_#{maximum_mail}")
 		      email.save
 		      email.subcontacts.push(subcontact)
-		      redirect_to edit_mail_path(email)
+		      redirect_to edit_email_path(email)
 		     when "supmail"
 		      email_id = params.split("_")[params.split("_").length-1]
 		      email = Email.find(mail_id)

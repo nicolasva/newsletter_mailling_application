@@ -4,4 +4,4 @@
    = @newsletter.name
  %body
   = @newsletter.content
-  = image_tag(formatted_cart_path("http://#{request.domain}/imgnewsletters/#{@newsletter.id}", :png)) 
+  = image_tag("http://#{@domain}/imgnewsletters/#{@newsletter.id}.png") 

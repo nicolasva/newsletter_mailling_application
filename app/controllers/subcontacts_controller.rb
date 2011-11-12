@@ -83,7 +83,7 @@ class SubcontactsController < ApplicationController
     @subcontact = Subcontact.find(params[:id])
     @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
     @mailstart = @categoryall.mailstart
-    @email = @subcontact.emails.nil? ? "" : @subcontact.emails.first
+    @email =  @subcontact.emails.nil? ? "" : @subcontact.emails.first
    end
     respond_with(@subcontact)
   end

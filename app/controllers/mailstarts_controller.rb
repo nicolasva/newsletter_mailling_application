@@ -43,7 +43,7 @@ class MailstartsController < ApplicationController
     @mailstart = Mailstart.find(params[:id])
     @categoryall = @mailstart.categoryalls.nil? ? "" : @mailstart.categoryalls.first
     @subcontact = @categoryall.nil? || @categoryall.subcontacts.nil? ? "" : @categoryall.subcontacts.first
-    @email = @subcontact.nil? || @subcontact.emails.nil? ? "" : @subcontact.emails.first
+    @email = @subcontact.nil? || @subcontact == "" || @subcontact.emails.nil? ? "" : @subcontact.emails.first
     respond_with @mailstart
   end
 

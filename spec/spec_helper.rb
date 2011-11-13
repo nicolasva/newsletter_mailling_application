@@ -19,7 +19,7 @@ RSpec.configure do |config|
   config.mock_with :rspec
   config.include Devise::TestHelpers, :type => :controller
   config.include RequestMacros
-
+  config.include FlashNotice 
   config.before(:each) do
     I18n.locale = :fr
   end

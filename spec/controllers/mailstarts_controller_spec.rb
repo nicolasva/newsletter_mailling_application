@@ -23,135 +23,38 @@ describe MailstartsController do
   # This should return the minimal set of attributes required to create a valid
   # Mailstart. As you add validations to Mailstart, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {}
+  #def valid_attributes
+  #  {}
+  #end
+ 
+  before(:each) do 
+  	#@request.env["devise.mapping"] = Devise.mappings[:user]
+	#user = Factory.create(:user)
+	#user.confirm!
+	#sign_in user
+      	@mailstart = Factory.create(:mailstart)
+	login_user
   end
 
-  describe "GET index" do
-    it "assigns all mailstarts as @mailstarts" do
-      mailstart = Mailstart.create! valid_attributes
-      get :index
-      assigns(:mailstarts).should eq([mailstart])
-    end
+  describe "#create" do
+  	it "new" do
+	    expect {
+	       post :new
+	    }
+	end
   end
 
-  describe "GET show" do
-    it "assigns the requested mailstart as @mailstart" do
-      mailstart = Mailstart.create! valid_attributes
-      get :show, :id => mailstart.id.to_s
-      assigns(:mailstart).should eq(mailstart)
-    end
+  describe "#destroy" do
+      it "redirects back after destroy" do
+      	delete :destroy, :id => @mailstart.id
+	response.should be_redirect
+      end
   end
 
-  describe "GET new" do
-    it "assigns a new mailstart as @mailstart" do
-      get :new
-      assigns(:mailstart).should be_a_new(Mailstart)
-    end
+  describe "#edit" do
+      it "edit mailstart" do
+      	  get 'edit', :id => @mailstart.id
+	  response.status.should == 302
+      end
   end
-
-  describe "GET edit" do
-    it "assigns the requested mailstart as @mailstart" do
-      mailstart = Mailstart.create! valid_attributes
-      get :edit, :id => mailstart.id.to_s
-      assigns(:mailstart).should eq(mailstart)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Mailstart" do
-        expect {
-          post :create, :mailstart => valid_attributes
-        }.to change(Mailstart, :count).by(1)
-      end
-
-      it "assigns a newly created mailstart as @mailstart" do
-        post :create, :mailstart => valid_attributes
-        assigns(:mailstart).should be_a(Mailstart)
-        assigns(:mailstart).should be_persisted
-      end
-
-      it "redirects to the created mailstart" do
-        post :create, :mailstart => valid_attributes
-        response.should redirect_to(Mailstart.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved mailstart as @mailstart" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mailstart.any_instance.stub(:save).and_return(false)
-        post :create, :mailstart => {}
-        assigns(:mailstart).should be_a_new(Mailstart)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mailstart.any_instance.stub(:save).and_return(false)
-        post :create, :mailstart => {}
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested mailstart" do
-        mailstart = Mailstart.create! valid_attributes
-        # Assuming there are no other mailstarts in the database, this
-        # specifies that the Mailstart created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Mailstart.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => mailstart.id, :mailstart => {'these' => 'params'}
-      end
-
-      it "assigns the requested mailstart as @mailstart" do
-        mailstart = Mailstart.create! valid_attributes
-        put :update, :id => mailstart.id, :mailstart => valid_attributes
-        assigns(:mailstart).should eq(mailstart)
-      end
-
-      it "redirects to the mailstart" do
-        mailstart = Mailstart.create! valid_attributes
-        put :update, :id => mailstart.id, :mailstart => valid_attributes
-        response.should redirect_to(mailstart)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the mailstart as @mailstart" do
-        mailstart = Mailstart.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mailstart.any_instance.stub(:save).and_return(false)
-        put :update, :id => mailstart.id.to_s, :mailstart => {}
-        assigns(:mailstart).should eq(mailstart)
-      end
-
-      it "re-renders the 'edit' template" do
-        mailstart = Mailstart.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Mailstart.any_instance.stub(:save).and_return(false)
-        put :update, :id => mailstart.id.to_s, :mailstart => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested mailstart" do
-      mailstart = Mailstart.create! valid_attributes
-      expect {
-        delete :destroy, :id => mailstart.id.to_s
-      }.to change(Mailstart, :count).by(-1)
-    end
-
-    it "redirects to the mailstarts list" do
-      mailstart = Mailstart.create! valid_attributes
-      delete :destroy, :id => mailstart.id.to_s
-      response.should redirect_to(mailstarts_url)
-    end
-  end
-
 end

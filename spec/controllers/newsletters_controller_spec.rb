@@ -23,135 +23,30 @@ describe NewslettersController do
   # This should return the minimal set of attributes required to create a valid
   # Newsletter. As you add validations to Newsletter, be sure to
   # update the return value of this method accordingly.
-  def valid_attributes
-    {}
+
+  before(:each) do
+	@mailstart = Factory.create(:mailstart)
+        @categoryall = Factory.create(:categoryall)
+	@subcontact = Factory.create(:subcontact)
+	login_user
   end
 
-  describe "GET index" do
-    it "assigns all newsletters as @newsletters" do
-      newsletter = Newsletter.create! valid_attributes
-      get :index
-      assigns(:newsletters).should eq([newsletter])
-    end
-  end
+  describe "#create" do
+	before(:each) do 
+  	      @newsletter = Factory(:newsletter)
+	end
 
-  describe "GET show" do
-    it "assigns the requested newsletter as @newsletter" do
-      newsletter = Newsletter.create! valid_attributes
-      get :show, :id => newsletter.id.to_s
-      assigns(:newsletter).should eq(newsletter)
-    end
-  end
+  	it "new and save newsletter" do
+		@params = { :newsletter => { :name => "test nicolas", :categoryall_id => @categoryall.id, :mailstart_id => @mailstart.id, :subcontact_ids => [@subcontact.id], :mail_ids=>[1], :content => "test newsletter"}, :register_newsletter_not_send => "Enregistrer cette newsletter"}
+	    	#expect {
 
-  describe "GET new" do
-    it "assigns a new newsletter as @newsletter" do
-      get :new
-      assigns(:newsletter).should be_a_new(Newsletter)
-    end
-  end
-
-  describe "GET edit" do
-    it "assigns the requested newsletter as @newsletter" do
-      newsletter = Newsletter.create! valid_attributes
-      get :edit, :id => newsletter.id.to_s
-      assigns(:newsletter).should eq(newsletter)
-    end
-  end
-
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Newsletter" do
-        expect {
-          post :create, :newsletter => valid_attributes
-        }.to change(Newsletter, :count).by(1)
-      end
-
-      it "assigns a newly created newsletter as @newsletter" do
-        post :create, :newsletter => valid_attributes
-        assigns(:newsletter).should be_a(Newsletter)
-        assigns(:newsletter).should be_persisted
-      end
-
-      it "redirects to the created newsletter" do
-        post :create, :newsletter => valid_attributes
-        response.should redirect_to(Newsletter.last)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved newsletter as @newsletter" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Newsletter.any_instance.stub(:save).and_return(false)
-        post :create, :newsletter => {}
-        assigns(:newsletter).should be_a_new(Newsletter)
-      end
-
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Newsletter.any_instance.stub(:save).and_return(false)
-        post :create, :newsletter => {}
-        response.should render_template("new")
-      end
-    end
-  end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested newsletter" do
-        newsletter = Newsletter.create! valid_attributes
-        # Assuming there are no other newsletters in the database, this
-        # specifies that the Newsletter created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Newsletter.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => newsletter.id, :newsletter => {'these' => 'params'}
-      end
-
-      it "assigns the requested newsletter as @newsletter" do
-        newsletter = Newsletter.create! valid_attributes
-        put :update, :id => newsletter.id, :newsletter => valid_attributes
-        assigns(:newsletter).should eq(newsletter)
-      end
-
-      it "redirects to the newsletter" do
-        newsletter = Newsletter.create! valid_attributes
-        put :update, :id => newsletter.id, :newsletter => valid_attributes
-        response.should redirect_to(newsletter)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the newsletter as @newsletter" do
-        newsletter = Newsletter.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Newsletter.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter.id.to_s, :newsletter => {}
-        assigns(:newsletter).should eq(newsletter)
-      end
-
-      it "re-renders the 'edit' template" do
-        newsletter = Newsletter.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Newsletter.any_instance.stub(:save).and_return(false)
-        put :update, :id => newsletter.id.to_s, :newsletter => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested newsletter" do
-      newsletter = Newsletter.create! valid_attributes
-      expect {
-        delete :destroy, :id => newsletter.id.to_s
-      }.to change(Newsletter, :count).by(-1)
-    end
-
-    it "redirects to the newsletters list" do
-      newsletter = Newsletter.create! valid_attributes
-      delete :destroy, :id => newsletter.id.to_s
-      response.should redirect_to(newsletters_url)
-    end
+	    	#}
+		lambda {
+		  post :create, @params
+		}
+		response.code.should == '200'
+		response.should be_success
+	end
   end
 
 end

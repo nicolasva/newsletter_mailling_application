@@ -111,7 +111,7 @@ class EmailsController < ApplicationController
 	     subcontact_source = @email.subcontacts.find(params[:email][:subcontact_id_source].to_i)
                     subcontact_source.emails.delete(@email) if params[:email][:copy_cut_mail] == "cut"
 
-	     subcontact = Subcontact.find(params[:email][:subcontact_ids].to_i)
+	     subcontact = Subcontact.find(params[:email][:subcontact_id_origin].to_i)
 	           unless subcontact.emails.include?(@email)
 		   	flash[:notice] = subcontact.emails.push(@email) ? (params[:email][:copy_cut_mail] == "cut" ? t("emails.update.notice_success_mail_cut_subcontact") : t("emails.update.notice_success_mail_copy_subcontact")) : t("emails.update.notice_failure_mail_not_add_subcontact")
 		   else

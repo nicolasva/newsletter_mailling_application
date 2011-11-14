@@ -33,5 +33,5 @@ jQuery ->
               subcontact_id_source = $('#subcontact_id').attr("value")
               mail_id = ui.draggable.attr('id').split("_")[1]
               subcontact_id = $(event.target).attr("id").split("_")[1]
-              ThinBox.open("/choosemails_to_subcontacts/"+mail_id+"/"+subcontact_id+"/"+subcontact_id_source)
+              ThinBox.open("/choosemails_to_subcontacts/"+mail_id+"/"+subcontact_id+"/"+subcontact_id_source, {'width':'1270px','height':'230px'})
        })

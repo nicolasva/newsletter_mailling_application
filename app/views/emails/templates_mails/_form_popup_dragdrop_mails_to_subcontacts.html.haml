@@ -11,5 +11,5 @@
   = ":"
   = f.radio_button(:copy_cut_mail, "cut")
 = f.hidden_field(:subcontact_id_source, :value => subcontact_id_source)
-= hidden_field_tag("mail[subcontact_ids]", subcontact_id)
+= f.hidden_field(:subcontact_id_origin, :value => subcontact_id)
 = f.submit(t("common_button.submit"), :name=>"value_mail_to_subcontact", :id=>"id_value_mail_to_subcontact")

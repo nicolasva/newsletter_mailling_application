@@ -122,8 +122,8 @@ fr:
   emails:
      edit:
        mails_list: "Liste des E-mails"
-     templates_emails:
-       form_popup_dragdrop_emails_to_subcontacts:
+     templates_mails:
+       form_popup_dragdrop_mails_to_subcontacts:
            copy_mail_to_subcontact: "Copié cette e-mail dans ce sous-contact"
            cut_mail_to_subcontact: "Déplacé cette e-mail dans ce sous-contact"
            draganddrop_mail_to_subcontact: "Drag and drop du mail vers un sous-contact"

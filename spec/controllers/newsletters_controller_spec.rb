@@ -44,9 +44,26 @@ describe NewslettersController do
 		lambda {
 		  post :create, @params
 		}
-		response.code.should == '200'
 		response.should be_success
 	end
   end
 
+  describe "#edit" do
+	  before(:each) do
+	  	@newsletter = Factory.create(:newsletter)
+	  end
+
+	  it "edit and save newsletter" do
+	      @params = { :id=>@newsletter.id, :newsletter => { :name => @newsletter.name, :categoryall_id => @categoryall.id, :mailstart_id => @mailstart.id, :subcontact_ids => [@subcontact.id], :mail_ids=>[1], :content => @newsletter.content}, :modif_newsletter_not_send => "Modifier cette newsletter"}
+	      put :update, @params
+	      flash.should_not be_empty
+	      response.should be_redirect
+	  end
+  end
+
+  describe "#index" do
+  	it "index newsletter" do
+		get :index
+	end
+  end
 end

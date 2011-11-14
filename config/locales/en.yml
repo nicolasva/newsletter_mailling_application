@@ -112,7 +112,7 @@ en:
         notice_success_subcontact_copy_category: "This subcontact was adding in this category with success"
         notice_failure_subcontact_not_add_category: "This subcontact was not adding in this category"
         notice_failure_subcontact_exist_in_category: "This subcontact exist in this category"
-  mails:
+  emails:
      edit:
        mails_list: "E-mails list" 
      templates_mails:

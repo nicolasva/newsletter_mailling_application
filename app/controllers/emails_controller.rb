@@ -108,14 +108,14 @@ class EmailsController < ApplicationController
     	respond_with(@email)
        end
     else
-	     subcontact_source = @email.subcontacts.find(params[:mail][:subcontact_id_source].to_i)
-                    subcontact_source.mails.delete(@email) if params[:mail][:copy_cut_mail] == "cut"
+	     subcontact_source = @email.subcontacts.find(params[:email][:subcontact_id_source].to_i)
+                    subcontact_source.emails.delete(@email) if params[:email][:copy_cut_mail] == "cut"
 
-	     subcontact = Subcontact.find(params[:mail][:subcontact_ids].to_i)
-	           unless subcontact.mails.include?(@email)
-		   	flash[:notice] = subcontact.mails.push(@email) ? (params[:mail][:copy_cut_mail] == "cut" ? t("mails.update.notice_success_mail_cut_subcontact") : t("mails.update.notice_success_mail_copy_subcontact")) : t("mails.update.notice_failure_mail_not_add_subcontact")
+	     subcontact = Subcontact.find(params[:email][:subcontact_ids].to_i)
+	           unless subcontact.emails.include?(@email)
+		   	flash[:notice] = subcontact.emails.push(@email) ? (params[:email][:copy_cut_mail] == "cut" ? t("emails.update.notice_success_mail_cut_subcontact") : t("emails.update.notice_success_mail_copy_subcontact")) : t("emails.update.notice_failure_mail_not_add_subcontact")
 		   else
-			flash[:notice] = t("mails.update.notice_failure_mail_exist_in_subcontact")
+			flash[:notice] = t("emails.update.notice_failure_mail_exist_in_subcontact")
 		   end
 
 		   redirect_to "/result_dragondropmails"

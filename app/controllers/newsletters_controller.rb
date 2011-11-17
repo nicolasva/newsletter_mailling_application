@@ -92,7 +92,7 @@ class NewslettersController < ApplicationController
   # PUT /newsletters/1.json
   def update
     params[:newsletter][:subcontact_ids] ||= []
-    params[:newsletter][:mail_ids] ||= []
+    params[:newsletter][:email_ids] ||= []
     @newsletter = Newsletter.find(params[:id])
 
     #respond_to do |format|

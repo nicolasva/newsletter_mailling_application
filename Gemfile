@@ -17,6 +17,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "geokit-rails3"
 gem "gruff"
 gem "haml-rails"
 gem "rmagick", '2.13.1'

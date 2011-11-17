@@ -6,7 +6,13 @@ Prgmnewsletter::Application.routes.draw do
   resources :newsletters do 
   	collection do
 		get :language
+		resources :statistics
 	end
+  end
+
+  scope :module => :statistic do
+  	match "newsletter/:newsletter_id/statistic" => "statistics#show"
+	match "newsletter/statistic/pixelstatistic/:newsletter_id" => "statistics#create"
   end
 
   scope :module => :newsletter do 

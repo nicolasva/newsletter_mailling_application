@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111111214538) do
+ActiveRecord::Schema.define(:version => 20111114133431) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
@@ -102,6 +102,14 @@ ActiveRecord::Schema.define(:version => 20111111214538) do
 
   add_index "newsletters_subcontacts", ["newsletter_id"], :name => "newsletters_subcontacts_newsletter_id_to_subcontacts"
   add_index "newsletters_subcontacts", ["subcontact_id"], :name => "newsletters_subcontacts_subcontact_id_to_subcontacts"
+
+  create_table "statistics", :force => true do |t|
+    t.string  "ip",            :default => "", :null => false
+    t.string  "localization",  :default => "", :null => false
+    t.integer "newsletter_id",                 :null => false
+  end
+
+  add_index "statistics", ["newsletter_id"], :name => "statistics_newsletter_id_to_newsletters"
 
   create_table "subcontacts", :force => true do |t|
     t.string   "name",       :null => false

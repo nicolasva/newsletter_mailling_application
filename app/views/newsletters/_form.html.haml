@@ -34,7 +34,7 @@
   - unless @newsletter.emails.empty?
    - @newsletter.emails.each do |email|
     - content_tag_for :li, email do
-     = check_box_tag("newsletter[mail_ids][]", email.id, @newsletter.emails.include?(email), :id => "id_newsletter_mail_ids_#{email.id}")
+     = check_box_tag("newsletter[email_ids][]", email.id, @newsletter.emails.include?(email), :id => "id_newsletter_mail_ids_#{email.id}")
      = email.name
 %p
  = f.label(:name)

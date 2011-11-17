@@ -62,7 +62,7 @@ module ApplicationHelper
 	end
 
 	def get_link_url_newsletter_statistic(controller_name,action_name)		
-		return controller_name == "newsletters" && action_name == "statistics" ? image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60") : link_to(image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60"), "/statistics", :title=>get_title_newsletter("newsletters","statistics"))
+		return controller_name == "newsletters" && action_name == "statistics" ? image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60") : link_to(image_tag("newsletter_icones/statistic_icon.jpg", :size=>"60x60"), statistics_path, :title=>get_title_newsletter("newsletters","statistics"))
 	end
 
 end

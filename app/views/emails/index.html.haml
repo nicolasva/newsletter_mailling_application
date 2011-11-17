@@ -1,5 +1,5 @@
 - unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails"
  - @emails.each do |email|
   = content_tag_for :li, email do
-   = check_box_tag("newsletter[mail_ids][]", email.id, (params[:newsletter_id] != "newsletter" ? email.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "id_newsletter_mail_ids_#{email.id}") 
+   = check_box_tag("newsletter[email_ids][]", email.id, (params[:newsletter_id] != "newsletter" ? email.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "id_newsletter_mail_ids_#{email.id}") 
    = "#{email.name} &#60;#{email.addr_email}&#62;"

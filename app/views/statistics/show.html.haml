@@ -1,0 +1,9 @@
+= render(:partial=>"/newsletters/templates_newsletters/form_search_statistic_newsletter", :locals => {:newsletter => @newsletter, :url => "/newsletter/statistic/historystatistic"})
+
+%h2 Listing statistics by newsletters
+
+= trait_statistics(@newsletters, @newsletters_mails_count_total)
+
+%h2 Listing statistics by newsletters and localizations
+
+= trait_statistics_by_localization_and_newsletter(@statistics_by_localization_and_newsletter)

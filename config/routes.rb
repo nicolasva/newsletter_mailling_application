@@ -13,13 +13,14 @@ Prgmnewsletter::Application.routes.draw do
   scope :module => :statistic do
   	match "newsletter/:newsletter_id/statistic" => "statistics#show"
 	match "newsletter/statistic/pixelstatistic/:newsletter_id" => "statistics#create"
+  	match "newsletter/statistic/historystatistic" => "statistics#show"
   end
 
   scope :module => :newsletter do 
   	match "historylistnewsletter" => "newsletters#index"
 	match "imgnewsletters/:id" => "newsletters#show"
 	match "statistics" => "newsletters#index"
-	match "historystatistics" => "newsletters#index"
+	#match "historystatistics" => "newsletters#index"
 	match "searchnewsletters" => "newsletters#index"
   end
 

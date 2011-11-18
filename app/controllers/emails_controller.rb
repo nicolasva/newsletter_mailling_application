@@ -16,9 +16,9 @@ class EmailsController < ApplicationController
 	  unless request.path == "/result_dragondropmails"
 	      cpt = 0
 	      list_mails = ""
-	    unless params[:mail_id_source] == "no_id"
-	      subcontact = Subcontact.find(params[:mail_id_source])
-	      unless params[:mails].nil? || params[:mails].empty? || params[:mail_id_source] = "no_id"
+	    unless params[:subcontact_id_source] == "no_id"
+	      subcontact = Subcontact.find(params[:subcontact_id_source])
+	      unless params[:mails].nil? || params[:mails].empty? || params[:subcontact_id_source] = "no_id"
 		params[:mails].each_with_index do |id, index|
 			#list_subcontacts += "#{id}-"
 			email = Email.find(id)

@@ -44,7 +44,7 @@ list_menu = (choose_ul_id) ->
             params_id_menu
 
 recup_id_source = (menu_ul) ->
-            hash_id_source = {'subcontacts': 'categoryall_id', 'mails': 'email_id'}
+            hash_id_source = {'subcontacts': 'categoryall_id', 'mails': 'subcontact_id'}
             hash_id_source[menu_ul]
 
 remove_ul_subcontact = (menu_ul,menu_ul_li) ->

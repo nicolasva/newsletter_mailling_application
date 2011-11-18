@@ -10,8 +10,9 @@ class NewslettersController < ApplicationController
 	unless request.path == "/searchnewsletters"
 	 flash[:newsletter] = params[:newsletter]
 	 tab_result = Array.new
-	 tab_result = params[:newsletter][:name].empty? ? newsletter_with_name_created_at(params[:newsletter],request.path) : newsletter_with_name_empty(params[:newsletter],request.path) 
-		@newsletters = tab_result[0]
+	 #tab_result = newsletter_with_name_created_at(params[:newsletter],request.path)
+	 tab_result = params[:newsletter][:name].empty? ? newsletter_with_name_empty(params[:newsletter],request.path) : newsletter_with_name_created_at(params[:newsletter],request.path) 
+	        @newsletters = tab_result[0]
 
 	 	@newsletters_sum = tab_result[1] if request.path == "/historystatistics" || request.path == "/statistics"
 	else
@@ -134,50 +135,5 @@ class NewslettersController < ApplicationController
     @newsletter.destroy ? t("newsletters.destroy.notice_success") : t("newsletters.destroy.notice_failure")
 
     respond_with(@newsletter)
-  end
-
-  private
-  def newsletter_with_name_created_at(newsletter_hash,request_path)
-	  tab_result = Array.new
-	  unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?
-		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i,0,0,0)
-	  	if newsletter_hash["date_specification"]
-			time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i,0,0,0)
-			if time_params_form_at < time_params_form_on
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
-				@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on).sum('cptstatistic') if request_path == "/statistics" || request_path == "/historystatistics"
-			end
-		else
-			@newsletters = Newsletter.where(:created_at=>time_params_form_at)
-			@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at).sum('cptstatistic') if request_path == "/statistics" || request_path == "/historystatistics"
-		end
-	  else
-	 		@newsletters = Newsletter.where(:name => newsletter_hash[:name])
-			@newsletters_sum = Newsletter.where(:name => newsletter_hash[:name]).sum('cptstatistic') if request_path == "/statistics" || request_path == "/historystatistics"
-	  end
-		tab_result.push(@newsletters)
-		tab_result.push(@newsletters_sum) if request_path == "/statistics" || request_path == "/historystatistics" 
-
-	  return tab_result
-  end
-
-  def newsletter_with_name_empty(newsletter_hash,request_path)
-	       tab_result = Array.new
-	       unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?  
-	       		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i)
-			if newsletter_hash[:date_specification]
-				time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i)
-				if time_params_form_at < time_params_form_on
-					@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
-					@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on).sum('cptstatistic') if request_path == "/statistics" || request_path == "/historystatistics"
-				end
-			else
-				@newsletters = Newsletter.where(:created_at=>time_params_form_at)
-				@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at).sum('cptstatistic') if request_path == "/statistics" || request_path == "/historystatistics"
-			end
-	       end
-		tab_result.push(@newsletters)
-		tab_result.push(@newsletters_sum) if request_path == "/statistics" || request_path == "/historystatistics" 
-	       return tab_result
   end
 end

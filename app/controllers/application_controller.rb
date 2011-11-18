@@ -85,4 +85,106 @@ class ApplicationController < ActionController::Base
 
 	end
   end
+
+  def newsletter_statistic_with_name_empty(newsletter_hash,request_path)
+  	newsletter_with_name_empty(newsletter_hash,request_path)
+  end
+
+  def newsletter_with_name_empty(newsletter_hash,request_path)
+	       tab_result = Array.new
+	       unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?  
+	       		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i)
+			if newsletter_hash[:date_specification]
+				time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i)
+				if time_params_form_at < time_params_form_on
+				     @newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on)
+				     if request_path == "/statistics" || request_path == "/historystatistics"
+					@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on).sum('cptstatistic')
+				     else
+					 unless request_path == "/historylistnewsletter"	 
+    				             @newsletters_mails_count_total = Newsletter.joins(:emails).where(:created_at => time_params_form_at..time_params_form_on).count
+    					     @statistics_by_localization_and_newsletter = Statistic.joins(:newsletter).where(:newsletters => {:created_at => time_params_form_at..time_params_form_on}).group(:localization,:newsletter_id).count
+					 end
+				     end
+				end
+			else
+			    @newsletters = Newsletter.where(:created_at=>time_params_form_at)
+			    if request_path == "/statistics" || request_path == "/historystatistics"
+				@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at).sum('cptstatistic')
+			    else
+				unless request_path == "/historylistnewsletter"
+    		  			@newsletters_mails_count_total = Newsletter.joins(:emails).where(:created_at => time_params_form_at).count
+    		  			@statistics_by_localization_and_newsletter = Statistic.joins(:newsletter).where(:newsletters => {:created_at => time_params_form_at}).group(:localization,:newsletter_id).count
+				end
+			    end
+			end
+	       end
+		   tab_result.push(@newsletters)
+		 if request_path == "/statistics" || request.path == "/historystatistics"
+		   tab_result.push(@newsletters_sum)
+		 else
+		   unless request_path == "/historylistnewsletter"
+		   	tab_result.push(@newsletters_mails_count_total)
+			tab_result.push(@statistics_by_localization_and_newsletter)
+		   end
+		 end 
+
+	       return tab_result
+  end
+
+  def newsletter_statistic_with_name_created_at(newsletter_hash,request_path)
+  	newsletter_with_name_created_at(newsletter_hash,request_path)
+  end
+
+  def newsletter_with_name_created_at(newsletter_hash,request_path)
+	  tab_result = Array.new
+	  unless newsletter_hash["created_at(1i)"].empty? || newsletter_hash["created_at(2i)"].empty? || newsletter_hash["created_at(3i)"].empty?
+		time_params_form_at = Time.local(newsletter_hash["created_at(1i)"].to_i,newsletter_hash["created_at(2i)"].to_i,newsletter_hash["created_at(3i)"].to_i,0,0,0)
+	  	if newsletter_hash["date_specification"]
+			time_params_form_on = Time.local(newsletter_hash["created_on(1i)"].to_i,newsletter_hash["created_on(2i)"].to_i,newsletter_hash["created_on(3i)"].to_i,0,0,0)
+			if time_params_form_at < time_params_form_on
+				@newsletters = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on, :name=>newsletter_hash[:name])
+			       if request_path == "/statistics" || request_path == "/historystatistics"
+				@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at..time_params_form_on, :name=>newsletter_hash[:name]).sum('cptstatistic')
+			       else
+				   unless request_path == "/historylistnewsletter"
+				   	@newsletters_mails_count_total = Newsletter.joins(:emails).where(:created_at => time_params_form_at..time_params_form_on, :name=>newsletter_hash[:name]).count
+					@statistics_by_localization_and_newsletter = Statistic.joins(:newsletter).where(:newsletters => {:created_at => time_params_form_at..time_params_form_on, :name=>newsletter_hash[:name]}).group(:localization,:newsletter_id).count
+				   end
+			       end
+			end
+		else
+			@newsletters = Newsletter.where(:created_at=>time_params_form_at, :name=>newsletter_hash[:name])
+		       if request_path == "/statistics" || request_path == "/historystatistics"
+			@newsletters_sum = Newsletter.where(:created_at=>time_params_form_at, :name=>newsletter_hash[:name]).sum('cptstatistic')
+		       else
+			       unless request_path == "/historylistnewsletter"
+			       	@newsletters_mails_count_total = Newsletter.joins(:emails).where(:created_at => time_params_form_at, :name=>newsletter_hash[:name]).count
+				@statistics_by_localization_and_newsletter = Statistic.joins(:newsletter).where(:newsletters => {:created_at => time_params_form_at, :name=>newsletter_hash[:name]}).group(:localization,:newsletter_id).count
+			       end
+		       end
+		end
+	  else
+	 		@newsletters = Newsletter.where(:name => newsletter_hash[:name])
+		      if request_path == "/statistics" || request_path == "/historystatistics"
+			@newsletters_sum = Newsletter.where(:name => newsletter_hash[:name]).sum('cptstatistic')
+		      else
+			      unless request_path == "/historylistnewsletter"
+			      	@newsletters_mails_count_total = Newsletter.joins(:emails).where(:name=>newsletter_hash[:name]).count
+				@statistics_by_localization_and_newsletter = Statistic.joins(:newsletter).where(:newsletters => {:name => newsletter_hash[:name]}).group(:localization,:newsletter_id).count
+			      end
+		      end
+	  end
+		tab_result.push(@newsletters)
+		if request_path == "/statistics" || request_path == "/historystatistics"
+			tab_result.push(@newsletters_sum)
+		else
+			unless request_path == "/historylistnewsletter"
+			  tab_result.push(@newsletters_mails_count_total)
+			  tab_result.push(@statistics_by_localization_and_newsletter)
+			end
+		end	
+
+	  return tab_result
+  end
 end

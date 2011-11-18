@@ -1,0 +1,10 @@
+= form_for @newslettertimingprogramming do |f|
+  -if @newslettertimingprogramming.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@newslettertimingprogramming.errors.count, "error")} prohibited this newslettertimingprogramming from being saved:"
+      %ul
+        - @newslettertimingprogramming.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

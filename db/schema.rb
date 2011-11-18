@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118192457) do
+ActiveRecord::Schema.define(:version => 20111118211635) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
@@ -83,13 +83,14 @@ ActiveRecord::Schema.define(:version => 20111118192457) do
   add_index "mailstarts", ["user_id"], :name => "mailstarts_user_id_to_users"
 
   create_table "newsletters", :force => true do |t|
-    t.string   "name",                                         :null => false
+    t.string   "name",                                             :null => false
     t.string   "mailadd"
-    t.text     "content",        :limit => 255,                :null => false
+    t.text     "content",        :limit => 255,                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "mailstart_id",                  :default => 1, :null => false
-    t.integer  "categoryall_id",                :default => 1, :null => false
+    t.integer  "mailstart_id",                  :default => 1,     :null => false
+    t.integer  "categoryall_id",                :default => 1,     :null => false
+    t.boolean  "timeractivate",                 :default => false
   end
 
   add_index "newsletters", ["mailstart_id"], :name => "altered_newsletters_mailstart_id_to_mailstarts"
@@ -101,6 +102,15 @@ ActiveRecord::Schema.define(:version => 20111118192457) do
 
   add_index "newsletters_subcontacts", ["newsletter_id"], :name => "newsletters_subcontacts_newsletter_id_to_subcontacts"
   add_index "newsletters_subcontacts", ["subcontact_id"], :name => "newsletters_subcontacts_subcontact_id_to_subcontacts"
+
+  create_table "newslettertimingprogrammings", :force => true do |t|
+    t.datetime "programmertimer"
+    t.integer  "newsletter_id",   :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "newslettertimingprogrammings", ["newsletter_id"], :name => "newslettertimingprogrammings_newsletter_id_to_newsletters"
 
   create_table "statistics", :force => true do |t|
     t.string  "ip",            :default => "", :null => false

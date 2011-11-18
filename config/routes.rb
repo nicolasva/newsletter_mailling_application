@@ -1,4 +1,6 @@
 Prgmnewsletter::Application.routes.draw do
+  resources :newslettertimingprogrammings
+
   #resources :newsletters
   devise_for :users, :path=>"users", :path_names => { :sign_in => 'login', :sign_up => 'new_user' }
 

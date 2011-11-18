@@ -19,6 +19,12 @@
  = f.select(:categoryall_id, @newsletter.nil? ? [] : Categoryall.where(:mailstart_id=>@newsletter.mailstart_id).collect{ |p| [p.name, p.id] })
 
 %p
+ = f.label(:timeractivate)
+ %br
+ = f.check_box(:timeractivate)
+ %p
+  = f.submit("Ajouter une tache planifié pour cette newsletter", :name=>"addwork_work_planned_newsletter")
+%p
  = label_tag(t(".subcontactslist"))
  %br
  %ul#newsletter_subcontact_id

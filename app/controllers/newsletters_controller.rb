@@ -68,17 +68,18 @@ class NewslettersController < ApplicationController
 
     if @newsletter.save
         params.keys.each do |k|
- 		if k.split("_").length-1 == 3
-			case k.split("_")[0]
-				when "registersend" 
-					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
-					flash[:notice] = t "newsletters.create.notice_success_sendind" 
-				when "register"
-					flash[:notice] = t "newsletters.create.notice_success" 
-			end
+ 		#if k.split("_").length-1 == 3
+		#	case k.split("_")[0]
+		#		when "registersend" 
+		#			Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+		#			flash[:notice] = t "newsletters.create.notice_success_sendind" 
+		#		when "register"
+		#			flash[:notice] = t "newsletters.create.notice_success" 
+		#	end
 
 
-		end	
+		#end	
+		set_params_newsletter(k)
 	end	
     	redirect_to edit_newsletter_path(@newsletter)
     else
@@ -105,18 +106,7 @@ class NewslettersController < ApplicationController
     #end
     if @newsletter.update_attributes(params[:newsletter]) 
         params.keys.each do |k|
-		#set_params(k)
- 		if k.split("_").length-1 == 3
-			case k.split("_")[0]
-				when "modifsend"	
-					Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
-					flash[:notice] = t("newsletters.update.notice_success_sendind") 
-				when "modif"
-					flash[:notice] = t("newsletters.update.notice_success") 
-			end
-
-
-		end	
+		set_params_newsletter(k)	
 	end	
     else
 	    flash[:notice] = t("newsletters.update.notice_failure") 
@@ -133,5 +123,28 @@ class NewslettersController < ApplicationController
     @newsletter.destroy ? t("newsletters.destroy.notice_success") : t("newsletters.destroy.notice_failure")
 
     respond_with(@newsletter)
+  end
+
+  private
+  def set_params_newsletter(params)
+  	if params.split("_").length-1 == 3
+		case params.split("_")[1]
+			when "register"
+			   flash[:notice] = t("newsletters.create.notice_success") 
+    			   redirect_to edit_newsletter_path(@newsletter)
+			when "registersend"
+			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   flash[:notice] = t("newsletters.create.notice_success_sendind")
+    			   redirect_to edit_newsletter_path(@newsletter)
+			when "modif"
+			   flash[:notice] = t("newsletters.update.notice_success") 
+			when "modifsend"
+			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   flash[:notice] = t("newsletters.update.notice_success_sendind")
+			when "addwork" 
+			   newslettertimingprogramming = @newsletter.newslettertimingprogrammings.new(:programmertimer=>Time.now+86400)
+			   newslettertimingprogramming.save
+		end
+	end
   end
 end

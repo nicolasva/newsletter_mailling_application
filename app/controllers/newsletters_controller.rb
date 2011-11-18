@@ -13,8 +13,6 @@ class NewslettersController < ApplicationController
 	 #tab_result = newsletter_with_name_created_at(params[:newsletter],request.path)
 	 tab_result = params[:newsletter][:name].empty? ? newsletter_with_name_empty(params[:newsletter],request.path) : newsletter_with_name_created_at(params[:newsletter],request.path) 
 	        @newsletters = tab_result[0]
-
-	 	@newsletters_sum = tab_result[1] if request.path == "/historystatistics" || request.path == "/statistics"
 	else
 		@newsletters = Newsletter.autocomplete_newsletter_name(params[:q])
 	end

@@ -19,7 +19,7 @@ Prgmnewsletter::Application.routes.draw do
   scope :module => :newsletter do 
   	match "historylistnewsletter" => "newsletters#index"
 	match "imgnewsletters/:id" => "newsletters#show"
-	match "statistics" => "newsletters#index"
+	#match "statistics" => "newsletters#index"
 	#match "historystatistics" => "newsletters#index"
 	match "searchnewsletters" => "newsletters#index"
   end

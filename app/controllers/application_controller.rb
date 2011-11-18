@@ -187,4 +187,28 @@ class ApplicationController < ActionController::Base
 
 	  return tab_result
   end
+
+  def set_params_newsletter(params)
+  	if params.split("_").length-1 == 3
+		case params.split("_")[0]
+			when "register"
+			   flash[:notice] = t("newsletters.create.notice_success") 
+    			   redirect_to edit_newsletter_path(@newsletter)
+			when "registersend"
+			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   flash[:notice] = t("newsletters.create.notice_success_sendind")
+    			   redirect_to edit_newsletter_path(@newsletter)
+			when "modif"
+			   flash[:notice] = t("newsletters.update.notice_success") 
+			   redirect_to edit_newsletter_path(@newsletter)
+			when "modifsend"
+			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   flash[:notice] = t("newsletters.update.notice_success_sendind")
+			   redirect_to edit_newsletter_path(@newsletter)
+			when "addwork" 
+			   newslettertimingprogramming = @newsletter.newslettertimingprogrammings.new(:programmertimer=>Time.now+86400)
+			   newslettertimingprogramming.save
+		end
+	end
+  end
 end

@@ -1,13 +1,11 @@
 class NewslettertimingprogrammingsController < ApplicationController
   # GET /newslettertimingprogrammings
   # GET /newslettertimingprogrammings.json
+  respond_to :html, :json, :png
   def index
     @newslettertimingprogrammings = Newslettertimingprogramming.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @newslettertimingprogrammings }
-    end
+    respond_with(@newslettertimingprogrammings)
   end
 
   # GET /newslettertimingprogrammings/1
@@ -35,6 +33,7 @@ class NewslettertimingprogrammingsController < ApplicationController
   # GET /newslettertimingprogrammings/1/edit
   def edit
     @newslettertimingprogramming = Newslettertimingprogramming.find(params[:id])
+    respond_with(@newslettertimingprogramming)
   end
 
   # POST /newslettertimingprogrammings

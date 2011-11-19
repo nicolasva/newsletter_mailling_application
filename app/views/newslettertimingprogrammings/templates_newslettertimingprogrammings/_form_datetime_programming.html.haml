@@ -1,5 +1,5 @@
 = f.label(:programmertimer)
 = f.date_select(:programmertimer)
 = f.label(:activate)
-= f.check_box(:activate)
+= f.check_box(:activate, :id=>"checkbox_activate_#{newslettertimingprogramming.id}_newslettertimingprogramming", :class=>"class_checkbox_activate_newslettertimingprogramming")
 = f.submit(t(".delete_work_planned"), :name=>"deletework_work_planned-#{newslettertimingprogramming.id}_newsletter")

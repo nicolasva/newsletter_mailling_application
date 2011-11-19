@@ -57,6 +57,15 @@ jQuery ->
         $("#id_add_planif_work").show()
        else
         $("#id_add_planif_work").hide()
+    #if $('#id_add_planif_work').length > 0
+#	$($('#id_add_planif_work').children()[1]).children().each(function(index){
+#    var activate_checked = $(this).children()[$(this).children().length - 2].checked;
+#    $(this).children().each(function(index){
+#        if ($(this)[0].select)
+#          $($(this)[0]).attr('disabled', !activate_checked);
+#    });
+#});
+       
  
 jQuery ->
  $('#newsletter_date_specification').click ->
@@ -88,8 +97,11 @@ jQuery ->
     else
       $("#id_add_planif_work").hide()
 
-#jQuery ->
-#$('#newsletter_newslettertimingprogrammings_programmertimer_3i').attr('disabled','')
+jQuery ->
+    $('.class_checkbox_activate_newslettertimingprogramming').click ->
+       $($(this).parent().children()[1]).attr('disabled', !$(this)[0].checked)
+       $($(this).parent().children()[2]).attr('disabled', !$(this)[0].checked)
+       $($(this).parent().children()[3]).attr('disabled', !$(this)[0].checked)
   
 #fin jquery
 

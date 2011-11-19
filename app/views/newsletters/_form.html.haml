@@ -26,7 +26,7 @@
   = f.submit("Ajouter une tache planifié pour cette newsletter", :name=>"addwork_work_planned_newsletter")
   %ul
    - @newsletter.newslettertimingprogrammings.each do |newslettertimingprogramming|
-    = content_tag :li, newslettertimingprogramming do
+    = content_tag_for :li, newslettertimingprogramming do
      = f.fields_for(:newslettertimingprogrammings, newslettertimingprogramming) do |newslettertimingprogramming_field|
       = render(:partial=>"/newslettertimingprogrammings/templates_newslettertimingprogrammings/form_datetime_programming", :locals => {:f => newslettertimingprogramming_field, :newslettertimingprogramming => newslettertimingprogramming})
 

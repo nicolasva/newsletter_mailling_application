@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111118211635) do
+ActiveRecord::Schema.define(:version => 20111119090104) do
 
   create_table "categoryalls", :force => true do |t|
     t.string   "name",         :null => false
@@ -105,9 +105,10 @@ ActiveRecord::Schema.define(:version => 20111118211635) do
 
   create_table "newslettertimingprogrammings", :force => true do |t|
     t.datetime "programmertimer"
-    t.integer  "newsletter_id",   :null => false
+    t.integer  "newsletter_id",                     :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "activate",        :default => true, :null => false
   end
 
   add_index "newslettertimingprogrammings", ["newsletter_id"], :name => "newslettertimingprogrammings_newsletter_id_to_newsletters"

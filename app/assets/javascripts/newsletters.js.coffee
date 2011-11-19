@@ -75,5 +75,12 @@ jQuery ->
           formatItem: (item) ->
                   format(item)
      })
+
+jQuery ->
+  $("#newsletter_timeractivate").click ->
+    if this.checked  
+      $("#id_add_planif_work").show()
+    else
+      $("#id_add_planif_work").hide()
 #fin jquery
 

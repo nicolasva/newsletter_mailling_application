@@ -22,8 +22,12 @@
  = f.label(:timeractivate)
  %br
  = f.check_box(:timeractivate)
- %p
+ %p#id_add_planif_work
   = f.submit("Ajouter une tache planifié pour cette newsletter", :name=>"addwork_work_planned_newsletter")
+  - @newsletter.newslettertimingprogrammings.each do |newslettertimingprogramming|
+   = f.fields_for(:newslettertimingprogrammings, newslettertimingprogramming) do |newslettertimingprogramming_field|
+    = render(:partial=>"/newslettertimingprogrammings/templates_newslettertimingprogrammings/form_datetime_programming", :locals => {:f => newslettertimingprogramming_field})
+
 %p
  = label_tag(t(".subcontactslist"))
  %br

@@ -1,6 +1,4 @@
 Prgmnewsletter::Application.routes.draw do
-  resources :newslettertimingprogrammings
-
   #resources :newsletters
   devise_for :users, :path=>"users", :path_names => { :sign_in => 'login', :sign_up => 'new_user' }
 
@@ -9,7 +7,12 @@ Prgmnewsletter::Application.routes.draw do
   	collection do
 		get :language
 		resources :statistics
+		resources :newslettertimingprogrammings
 	end
+  end
+
+  scope :module => :newslettertimingprogramming do 
+  	match "newsletter/:newsletter_id/programminglist" => "newslettertimingprogrammings#index"
   end
 
   scope :module => :statistic do

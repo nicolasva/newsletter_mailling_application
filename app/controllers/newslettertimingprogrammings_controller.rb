@@ -3,7 +3,11 @@ class NewslettertimingprogrammingsController < ApplicationController
   # GET /newslettertimingprogrammings.json
   respond_to :html, :json, :png
   def index
+   if request.path.split("/")[request.path.split("/").length-1]
     @newslettertimingprogrammings = Newslettertimingprogramming.all
+   else
+    @newslettertimingprogrammings = Newslettertimingprogramming.where(:newsletter_id=>params[:newsletter_id])
+   end
 
     respond_with(@newslettertimingprogrammings)
   end

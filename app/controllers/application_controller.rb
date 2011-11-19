@@ -208,6 +208,7 @@ class ApplicationController < ActionController::Base
 			when "addwork" 
 			   newslettertimingprogramming = @newsletter.newslettertimingprogrammings.new(:programmertimer=>Time.now+86400)
 			   newslettertimingprogramming.save
+			   redirect_to edit_newsletter_path(@newsletter)
 		end
 	end
   end

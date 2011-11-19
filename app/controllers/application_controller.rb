@@ -195,14 +195,14 @@ class ApplicationController < ActionController::Base
 			   flash[:notice] = t("newsletters.create.notice_success") 
     			   redirect_to edit_newsletter_path(@newsletter)
 			when "registersend"
-			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   Sendnewsletters.sendnewsletter(@newsletter,request.domain).deliver
 			   flash[:notice] = t("newsletters.create.notice_success_sendind")
     			   redirect_to edit_newsletter_path(@newsletter)
 			when "modif"
 			   flash[:notice] = t("newsletters.update.notice_success") 
 			   redirect_to edit_newsletter_path(@newsletter)
 			when "modifsend"
-			   Sendnewsletters.sendnewsletter(params[:newsletter][:mailstart_id].to_s,@newsletter,request.domain).deliver
+			   Sendnewsletters.sendnewsletter(@newsletter,request.domain).deliver
 			   flash[:notice] = t("newsletters.update.notice_success_sendind")
 			   redirect_to edit_newsletter_path(@newsletter)
 			when "addwork" 

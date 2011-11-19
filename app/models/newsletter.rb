@@ -22,4 +22,14 @@ class Newsletter < ActiveRecord::Base
 		cptstatistic = newsletter.cptstatistic.nil? ? 1 : newsletter.cptstatistic.to_i + 1
 		newsletter.update_attribute("cptstatistic", cptstatistic)
 	end
+
+	def self.check_programming_newsletter
+		time_now = Time.now
+		time_min = time_now - 240 
+		newsletters = Newsletter.joins(:newslettertimingprogrammings).where(:timeractivate=>true, :newslettertimingprogrammings => {:programmertimer=>time_min..time_now})
+		newsletters.each{ |newsletter|
+		    newsletter.newslettertimingprogrammings.each{ |newslettertimingprogramming|					Sendnewsletters.sendnewsletter(newslettertimingprogramming.newsletter,request.domain).deliver		
+		    }
+		}
+	end
 end

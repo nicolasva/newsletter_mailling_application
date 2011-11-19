@@ -52,7 +52,12 @@ jQuery ->
            $(".date_select_create_on").show()
         else
           $(".date_select_create_on").hide()
-  
+    if $('#newsletter_timeractivate').length > 0
+       if $('#newsletter_timeractivate')[0].checked
+        $("#id_add_planif_work").show()
+       else
+        $("#id_add_planif_work").hide()
+ 
 jQuery ->
  $('#newsletter_date_specification').click ->
       if this.checked

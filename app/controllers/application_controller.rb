@@ -209,6 +209,11 @@ class ApplicationController < ActionController::Base
 			   newslettertimingprogramming = @newsletter.newslettertimingprogrammings.new(:programmertimer=>Time.now+86400)
 			   newslettertimingprogramming.save
 			   redirect_to edit_newsletter_path(@newsletter)
+			when "deletework"
+			   newslettertimingprogramming_id = params.split("_")[params.split("_").length-2].split("-")[1]
+			   newslettertimingprogramming = Newslettertimingprogramming.find(newslettertimingprogramming_id)
+			   newslettertimingprogramming.destroy
+			   redirect_to edit_newsletter_path(@newsletter)
 		end
 	end
   end

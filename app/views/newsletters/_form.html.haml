@@ -28,7 +28,7 @@
    - @newsletter.newslettertimingprogrammings.each do |newslettertimingprogramming|
     = content_tag :li, newslettertimingprogramming do
      = f.fields_for(:newslettertimingprogrammings, newslettertimingprogramming) do |newslettertimingprogramming_field|
-      = render(:partial=>"/newslettertimingprogrammings/templates_newslettertimingprogrammings/form_datetime_programming", :locals => {:f => newslettertimingprogramming_field})
+      = render(:partial=>"/newslettertimingprogrammings/templates_newslettertimingprogrammings/form_datetime_programming", :locals => {:f => newslettertimingprogramming_field, :newslettertimingprogramming => newslettertimingprogramming})
 
 %p
  = label_tag(t(".subcontactslist"))

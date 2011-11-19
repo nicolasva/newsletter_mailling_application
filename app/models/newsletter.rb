@@ -28,7 +28,7 @@ class Newsletter < ActiveRecord::Base
 		time_min = time_now - 240 
 		newsletters = Newsletter.joins(:newslettertimingprogrammings).where(:timeractivate=>true, :newslettertimingprogrammings => {:programmertimer=>time_min..time_now})
 		newsletters.each{ |newsletter|
-		    newsletter.newslettertimingprogrammings.each{ |newslettertimingprogramming|					Sendnewsletters.sendnewsletter(newslettertimingprogramming.newsletter,request.domain).deliver		
+		    newsletter.newslettertimingprogrammings.each{ |newslettertimingprogramming|				     newslettertimingprogramming.newsletter.destroy if Sendnewsletters.sendnewsletter(newslettertimingprogramming.newsletter,request.domain).deliver		    
 		    }
 		}
 	end

@@ -7,7 +7,7 @@ Prgmnewsletter::Application.routes.draw do
   	collection do
 		get :language
 		resources :statistics
-		resources :newslettertimingprogrammings
+		#resources :newslettertimingprogrammings
 	end
   end
 

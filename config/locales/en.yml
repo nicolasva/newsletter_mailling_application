@@ -52,6 +52,10 @@ en:
         any_newsletters: "There are not newsletters fot this date"
      show:
         title: "Show the newsletter"
+  newslettertimingprogrammings:
+     templates_newslettertimingprogrammings:
+        form_datetime_programming:
+           delete_work_planned: "Deleted work planned"
      edit:
         title: "Edit the newsletter"
         modify_this_newsletter: "Modify this newsletter"
@@ -387,6 +391,7 @@ en:
         mail: "E-mail"
         newsletter: "Newsletter"
         subcontact: "Subcontact"
+        newslettertimingprogramming: "Newsletter timing programming"
     attributes:
         user:
           email: "E-mail adress"
@@ -403,6 +408,9 @@ en:
           created_on: "To"
           date_specification: "Specify a level for the day"
           updated_at: "Updated at"
+        newslettertimingprogramming:
+          programmertimer: "Programmation datetime of the newsletter"
+          activate: "Activate planification work"
         mailstart:
           name: "Start E-mail name"
           mail: "Start E-mail adress"

@@ -90,6 +90,10 @@ fr:
                add_new_category: "Ajouter une nouvelle catégorie"
      show:
         title: "Apperçu du mail de départ"
+  newslettertimingprogrammings:
+     templates_newslettertimingprogrammings:
+        form_datetime_programming:
+           delete_work_planned: "Supprimer cette tâche planifié"
      update:
         notice_success: "L'enregistrement concernant les information de ce carnet d'adresse s'est bien déroulé, elles sont désormais disponible"
         notice_failure: "L'enregistrement concernant les informations de ce carnet d'adresse ne s'est pas déroulé correctement, elles ne sont pas disponible"
@@ -398,6 +402,7 @@ fr:
         email: "E-mail"
         newsletter: "Newsletter"
         subcontact: "Sous-Contact"
+        newslettertimingprogramming: "Planification des tâches pour l'envoie de newsletter"
     attributes:
         user:
           email: "E-mail adress"
@@ -414,6 +419,9 @@ fr:
           created_on: "Au"
           date_specification: "Spécifier un échelon pour la date"
           updated_at: "Mis à jour le"
+        newslettertimingprogramming:
+          programmertimer: "Date de programmation de la newsletter"
+          activate: "Activation de la tâche planifié"
         mailstart:
           name: "Nom du mail de départ"
           mail: "Adresse E-mail de départ"

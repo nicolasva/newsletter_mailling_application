@@ -87,5 +87,9 @@ jQuery ->
       $("#id_add_planif_work").show()
     else
       $("#id_add_planif_work").hide()
+
+#jQuery ->
+#$('#newsletter_newslettertimingprogrammings_programmertimer_3i').attr('disabled','')
+  
 #fin jquery
 

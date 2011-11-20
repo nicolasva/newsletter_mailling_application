@@ -21,6 +21,7 @@ class EmailsController < ApplicationController
 		end
 	      end
 	 end
+	 @emails
       else
 	  unless request.path == "/result_dragondropmails"
 	      cpt = 0

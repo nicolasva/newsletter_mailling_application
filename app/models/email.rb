@@ -5,6 +5,7 @@ class Email < ActiveRecord::Base
         validates_presence_of :addr_email
 	accepts_nested_attributes_for :subcontacts
 	attr_accessible :name, :adress, :cppostal, :tel, :addr_email
+	validates_uniqueness_of :addr_email
 
 	def self.position(index,id)
 		update_all(['position=?', index], ['id=?', id])

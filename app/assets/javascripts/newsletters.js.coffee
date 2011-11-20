@@ -65,7 +65,11 @@ jQuery ->
 #          $($(this)[0]).attr('disabled', !activate_checked);
 #    });
 #});
-       
+     if $('#id_add_planif_work').length > 0
+        $($('#id_add_planif_work').children()[1]).children().each (index) ->
+           activate_checked = $(this).children()[$(this).children().length - 3].checked
+           $(this).children().each (index) ->
+              $($(this)[0]).attr('disabled', !activate_checked) if $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "3i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "2i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "1i"
  
 jQuery ->
  $('#newsletter_date_specification').click ->

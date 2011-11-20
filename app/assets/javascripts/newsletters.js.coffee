@@ -69,7 +69,12 @@ jQuery ->
         $($('#id_add_planif_work').children()[1]).children().each (index) ->
            activate_checked = $(this).children()[$(this).children().length - 3].checked
            $(this).children().each (index) ->
-              $($(this)[0]).attr('disabled', !activate_checked) if $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "3i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "2i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "1i"
+              if $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "3i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "2i" || $(this)[0].id.split("_")[$(this)[0].id.split("_").length-1] == "1i"
+                   $($(this)[0]).attr('disabled', !activate_checked) 
+              if $($(this)[0]).is("label")
+                   color = "black"
+                   color = "silver" unless activate_checked  
+                   $($(this)[0]).css("color", color)
  
 jQuery ->
  $('#newsletter_date_specification').click ->
@@ -106,6 +111,9 @@ jQuery ->
        $($(this).parent().children()[1]).attr('disabled', !$(this)[0].checked)
        $($(this).parent().children()[2]).attr('disabled', !$(this)[0].checked)
        $($(this).parent().children()[3]).attr('disabled', !$(this)[0].checked)
-  
+       color = "black"
+       color = "silver" unless $(this)[0].checked
+       $($(this).parent().children()[0]).css("color", color) 
+       $($(this).parent().children()[4]).css("color", color)
 #fin jquery
 

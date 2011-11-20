@@ -19,7 +19,23 @@ $(document).ajaxSend(function(event, request, settings) {
 	       settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
 });
 
+function subcontact_list_checked()
+{
+    params_subcontact_ids = "";
+    //tab_list_subcontact = new Array();
+    $('#newsletter_subcontact_id').children().each(function(index){
+        $($(this)).children().each(function(index){ 
+	     if ($(this)[0].checked)
+	     {
+	       params_subcontact_ids += "&subcontacts[]="+$(this)[0].value;
+	     }       
+	});
+    });
+    return params_subcontact_ids;
+}
+
 function functionlistmail(this_value) {
+  subcontact_list_checked();
   $("#newsletter_mail_id").children().each(function(index) {
   	$(this).remove();
   });
@@ -30,8 +46,9 @@ function functionlistmail(this_value) {
 	$.ajax({
 		url: "/mailslists",
 		type: "POST",
-	        data: {subcontact_id: $(this).children()[0].id.split("_")[$(this).children()[0].id.split("_").length-1], newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
-	        dataType: "html",
+		//data: {subcontact_id: $(this).children()[0].id.split("_")[$(this).children()[0].id.split("_").length-1], newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
+	        data: "newsletter_id="+$('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]+subcontact_list_checked(),
+		dataType: "html",
 	        success: function(data) {
 			$('#newsletter_mail_id').append(data);
 		},
@@ -43,12 +60,14 @@ function functionlistmail(this_value) {
   });
 };
 
-function emails_lists(subcontact_id) {
+
+function emails_lists(newsletter_id) {
 	//alert("nicolas test");
 	$.ajax({
 		url: "/mailslists",
 		type: "POST",
-		data: {subcontact_id: subcontact_id, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
+		//data: {subcontact_id: subcontact_id, newsletter_id: $('#id_content').children()[0].id.split("_")[$('#id_content').children()[0].id.split("_").length-1]},
+		data: "newsletter_id="+newsletter_id+subcontact_list_checked(),
 		dataType: "html",
 		success: function(data) {
 			$('#newsletter_mail_id').append(data);

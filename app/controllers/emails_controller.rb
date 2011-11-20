@@ -10,8 +10,17 @@ class EmailsController < ApplicationController
   #    format.json { render :json => @mails }
   #  end
       unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails"
-	subcontact = Subcontact.find(params[:subcontact_id].to_i)
-	@emails = subcontact.emails
+	#subcontact = Subcontact.find(params[:subcontact_id].to_i)
+	#@emails = subcontact.emails
+	@emails = Array.new
+	 unless params[:subcontacts].nil? || params[:subcontacts].empty?
+	      params[:subcontacts].each_with_index do |id, index|
+		subcontact = Subcontact.find(id)
+		subcontact.emails.each do |email|
+			@emails.push(email) unless @emails.include?(email)
+		end
+	      end
+	 end
       else
 	  unless request.path == "/result_dragondropmails"
 	      cpt = 0

@@ -12,10 +12,13 @@ subcontacts_lists = (categoryall_id, newsletter_id) ->
              data: {categoryall_id: categoryall_id, newsletter_id: newsletter_id},
              dataType: "html",
              success: (data) ->
+                   tab_subcontact_ids_check = []
                    $('#newsletter_subcontact_id').html(data) 
                    $('#newsletter_subcontact_id').children().each (index) ->
                          $(this).children().each (index) ->
-                               emails_lists($(this)[0].value, newsletter_id) if $(this)[0].checked
+                               emails_lists(newsletter_id) 
+                               #subcontact_ids_check.push $(this)[0].value if $(this)[0].checked
+                   #alert(subcontact_ids_check)
              failure: ->
                    alert("Problem")
         })

@@ -17,6 +17,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "will_paginate"
 gem "whenever"
 gem "geokit-rails3"
 gem "gruff"

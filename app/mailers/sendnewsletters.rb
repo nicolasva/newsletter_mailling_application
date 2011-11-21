@@ -5,7 +5,7 @@ class Sendnewsletters < ActionMailer::Base
 	mail_bcc = Array.new
 	mail_bcc = newsletter.mailadd.gsub(/(;|:|-|_)/, ',').split(",") unless newsletter.mailadd.nil?
 	newsletter.emails.each{ |email|
-		mail_bcc.push(email.addr_mail)
+		mail_bcc.push(email.addr_mail) unless mail_bcc.include?(email.addr_mail)
 	}
 	@newsletter = newsletter
 	@domain = request_domain

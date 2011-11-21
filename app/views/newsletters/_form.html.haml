@@ -36,16 +36,16 @@
  %ul#newsletter_subcontact_id
   - unless @newsletter.categoryall.nil?
    - @newsletter.categoryall.subcontacts.each do |subcontact|
-    - content_tag_for :li, subcontact do
-     - check_box_tag("newsletter[subcontact_ids][]", subcontact.id, @newsletter.subcontacts.include?(subcontact), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);")
-     - subcontact.name	
+    = content_tag_for :li, subcontact do
+     = check_box_tag("newsletter[subcontact_ids][]", subcontact.id, @newsletter.subcontacts.include?(subcontact), :id => "newsletter_subcontact_ids_#{subcontact.id}", :class => "class_newsletter_subcontact", :onclick=>"functionlistmail(this.value);")
+     = subcontact.name	
 %p
  = label_tag(t(".subcontactemailslist")) 
  %br
  %ul#newsletter_mail_id
   - unless @newsletter.emails.empty?
    - @newsletter.emails.each do |email|
-    - content_tag_for :li, email do
+    = content_tag_for :li, email do
      = check_box_tag("newsletter[email_ids][]", email.id, @newsletter.emails.include?(email), :id => "id_newsletter_mail_ids_#{email.id}")
      = email.name
 %p

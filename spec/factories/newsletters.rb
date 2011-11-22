@@ -4,8 +4,8 @@ FactoryGirl.define do
 		#after_create do |newsletter|
 		#	newsletter.subcontact.save
 		#end
-		association :mailstart
-		association :categoryall
+	        mailstart
+	        categoryall
 		name "newsletter"
 		mailadd "nicolas.vandenbogaerde@gmail.com,nicolas.va@noos.fr"
 		content "test envoie mail"

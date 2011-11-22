@@ -4,8 +4,13 @@ class SubcontactsController < ApplicationController
   respond_to :html, :json
   def index
    unless request.path == "/result_dragondropsubcontacts" || request.path.split("/")[1] == "subcontactsremove"
+       unless request.path == "/set_cookies_drag_and_drop_cut_subcontact"
     	categoryall = Categoryall.find(params[:categoryall_id].to_i)
     	@subcontacts = categoryall.subcontacts
+       else
+	       cookies[:subcontact_id] = params[:id_li_subcontact_id]
+	       render :text => cookies[:subcontact_id]
+       end
    else
 	if !request.path.scan(/^\/(.{1,})\?.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\?.{1,}$/) == "subcontactremove"
 		#subcontact = Subcontact.find(params[:subcontact_id])
@@ -48,7 +53,7 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts/1
   # GET /subcontacts/1.json
   def show
-    unless request.path == "/mailstarts/categoryalls/subcontacts/sort"
+    unless request.path == "/mailstarts/categoryalls/subcontacts/sort" || request.path == "/copy_or_cut_subcontact"
     	@subcontact = Subcontact.find(params[:id])
 
     #respond_to do |format|
@@ -57,11 +62,20 @@ class SubcontactsController < ApplicationController
     #end
     	respond_with(@subcontact)
     else
+	  unless request.path == "/copy_or_cut_subcontact"
 	    params[:subcontact].each_with_index do |id, index|
 	    	Subcontact.position(index+1,id)
 	    end
 
 	    render :nothing => true
+	  else
+	    if cookies[:subcontact_id].nil? || cookies[:subcontact_id].empty?
+		    subcontact_id = "copy"
+	    else
+		    subcontact_id = cookies[:subcontact_id]
+	    end
+	      render :text => subcontact_id
+	  end
     end
   end
 
@@ -121,8 +135,9 @@ class SubcontactsController < ApplicationController
     		end
 	else
 		categoryall_source = @subcontact.categoryalls.find(params[:subcontact][:categoryall_id_source].to_i)
-			categoryall_source.subcontacts.delete(@subcontact) if params[:subcontact][:copy_cut_subcontact] == "cut"
-
+			if params[:subcontact][:copy_cut_subcontact] == "cut"
+				categoryall_source.subcontacts.delete(@subcontact)
+			end
 		categoryall = Categoryall.find(params[:subcontact][:categoryall_ids].to_i)
 	   	     unless categoryall.subcontacts.include?(@subcontact)
 			 flash[:notice] = categoryall.subcontacts.push(@subcontact) ? (params[:subcontact][:copy_cut_subcontact] == "cut" ? t("subcontacts.update.notice_success_subcontact_cut_category") : t("subcontacts.update.notice_success_subcontact_copy_category")) : t("subcontacts.update.notice_failure_subcontact_not_add_category")

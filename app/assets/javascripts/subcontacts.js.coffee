@@ -15,6 +15,52 @@ jQuery ->
               })
        })
 
+VALUE_SUBCONTACT_CUT = ""
+jQuery ->
+   $("#subcontact_copy_cut_subcontact_cut").click ->
+     #$("#subcontact_")
+     #console.log($("#subcontact_16"))
+     subcontact_id = $(this).parent().parent().parent()[0].id.split("_")[$(this).parent().parent().parent()[0].id.split("_").length-1]
+     #console.log($("#subcontact_"+subcontact_id).id)
+     subcontact_id = "subcontact_"+subcontact_id
+     #console.log($(".class_list_edit_button"))
+     #VALUE_SUBCONTACT_CUT = "subcontact_"+subcontact_id
+     #alert(VALUE_SUBCONTACT_CUT)
+     #$("#subcontact_"+subcontact_id).hide()
+     #alert("nicolas oups")
+     $.ajax({
+        url: "/set_cookies_drag_and_drop_cut_subcontact",
+        type: "POST",
+        data : { id_li_subcontact_id: subcontact_id }
+        failure: ->
+             alert("Ajax set cookies subcontact_id")
+     })
+
+jQuery ->
+   $("#subcontact_copy_cut_subcontact_copy").click ->
+     $.ajax({
+        url: "/set_cookies_drag_and_drop_cut_subcontact",
+        type: "POST",
+        data: { id_li_subcontact_id: "copy" }
+        failure: ->
+             alert("Ajax set cookies copie subcontact_id")
+     })
+
+jQuery ->
+   $("body").click ->
+     if $("#subcontacts").length > 0 || $("#subcontact_copy_cut_subcontact_copy").length > 0 || $("#subcontact_copy_cut_subcontact_cut").length > 0 
+       $.ajax({
+          url: "/copy_or_cut_subcontact",
+          type: "POST",
+          success: (data) ->
+               if data == "copy"
+                   $('#'+data).show()
+               else
+                   $('#'+data).hide()
+          failure: ->
+               alert("Problem")
+       })
+
 jQuery ->
    $("#subcontacts").children().each (index) ->
        $(this).draggable({
@@ -29,6 +75,7 @@ jQuery ->
             subcontact_id = ui.draggable.attr('id').split("_")[1]
             categoryall_id = $(event.target).attr("id").split("_")[1]
             ThinBox.open("/choosesubcontacts_to_categoryalls/"+subcontact_id+"/"+categoryall_id+"/"+categoryall_id_source, {'width':'1270px','height':'230px'})
+        drag: (event, ui) ->
      })
 
 list_menu = (choose_ul_id) ->
@@ -55,17 +102,17 @@ periodical_updater_ul = (menu_ul) ->
     if $('#'+menu_ul).length > 0
         source_value = $('#'+recup_id_source(menu_ul)).attr("value") 
         source_value = "no_id" if !source_value
-        $.PeriodicalUpdater({
-             url: "/"+menu_ul+"remove?"+list_menu(menu_ul)+"&"+recup_id_source(menu_ul)+"_source="+source_value,
-             method: 'GET',
-             dataType: 'json',
-             maxTimeout: 6000,
-        },
-             (data) ->
-                  remove_ul_subcontact menu_ul,menu_ul_li for menu_ul_li in data.split("-")
-                  periodical_updater_ul menu_ul for menu_ul in ["subcontacts", "mails"]
+        #$.PeriodicalUpdater({
+        #     url: "/"+menu_ul+"remove?"+list_menu(menu_ul)+"&"+recup_id_source(menu_ul)+"_source="+source_value,
+        #     method: 'GET',
+        #     dataType: 'json',
+        #     maxTimeout: 6000,
+        #},
+        #     (data) ->
+        #          remove_ul_subcontact menu_ul,menu_ul_li for menu_ul_li in data.split("-")
+        #          periodical_updater_ul menu_ul for menu_ul in ["subcontacts", "mails"]
 
-        )
+        #)
 
 jQuery ->
   $(document).ready ->

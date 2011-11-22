@@ -4,12 +4,12 @@
  %li
   = f.label(:copy_cut_subcontact, t(".copy_subcontact_to_category")) 
   = ":"
-  = f.radio_button(:copy_cut_subcontact, "copy")
+  = f.radio_button(:copy_cut_subcontact, "copy", :class=>"class_copy_cut_subcontact")
 
  %li
   = f.label(:copy_cut_subcontact, t(".cut_subcontact_to_category")) 
   = ":"
-  = f.radio_button(:copy_cut_subcontact, "cut")
+  = f.radio_button(:copy_cut_subcontact, "cut", :class=>"class_copy_cut_subcontact")
 
 = f.hidden_field(:categoryall_id_source, :value => categoryall_id_source)
 = hidden_field_tag("subcontact[categoryall_ids]", categoryall_id)

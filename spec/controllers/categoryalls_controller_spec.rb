@@ -34,7 +34,7 @@ describe CategoryallsController do
   describe "#edit" do
   	it "edit categoryall" do
 	    get 'edit', :id => @categoryall.id
-	    response.status.should == 302
+	    response.status.should be(302)
 	end
   end
 end

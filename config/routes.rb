@@ -44,6 +44,8 @@ Prgmnewsletter::Application.routes.draw do
 	match "result_dragondropsubcontacts" => "subcontacts#index"
         match "sort" => "subcontacts#show"
 	match "subcontactsremove" => "subcontacts#index"
+	match "set_cookies_drag_and_drop_cut_subcontact" => "subcontacts#index"
+	match "copy_or_cut_subcontact" => "subcontacts#show"
   end
 
   scope :module => :email do

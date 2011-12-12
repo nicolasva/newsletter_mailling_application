@@ -53,7 +53,7 @@ class SubcontactsController < ApplicationController
   # GET /subcontacts/1
   # GET /subcontacts/1.json
   def show
-    unless request.path == "/mailstarts/categoryalls/subcontacts/sort" || request.path == "/copy_or_cut_subcontact"
+    unless request.path == "/mailstarts/categoryalls/subcontacts/sort" || request.path == "/copy_or_cut_subcontact" || request.path == "/verif_copy_or_cut_subcontact"
     	@subcontact = Subcontact.find(params[:id])
 
     #respond_to do |format|
@@ -62,21 +62,36 @@ class SubcontactsController < ApplicationController
     #end
     	respond_with(@subcontact)
     else
-	  unless request.path == "/copy_or_cut_subcontact"
-	    params[:subcontact].each_with_index do |id, index|
-	    	Subcontact.position(index+1,id)
-	    end
+	     unless request.path == "/copy_or_cut_subcontact" || request.path == "/verif_copy_or_cut_subcontact"
+	       params[:subcontact].each_with_index do |id, index|
+	    	   Subcontact.position(index+1,id)
+	       end
 
-	    render :nothing => true
-	  else
-	    if cookies[:subcontact_id].nil? || cookies[:subcontact_id].empty?
-		    subcontact_id = "copy"
-	    else
-		    subcontact_id = cookies[:subcontact_id]
+	      render :nothing => true
+	     else
+         if request.path == "/verif_copy_or_cut_subcontact"
+	         unless cookies[:subcontact_id].nil? || cookies[:subcontact_id].empty?
+                subcontact_id = cookies[:subcontact_id].split("_").last
+	              if Categoryall.joins(:subcontacts).where(:id=>params[:categoryall_id], :subcontacts=>{:id=>subcontact_id}).empty?
+                    result = true
+                else
+                    result = false
+                end
+           else
+               result = false
+           end
+           render :json => {:result=>result, :subcontact_id=>cookies[:subcontact_id]}
+         else
+           if cookies[:subcontact_id].nil? || cookies[:subcontact_id].empty?
+               subcontact_id = "copy"
+           else
+               subcontact_id = cookies[:subcontact_id]
+
+           end
+	            render :text => subcontact_id
+         end
 	    end
-	      render :text => subcontact_id
-	  end
-    end
+   end
   end
 
   # GET /subcontacts/new

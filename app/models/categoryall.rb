@@ -1,5 +1,5 @@
 class Categoryall < ActiveRecord::Base
-	attr_accessible :name
+	attr_accessible :name, :mailstart_attributes, :subcontacts_attributes, :id
 	belongs_to :mailstart
 	has_and_belongs_to_many :subcontacts
 	has_many :newsletters

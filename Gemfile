@@ -17,6 +17,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "rake", '0.9.2'
+gem "minitest", '1.6.0'
 gem "will_paginate"
 gem "whenever"
 gem "geokit-rails3"
@@ -25,7 +27,7 @@ gem "haml-rails"
 gem "rmagick", '2.13.1'
 gem "paperclip"
 gem "ckeditor"
-gem "devise"
+gem "devise", '>= 1.5.2'
 gem "rb-fsevent"
 gem "rspec-rails", :group => [:test, :development]
 group :test do

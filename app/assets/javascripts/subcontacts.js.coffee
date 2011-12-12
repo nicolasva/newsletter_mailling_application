@@ -15,7 +15,6 @@ jQuery ->
               })
        })
 
-VALUE_SUBCONTACT_CUT = ""
 jQuery ->
    $("#subcontact_copy_cut_subcontact_cut").click ->
      #$("#subcontact_")
@@ -48,7 +47,7 @@ jQuery ->
 
 jQuery ->
    $("body").click ->
-     if $("#subcontacts").length > 0 || $("#subcontact_copy_cut_subcontact_copy").length > 0 || $("#subcontact_copy_cut_subcontact_cut").length > 0 
+     if $("#subcontact_copy_cut_subcontact_copy").length > 0 || $("#subcontact_copy_cut_subcontact_cut").length > 0 
        $.ajax({
           url: "/copy_or_cut_subcontact",
           type: "POST",
@@ -56,10 +55,24 @@ jQuery ->
                if data == "copy"
                    $('#'+data).show()
                else
-                   $('#'+data).hide()
+                   $("#"+data).hide()
           failure: ->
                alert("Problem")
        })
+     if $("#subcontacts").length > 0
+       $.ajax({
+         url: "/verif_copy_or_cut_subcontact",
+         type: "POST",
+         dataType: "json",
+         data: { categoryall_id: $("#categoryall_id").attr("value") },
+         success: (data) ->
+              if data["result"]
+                $('#'+data["subcontact_id"]).remove()
+              else
+                $('#'+data["subcontact_id"]).show()
+       )}
+    
+       
 
 jQuery ->
    $("#subcontacts").children().each (index) ->
@@ -75,7 +88,6 @@ jQuery ->
             subcontact_id = ui.draggable.attr('id').split("_")[1]
             categoryall_id = $(event.target).attr("id").split("_")[1]
             ThinBox.open("/choosesubcontacts_to_categoryalls/"+subcontact_id+"/"+categoryall_id+"/"+categoryall_id_source, {'width':'1270px','height':'230px'})
-        drag: (event, ui) ->
      })
 
 list_menu = (choose_ul_id) ->

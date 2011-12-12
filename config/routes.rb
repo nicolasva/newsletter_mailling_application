@@ -17,7 +17,7 @@ Prgmnewsletter::Application.routes.draw do
 
   scope :module => :statistic do
   	match "newsletter/:newsletter_id/statistic" => "statistics#show"
-	match "newsletter/statistic/pixelstatistic/:newsletter_id" => "statistics#create"
+	  match "newsletter/statistic/pixelstatistic/:newsletter_id" => "statistics#create"
   	match "newsletter/statistic/historystatistic" => "statistics#show"
   end
 
@@ -39,25 +39,29 @@ Prgmnewsletter::Application.routes.draw do
   end
 
   scope :module => :subcontact do
-	match "subcontactslists" => "subcontacts#index"
-	match "choosesubcontacts_to_categoryalls/:id/:categoryall_id/:categoryall_id_source" => "subcontacts#edit"
-	match "result_dragondropsubcontacts" => "subcontacts#index"
-        match "sort" => "subcontacts#show"
-	match "subcontactsremove" => "subcontacts#index"
-	match "set_cookies_drag_and_drop_cut_subcontact" => "subcontacts#index"
-	match "copy_or_cut_subcontact" => "subcontacts#show"
+	  match "subcontactslists" => "subcontacts#index"
+	  match "choosesubcontacts_to_categoryalls/:id/:categoryall_id/:categoryall_id_source" => "subcontacts#edit"
+	  match "result_dragondropsubcontacts" => "subcontacts#index"
+    match "sort" => "subcontacts#show"
+	  match "subcontactsremove" => "subcontacts#index"
+	  match "set_cookies_drag_and_drop_cut_subcontact" => "subcontacts#index"
+	  match "copy_or_cut_subcontact" => "subcontacts#show"
+    match "verif_copy_or_cut_subcontact" => "subcontacts#show"
   end
 
   scope :module => :email do
-	match "mailslists" => "emails#index" 
+	  match "mailslists" => "emails#index" 
   	match "sort" => "emails#show"
-	match "mailsremove" => "emails#index"
-	match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "emails#edit"
-	match "result_dragondropmails" => "emails#index"
+	  match "mailsremove" => "emails#index"
+	  match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "emails#edit"
+	  match "result_dragondropmails" => "emails#index"
+    match "set_cookies_drag_and_drop_cut_subcontact" => "mails#index"
+    match "copy_or_cut_mail" => "mails#show"
+    match "verif_copy_or_cut_subcontact" => "subcontact#show"
   end
 
   root :to => "newsletters#index"
-  
+ 
   resources :mailstarts do
 	  collection do 
 	  	resources :categoryalls do

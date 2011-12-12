@@ -21,6 +21,20 @@ jQuery ->
         })
 
 jQuery ->
+  $("#mail_copy_cut_mail_cut").click ->
+    #code review
+
+jQuery ->
+  $("#mail_copy_cut_mail_copy").click ->
+    #code review
+
+jQuery ->
+  $("body").click ->
+    # code review
+  $("#mails").length > 0
+    # code review
+
+jQuery ->
    $("#mails").children().each (index) ->
         $(this).draggable({
             revert: true,

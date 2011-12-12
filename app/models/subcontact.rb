@@ -1,6 +1,6 @@
 class Subcontact < ActiveRecord::Base
-	attr_accessor :copy_cut_subcontact, :categoryall_id_source, :subcontact_id_origin
-	attr_accessible :name
+	attr_accessor :copy_cut_subcontact, :categoryall_id_source, :subcontact_id_origin 
+	attr_accessible :name, :categoryalls_attributes
 	has_and_belongs_to_many :categoryalls
 	has_and_belongs_to_many :newsletters
 	has_and_belongs_to_many :emails

@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 		      cookies[:subcontact_id] = subcontact_id
 		      email = Email.find(email_id)
 		      redirect_to edit_email_path(email)
-		     when "addmail" 
+		     when "addmail"
 		      email_id = params.split("_")[params.split("_").length-1] 
 		      subcontact_id = params.split("_")[0].split("-")[0]
 		      categoryall_id = params.split("_")[0].split("-")[1]
@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
 		      maximum_mail = subcontact.emails.maximum(:id)
 		      maximum_mail ||= 0
 		      email = subcontact.emails.new(:name=>"mail_#{maximum_mail}", :addr_email=>"adress_#{maximum_mail}@domain.com", :adress=>"adress_#{maximum_mail}", :cppostal=>maximum_mail, :tel=>"tel_#{maximum_mail}")
-		      email.save
+          email.save
 		      email.subcontacts.push(subcontact)
-		      redirect_to edit_email_path(email)
+          redirect_to edit_email_path(email)
 		     when "supmail"
 		      email_id = params.split("_")[params.split("_").length-1]
 		      email = Email.find(mail_id)

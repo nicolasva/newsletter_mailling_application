@@ -81,7 +81,7 @@ class SubcontactsController < ApplicationController
                result = false
            end
            render :json => {:result=>result, :subcontact_id=>cookies[:subcontact_id]}
-         else
+        else
            if cookies[:subcontact_id].nil? || cookies[:subcontact_id].empty?
                subcontact_id = "copy"
            else
@@ -89,7 +89,7 @@ class SubcontactsController < ApplicationController
 
            end
 	            render :text => subcontact_id
-         end
+        end
 	    end
    end
   end

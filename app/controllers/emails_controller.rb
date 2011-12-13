@@ -9,43 +9,46 @@ class EmailsController < ApplicationController
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
-      unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails"
+  unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email"
 	#subcontact = Subcontact.find(params[:subcontact_id].to_i)
 	#@emails = subcontact.emails
-	@emails = Array.new
-	 unless params[:subcontacts].nil? || params[:subcontacts].empty?
+	    @emails = Array.new
+	    unless params[:subcontacts].nil? || params[:subcontacts].empty?
 	      params[:subcontacts].each_with_index do |id, index|
-		subcontact = Subcontact.find(id)
-		subcontact.emails.each do |email|
-			@emails.push(email) unless @emails.include?(email)
-		end
+		      subcontact = Subcontact.find(id)
+		      subcontact.emails.each do |email|
+			      @emails.push(email) unless @emails.include?(email)
+		      end
 	      end
-	 end
-	 @emails
-      else
-	  unless request.path == "/result_dragondropmails"
-	      cpt = 0
-	      list_mails = ""
+	    end
+	    @emails
+  else
+	  unless request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email"
+	    cpt = 0
+	    list_mails = ""
 	    unless params[:subcontact_id_source] == "no_id"
 	      subcontact = Subcontact.find(params[:subcontact_id_source])
 	      unless params[:mails].nil? || params[:mails].empty? || params[:subcontact_id_source] = "no_id"
-		params[:mails].each_with_index do |id, index|
-			#list_subcontacts += "#{id}-"
-			email = Email.find(id)
-				unless email.subcontacts.include?(subcontact)
-					list_mails += "#{id}"
-					cpt = cpt + 1
-					if cpt < params[:mails].length
-						list_mails += "-"
-					end
-				end
-		end
+		      params[:mails].each_with_index do |id, index|
+			      #list_subcontacts += "#{id}-"
+			      email = Email.find(id)
+				    unless email.subcontacts.include?(subcontact)
+					    list_mails += "#{id}"
+					    cpt = cpt + 1
+					    if cpt < params[:mails].length
+						    list_mails += "-"
+					    end
+				   end
+		     end
 	     end
 	   end
 
-		render :json => list_mails
-	end
-      end
+		 render :json => list_mails
+   else 
+     cookies[:email_id] = params[:id_li_email_id]
+     render :text => cookies[:email_id]
+	 end
+  end
   end
 
   # GET /mails/1
@@ -57,11 +60,34 @@ class EmailsController < ApplicationController
   #    format.html # show.html.erb
   #    format.json { render :json => @mail }
   #  end
+   unless request.path == "/copy_or_cut_email" || request.path == "/verif_copy_or_cut_email"
      params[:mail].each_with_index do |id, index|
      	Email.position(index+1,id)
      end
 
      render :nothing => true
+   else
+     if request.path == "/verif_copy_or_cut_email"
+       unless cookies[:email_id].nil? || cookies[:email_id].empty?
+         email_id = cookies[:email_id].split("_").last
+         if Subcontact.joins(:emails).where(:id=>params[:subcontact_id], :emails=>{:id=>email_id}).empty?
+           result = true
+         else
+           result = false
+         end
+       else
+         result = false
+       end
+       render :json => {:result => result, :subcontact_id=>cookies[:email_id]}
+     else
+       if cookies[:email_id].nil? || cookies[:email_id].empty?
+         email_id = "copy"
+       else
+         email_id = cookies[:email_id]
+       end
+         render :text => email_id
+     end
+   end
   end
 
   # GET /mails/new

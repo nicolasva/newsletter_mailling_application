@@ -55,9 +55,9 @@ Prgmnewsletter::Application.routes.draw do
 	  match "mailsremove" => "emails#index"
 	  match "choosemails_to_subcontacts/:id/:subcontact_id/:subcontact_id_source" => "emails#edit"
 	  match "result_dragondropmails" => "emails#index"
-    match "set_cookies_drag_and_drop_cut_subcontact" => "mails#index"
-    match "copy_or_cut_mail" => "mails#show"
-    match "verif_copy_or_cut_subcontact" => "subcontact#show"
+    match "set_cookies_drag_and_drop_cut_email" => "emails#index"
+    match "copy_or_cut_email" => "emails#show"
+    match "verif_copy_or_cut_email" => "emails#show"
   end
 
   root :to => "newsletters#index"

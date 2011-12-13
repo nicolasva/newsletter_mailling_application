@@ -32,7 +32,7 @@ jQuery ->
         type: "POST",
         data : { id_li_subcontact_id: subcontact_id }
         failure: ->
-             alert("Ajax set cookies subcontact_id")
+             alert("Ajax set cookies subcontact_id error")
      })
 
 jQuery ->
@@ -42,7 +42,7 @@ jQuery ->
         type: "POST",
         data: { id_li_subcontact_id: "copy" }
         failure: ->
-             alert("Ajax set cookies copie subcontact_id")
+             alert("Ajax set cookies copy subcontact_id error")
      })
 
 jQuery ->

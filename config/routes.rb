@@ -23,10 +23,8 @@ Prgmnewsletter::Application.routes.draw do
 
   scope :module => :newsletter do 
   	match "historylistnewsletter" => "newsletters#index"
-	match "imgnewsletters/:id" => "newsletters#show"
-	#match "statistics" => "newsletters#index"
-	#match "historystatistics" => "newsletters#index"
-	match "searchnewsletters" => "newsletters#index"
+	  match "imgnewsletters/:id" => "newsletters#show"
+	  match "searchnewsletters" => "newsletters#index"
   end
 
   scope :module => :mailstart do
@@ -34,7 +32,7 @@ Prgmnewsletter::Application.routes.draw do
   end
 
   scope :module => :categoryall do
-	match "categoryallslists" => "categoryalls#index"
+	  match "categoryallslists" => "categoryalls#index"
   	match "sort" => "categoryalls#show"
   end
 

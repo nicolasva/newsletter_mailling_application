@@ -21,6 +21,11 @@ gem "rake", '0.9.2'
 gem "minitest", '1.6.0'
 gem "will_paginate"
 gem "whenever"
+gem "data_mapper"
+gem "dm-mysql-adapter"
+gem "dm-yaml-adapter"
+gem "dm-sqlite-adapter"
+gem "dm-mongo-adapter"
 gem "geokit-rails3"
 gem "gruff"
 gem "haml-rails"
@@ -35,7 +40,7 @@ group :test do
 	gem "capybara" 
 	gem "thor"
 	gem "guard-rspec"
-        gem "nokogiri"
+  gem "nokogiri"
 end
 
 gem 'jquery-rails'

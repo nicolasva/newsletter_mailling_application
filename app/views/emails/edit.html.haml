@@ -1,8 +1,38 @@
-= form_for(@email) do |f|
- = render(:partial => "emails/templates_mails/notice_form_mails", :locals => {:email => @email})
- - unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
-  = render(:partial=>"form", :locals => { :f => f })
+- unless request.path == "/import_emails_bd" || request.path == "/import_emails_excel"
+ = form_for(@email) do |f|
+  = render(:partial => "emails/templates_mails/notice_form_mails", :locals => {:email => @email})
+  - unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
+   = render(:partial=>"form", :locals => { :f => f })
   	
-  = render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f})
- - else
-  = render(:partial=>"emails/templates_mails/form_popup_dragdrop_mails_to_subcontacts", :locals => {:f => f, :subcontact_id => params[:subcontact_id], :subcontact_id_source => params[:subcontact_id_source]})
+   = render(:partial=>"/mailstarts/templates_mailstarts/submit_form", :locals => {:f => f})
+  - else
+   = render(:partial=>"emails/templates_mails/form_popup_dragdrop_mails_to_subcontacts", :locals => {:f => f, :subcontact_id => params[:subcontact_id], :subcontact_id_source => params[:subcontact_id_source]})
+- else
+ = form_for :connector, :url => "/emails/valid_import_emails_bd" do |f|
+  %p
+   = f.label(:host)
+   %br
+   = f.text_field(:host)
+  %p
+   = f.label(:user)
+   %br
+   = f.text_field(:user)
+  %p
+   = f.label(:password)
+   %br
+   = f.text_field(:password)
+  %p
+   = f.label(:name)
+   %br
+   = f.text_field(:name)
+  %p
+   = f.label(:port)
+   %br
+   = f.text_field(:port)
+  %p
+   = f.label(:type)
+   %br
+   = f.select(:type, [])
+  %p
+
+

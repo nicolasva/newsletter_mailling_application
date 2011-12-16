@@ -1,5 +1,12 @@
-- unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails"
+- unless request.path == "/mailsremove" || request.path == "/result_dragondropmails" || request.path == "/import_emails"
  - @emails.each do |email|
   = content_tag_for :li, email do
    = check_box_tag("newsletter[email_ids][]", email.id, (params[:newsletter_id] != "newsletter" ? email.newsletters.include?(Newsletter.find(params[:newsletter_id].to_i)) : false), :id => "id_newsletter_mail_ids_#{email.id}") 
    = "#{email.name} &#60;#{email.addr_email}&#62;"
+- else
+ #menu_import_emails
+  %ol
+   %li
+    = link_to "Importer les contacts e-mails d'une base de donnée extèrieur", "/import_emails_bd"
+   %li
+    = link_to "Importe les contacts e-mails d'un fichier excel (xls,csv)", "/import_emails_excel"

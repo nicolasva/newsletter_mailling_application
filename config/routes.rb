@@ -56,6 +56,9 @@ Prgmnewsletter::Application.routes.draw do
     match "set_cookies_drag_and_drop_cut_email" => "emails#index"
     match "copy_or_cut_email" => "emails#show"
     match "verif_copy_or_cut_email" => "emails#show"
+    match "import_emails" => "emails#index"
+    match "import_emails_bd" => "emails#edit"
+    match "import_emails_excel" => "emails#edit"
   end
 
   root :to => "newsletters#index"

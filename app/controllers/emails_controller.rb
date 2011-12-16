@@ -9,7 +9,7 @@ class EmailsController < ApplicationController
   #    format.html # index.html.erb
   #    format.json { render :json => @mails }
   #  end
-  unless request.path.split("/")[1] == "mailsremove" || request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email"
+  unless request.path == "/mailsremove" || request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email" || request.path == "/import_emails"
 	#subcontact = Subcontact.find(params[:subcontact_id].to_i)
 	#@emails = subcontact.emails
 	    @emails = Array.new
@@ -23,7 +23,7 @@ class EmailsController < ApplicationController
 	    end
 	    @emails
   else
-	  unless request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email"
+	  unless request.path == "/result_dragondropmails" || request.path == "/set_cookies_drag_and_drop_cut_email" || request.path == "/import_emails"
 	    cpt = 0
 	    list_mails = ""
 	    unless params[:subcontact_id_source] == "no_id"
@@ -45,8 +45,12 @@ class EmailsController < ApplicationController
 
 		 render :json => list_mails
    else 
-     cookies[:email_id] = params[:id_li_email_id]
-     render :text => cookies[:email_id]
+     if request.path == "/set_cookies_drag_and_drop_cut_email"
+       cookies[:email_id] = params[:id_li_email_id]
+       render :text => cookies[:email_id]
+     else
+       
+     end
 	 end
   end
   end
@@ -103,13 +107,22 @@ class EmailsController < ApplicationController
 
   # GET /mails/1/edit
   def edit
-    @email = Email.find(params[:id])
-   unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
-    @subcontact = @email.subcontacts.find(cookies[:subcontact_id])
-    @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
-    @mailstart = @categoryall.mailstart
-   end
+   unless request.path == "/import_emails_bd" || request.path == "/import_emails_excel"
+     @email = Email.find(params[:id])
+     unless (request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0].nil? || request.path.scan(/^\/(.{1,})\/.{1,}\/.{1,}\/.{1,}$/)[0][0] == "choosemails_to_subcontacts")
+       @subcontact = @email.subcontacts.find(cookies[:subcontact_id])
+       @categoryall = @subcontact.categoryalls.find(cookies[:categoryall_id])
+       @mailstart = @categoryall.mailstart
+     end
     respond_with(@email)
+   else
+     if request.path == "/import_emails_bd"
+       #render :text => "import emails bd"
+       #
+     else
+       render :text => "import emails excel"
+     end
+   end
   end
 
   # POST /mails
